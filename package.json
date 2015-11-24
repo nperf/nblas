@@ -1,0 +1,18 @@
+{
+  "name": "node-blas",
+  "version": "0.1.0",
+  "description": "Native BLAS bindings",
+  "main": "blas.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "dependencies": {
+    "ffi": "^2.0.0",
+    "nan": "^2.1.0"
+  },
+  "devDependencies": {},
+  "author": "Mateo Gianolio",
+  "license": "MIT",
+  "gypfile": true
+}
