@@ -1,5 +1,5 @@
 {
-  "name": "node-blas",
+  "name": "nblas",
   "version": "0.1.0",
   "description": "Native BLAS bindings",
   "main": "blas.js",
