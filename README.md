@@ -1,6 +1,8 @@
 # nBLAS
 
-C++ bindings for CBLAS (Basic Linear Algebra Subprograms). Developed in parallel with [vectorious](https://github.com/mateogianolio/vectorious), where it will eventually be included.
+C++ bindings for CBLAS (Basic Linear Algebra Subprograms).
+
+Developed in parallel with [vectorious](https://github.com/mateogianolio/vectorious), where it will eventually be included.
 
 ```bash
 $ npm install mateogianolio/nblas
