@@ -22,7 +22,9 @@ var f32a = new Float32Array([1, 2, 3]),
 nblas.sdot(3, f32a, 1, f32b, 1); // 32
 ```
 
-- [x] **`sdot`**
+### Functions
+
+#### **`sdot`**
 
 Produces a single precision dot product from two single precision vectors `x` and `y` of size `n`.
 
@@ -34,7 +36,7 @@ float sdot (
 );
 ```
 
-- [x] **`ddot`**
+#### **`ddot`**
 
 Produces a double precision dot product from two double precision vectors `x` and `y`.
 
@@ -46,7 +48,7 @@ double ddot (
 );
 ```
 
-- [x] **`daxpy`**
+#### **`daxpy`**
 
 Adds a double precision vector `x` scaled with a double precision scalar `alpha` to another double precision vector `y`.
 
@@ -59,7 +61,7 @@ void daxpy (
 );
 ```
 
-- [x] **`saxpy`**
+#### **`saxpy`**
 
 Adds a single precision vector `x` scaled with a single precision scalar `alpha` to another single precision vector `y`.
 
@@ -72,7 +74,7 @@ void saxpy (
 );
 ```
 
-- [x] **`dscal`**
+#### **`dscal`**
 
 Scales a double precision vector `x` with a double precision scalar `alpha`.
 
@@ -84,7 +86,7 @@ void dscal (
 );
 ```
 
-- [x] **`sscal`**
+#### **`sscal`**
 
 Scales a single precision vector `x` with a single precision scalar `alpha`.
 
