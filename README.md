@@ -132,7 +132,7 @@ Double precision functions expect `Float64Array` vectors, single precision funct
   );
   ```
 
-  - [x] Swaps a single precision vector `x` with a single precision vector `y`.
+  - [x] Swaps the elements of a single precision vector `x` with a single precision vector `y`.
 
   ```cpp
   void sswap (
