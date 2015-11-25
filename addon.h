@@ -3,4 +3,10 @@
 
 #include <nan.h>
 
+#include "functions/dot.h"
+#include "functions/axpy.h"
+#include "functions/scal.h"
+#include "functions/copy.h"
+#include "functions/swap.h"
+
 #endif

@@ -4,12 +4,11 @@
       "target_name": "addon",
       "sources": [
         "addon.cc",
-        "functions/sdot.cc",
-        "functions/ddot.cc",
-        "functions/daxpy.cc",
-        "functions/saxpy.cc",
-        "functions/dscal.cc",
-        "functions/sscal.cc"
+        "functions/dot.cc",
+        "functions/axpy.cc",
+        "functions/scal.cc",
+        "functions/copy.cc",
+        "functions/swap.cc"
       ],
       "include_dirs" : [
         "<!(node -e \"require('nan')\")"
