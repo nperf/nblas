@@ -24,9 +24,7 @@ nblas.sdot(3, f32a, 1, f32b, 1); // 32
 
 ### `dot`
 
-- [x] `sdot`
-
-  Produces a single precision dot product from two single precision vectors `x` and `y` of size `n`.
+  - [x] Produces a single precision dot product from two single precision vectors `x` and `y` of size `n`.
 
   ```cpp
   float sdot (
@@ -36,9 +34,7 @@ nblas.sdot(3, f32a, 1, f32b, 1); // 32
   );
   ```
 
-- [x] `ddot`
-
-  Produces a double precision dot product from two double precision vectors `x` and `y`.
+  - [x] Produces a double precision dot product from two double precision vectors `x` and `y`.
 
   ```cpp
   double ddot (
@@ -50,9 +46,7 @@ nblas.sdot(3, f32a, 1, f32b, 1); // 32
 
 ### `axpy`
 
-  - [x] `daxpy`
-
-  Adds a double precision vector `x` scaled with a double precision scalar `alpha` to another double precision vector `y`.
+  - [x] Adds a double precision vector `x` scaled with a double precision scalar `alpha` to another double precision vector `y`.
 
   ```cpp
   void daxpy (
@@ -63,9 +57,7 @@ nblas.sdot(3, f32a, 1, f32b, 1); // 32
   );
   ```
 
-  - [x] `saxpy`
-
-  Adds a single precision vector `x` scaled with a single precision scalar `alpha` to another single precision vector `y`.
+  - [x] Adds a single precision vector `x` scaled with a single precision scalar `alpha` to another single precision vector `y`.
 
   ```cpp
   void saxpy (
@@ -78,9 +70,7 @@ nblas.sdot(3, f32a, 1, f32b, 1); // 32
 
 ### `scal`
 
-  - [x] `dscal`
-
-  Scales a double precision vector `x` with a double precision scalar `alpha`.
+  - [x] Scales a double precision vector `x` with a double precision scalar `alpha`.
 
   ```cpp
   void dscal (
@@ -90,9 +80,7 @@ nblas.sdot(3, f32a, 1, f32b, 1); // 32
   );
   ```
 
-  - [x] `sscal`
-
-  Scales a single precision vector `x` with a single precision scalar `alpha`.
+  - [x] Scales a single precision vector `x` with a single precision scalar `alpha`.
 
   ```cpp
   void sscal(
@@ -104,9 +92,7 @@ nblas.sdot(3, f32a, 1, f32b, 1); // 32
 
 ### `copy`
 
-  - [x] `dcopy`
-
-  Copies a double precision vector `x` to a double precision vector `y`.
+  - [x] Copies a double precision vector `x` to a double precision vector `y`.
 
   ```cpp
   void dcopy (
@@ -118,9 +104,7 @@ nblas.sdot(3, f32a, 1, f32b, 1); // 32
   );
   ```
 
-  - [x] `sscal`
-
-  Scales a single precision vector `x` to a single precision vector `y`.
+  - [x] Scales a single precision vector `x` to a single precision vector `y`.
 
   ```cpp
   void scopy (
@@ -134,9 +118,7 @@ nblas.sdot(3, f32a, 1, f32b, 1); // 32
 
 ### `swap`
 
-  - [x] `dswap`
-
-  Swaps the elements of a double precision vector `x` with a double precision vector `y`.
+  - [x] Swaps the elements of a double precision vector `x` with a double precision vector `y`.
 
   ```cpp
   void dswap (
@@ -148,9 +130,7 @@ nblas.sdot(3, f32a, 1, f32b, 1); // 32
   );
   ```
 
-  - [x] `sswap`
-
-  Swaps a single precision vector `x` with a single precision vector `y`.
+  - [x] Swaps a single precision vector `x` with a single precision vector `y`.
 
   ```cpp
   void sswap (
