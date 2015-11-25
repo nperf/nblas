@@ -4,7 +4,7 @@ C++ bindings for CBLAS (Basic Linear Algebra Subprograms).
 
 Developed in parallel with [vectorious](https://github.com/mateogianolio/vectorious), where it will eventually be included.
 
-Works out of the box with OSX since CBLAS is included in the standard Accelerate framework. You might have to download and build [LAPACK](http://www.netlib.org/lapack/#_lapack_version_3_6_0) from source on other operating systems. Prebuilt copies of lblas might be included with this library in the future.
+Works out of the box with OSX since CBLAS is included in the standard Accelerate framework. You might have to download and build [LAPACK](http://www.netlib.org/lapack/#_lapack_version_3_6_0) from source on other operating systems. Prebuilt copies of lblas will probably be included with this library in the future.
 
 ```bash
 $ npm install mateogianolio/nblas
