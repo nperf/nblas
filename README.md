@@ -1,6 +1,6 @@
 # nblas
 
-C++ bindings for CBLAS (Basic Linear Algebra Subprograms).
+C++ bindings for CBLAS (Basic Linear Algebra Subprograms). Developed in parallel with [vectorious](https://github.com/mateogianolio/vectorious), where it will eventually be included.
 
 ```bash
 $ npm install mateogianolio/nblas
@@ -21,6 +21,8 @@ var f32a = new Float32Array([1, 2, 3]),
 
 nblas.sdot(3, f32a, 1, f32b, 1); // 32
 ```
+
+Double precision functions expect `Float64Array` vectors, single precision functions expect `Float32Array` vectors.
 
 ### `dot`
 
