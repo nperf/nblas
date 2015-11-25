@@ -5,11 +5,13 @@
   "main": "main.js",
   "scripts": {
     "test": "mocha",
-    "install": "node-gyp rebuild",
+    "install": "node-gyp configure && node-gyp rebuild",
     "benchmark": "node benchmark.js"
   },
+  "repository": {
+    "git": "https://github.com/mateogianolio/nblas"
+  },
   "dependencies": {
-    "ffi": "^2.0.0",
     "nan": "^2.1.0"
   },
   "devDependencies": {},
