@@ -169,3 +169,25 @@ Double precision functions expect `Float64Array` vectors, single precision funct
     const int inc_x
   );
   ```
+
+### `asum`
+
+  - [x] Computes the sum of the absolute values of elements in a double-precision vector `x`.
+
+  ```cpp
+  double cblas_dasum (
+    const int n,
+    const double *x,
+    const int inc_x
+  );
+  ```
+
+  - [x] Computes the sum of the absolute values of elements in a single-precision vector `x`.
+
+  ```cpp
+  float cblas_sasum (
+    const int n,
+    const float *x,
+    const int inc_x
+  );
+  ```

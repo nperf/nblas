@@ -9,7 +9,8 @@
         "functions/scal.cc",
         "functions/copy.cc",
         "functions/swap.cc",
-        "functions/iamax.cc"
+        "functions/iamax.cc",
+        "functions/asum.cc"
       ],
       "include_dirs" : [
         "<!(node -e \"require('nan')\")"

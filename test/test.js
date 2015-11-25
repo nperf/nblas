@@ -135,4 +135,24 @@
       );
     });
   });
+
+  describe('dasum, sasum', function () {
+    it('should compute the sum of the absolute values of elements in a vector (double-precision)', function () {
+      assert.equal(
+        addon.dasum(SIZE, f64a, 1),
+        vecf64a.values.reduce(function (a, b) {
+          return Math.abs(a) + Math.abs(b);
+        })
+      );
+    });
+
+    it('should compute the sum of the absolute values of elements in a vector (single-precision)', function () {
+      assert.equal(
+        addon.sasum(SIZE, f32a, 1),
+        vecf32a.values.reduce(function (a, b) {
+          return Math.abs(a) + Math.abs(b);
+        })
+      );
+    });
+  });
 }());

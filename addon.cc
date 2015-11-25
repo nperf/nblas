@@ -37,6 +37,11 @@ NAN_MODULE_INIT(init) {
     GetFunction(New<FunctionTemplate>(idamax)).ToLocalChecked());
   Set(target, New<String>("isamax").ToLocalChecked(),
     GetFunction(New<FunctionTemplate>(isamax)).ToLocalChecked());
+
+  Set(target, New<String>("dasum").ToLocalChecked(),
+    GetFunction(New<FunctionTemplate>(dasum)).ToLocalChecked());
+  Set(target, New<String>("sasum").ToLocalChecked(),
+    GetFunction(New<FunctionTemplate>(sasum)).ToLocalChecked());
 }
 
 NODE_MODULE(addon, init)

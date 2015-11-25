@@ -73,6 +73,12 @@
     })
     .add('BLAS::float::isamax', function () {
       addon.isamax(SIZE, f32a, 1);
+    })
+    .add('BLAS::double::dasum', function () {
+      addon.dasum(SIZE, f64a, 1);
+    })
+    .add('BLAS::float::sasum', function () {
+      addon.sasum(SIZE, f32a, 1);
     });
 
     suite

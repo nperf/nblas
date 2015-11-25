@@ -9,5 +9,6 @@
 #include "functions/copy.h"
 #include "functions/swap.h"
 #include "functions/iamax.h"
+#include "functions/asum.h"
 
 #endif
