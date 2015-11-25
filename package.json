@@ -2,7 +2,7 @@
   "name": "nblas",
   "version": "0.1.0",
   "description": "Native BLAS bindings",
-  "main": "main.js",
+  "main": "./build/Release/addon",
   "scripts": {
     "test": "mocha",
     "install": "node-gyp configure && node-gyp rebuild",
