@@ -22,7 +22,9 @@ var f32a = new Float32Array([1, 2, 3]),
 nblas.sdot(3, f32a, 1, f32b, 1); // 32
 ```
 
-Implemented bindings:
+- [x] **`sdot`**
+
+Produces a single precision dot product from two single precision vectors `x` and `y` of size `n`.
 
 ```cpp
 float sdot (
@@ -30,33 +32,63 @@ float sdot (
   const float *x, const int inc_x,
   const float *y, const int inc_y
 );
+```
 
+- [x] **`ddot`**
+
+Produces a double precision dot product from two double precision vectors `x` and `y`.
+
+```cpp
 double ddot (
   const int n,
   const double *x, const int inc_x,
   const double *y, const int inc_y
 );
+```
 
+- [x] **`daxpy`**
+
+Adds a double precision vector `x` scaled with a double precision scalar `alpha` to another double precision vector `y`.
+
+```cpp
 void daxpy (
   const int n,
   const double alpha,
   const double *x, const int inc_x,
   const double *y, const int inc_y
 );
+```
 
+- [x] **`saxpy`**
+
+Adds a single precision vector `x` scaled with a single precision scalar `alpha` to another single precision vector `y`.
+
+```cpp
 void saxpy (
   const int n,
   const float alpha,
   const float *x, const int inc_x,
   const float *y, const int inc_y
 );
+```
 
+- [x] **`dscal`**
+
+Scales a double precision vector `x` with a double precision scalar `alpha`.
+
+```cpp
 void dscal (
   const int n,
   const double alpha,
   const double *x, const int inc_x
 );
+```
 
+- [x] **`sscal`**
+
+Scales a single precision vector `x` with a single precision scalar `alpha`.
+
+```cpp
 void sscal(
   const int n,
   const float alpha,
