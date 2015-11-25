@@ -24,7 +24,7 @@ nblas.sdot(3, f32a, 1, f32b, 1); // 32
 
 ### `dot`
 
-  - [x] Produces a single precision dot product from two single precision vectors `x` and `y` of size `n`.
+  - [x] Produces a single precision dot product from two single precision vectors `x` and `y` of size `n`.
 
   ```cpp
   float sdot (
@@ -70,7 +70,7 @@ nblas.sdot(3, f32a, 1, f32b, 1); // 32
 
 ### `scal`
 
-  - [x] Scales a double precision vector `x` with a double precision scalar `alpha`.
+  - [x] Scales a double precision vector `x` with a double precision scalar `alpha`.
 
   ```cpp
   void dscal (
@@ -92,7 +92,7 @@ nblas.sdot(3, f32a, 1, f32b, 1); // 32
 
 ### `copy`
 
-  - [x] Copies a double precision vector `x` to a double precision vector `y`.
+  - [x] Copies a double precision vector `x` to a double precision vector `y`.
 
   ```cpp
   void dcopy (
@@ -118,7 +118,7 @@ nblas.sdot(3, f32a, 1, f32b, 1); // 32
 
 ### `swap`
 
-  - [x] Swaps the elements of a double precision vector `x` with a double precision vector `y`.
+  - [x] Swaps the elements of a double precision vector `x` with a double precision vector `y`.
 
   ```cpp
   void dswap (
