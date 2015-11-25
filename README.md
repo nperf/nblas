@@ -148,7 +148,7 @@ Double precision functions expect `Float64Array` vectors, single precision funct
   );
   ```
 
-  ### `iamax`
+### `iamax`
 
   - [x] Returns the index of the element with the largest absolute value in a double precision vector `x`.
 
