@@ -36,6 +36,12 @@
     .add('V::float::add', function () {
       vecf32a.add(vecf32b);
     })
+    .add('V::double::scale', function () {
+      vecf64a.scale(Math.random());
+    })
+    .add('V::float::scale', function () {
+      vecf32a.scale(Math.random());
+    })
     .add('BLAS::double::ddot', function () {
       addon.ddot(SIZE, f64a, 1, f64b, 1);
     })
@@ -47,6 +53,12 @@
     })
     .add('BLAS::float::saxpy', function() {
       addon.saxpy(SIZE, 1, f32a, 1, f32b.slice(0), 1);
+    })
+    .add('BLAS::double::dscal', function() {
+      addon.dscal(SIZE, Math.random(), f64a.slice(0), 1);
+    })
+    .add('BLAS::float::sscal', function() {
+      addon.sscal(SIZE, Math.random(), f32a.slice(0), 1);
     });
 
     suite

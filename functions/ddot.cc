@@ -12,13 +12,13 @@ NAN_METHOD(ddot) {
   assert(info[1]->IsFloat64Array());
   assert(info[3]->IsFloat64Array());
 
-  void *a_data = info[1].As<Float64Array>()->Buffer()->GetContents().Data(),
-       *b_data = info[3].As<Float64Array>()->Buffer()->GetContents().Data();
+  void *x_data = info[1].As<Float64Array>()->Buffer()->GetContents().Data(),
+       *y_data = info[3].As<Float64Array>()->Buffer()->GetContents().Data();
 
-  double *a = reinterpret_cast<double*>(a_data),
-         *b = reinterpret_cast<double*>(b_data);
+  double *x = reinterpret_cast<double*>(x_data),
+         *y = reinterpret_cast<double*>(y_data);
 
   info.GetReturnValue().Set(
-    New<Number>(cblas_ddot(n, a, inc_x, b, inc_y))
+    New<Number>(cblas_ddot(n, x, inc_x, y, inc_y))
   );
 }

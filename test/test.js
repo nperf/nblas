@@ -59,4 +59,41 @@
       );
     });
   });
+
+
+  describe('addon.dscal', function () {
+    it('should scale all elements in a vector (double precision)', function () {
+      var x = f64a.slice(0);
+
+      addon.dscal(SIZE, 5, x, 1);
+      assert.deepEqual(
+        x,
+        vecf64a.scale(5).values
+      );
+
+      addon.dscal(SIZE, 2, x, 1);
+      assert.deepEqual(
+        x,
+        vecf64a.scale(5).scale(2).values
+      );
+    });
+  });
+
+  describe('addon.sscal', function () {
+    it('should scale all elements in a vector (single precision)', function () {
+      var x = f32a.slice(0);
+
+      addon.sscal(SIZE, 5, x, 1);
+      assert.deepEqual(
+        x,
+        vecf32a.scale(5).values
+      );
+
+      addon.sscal(SIZE, 2, x, 1);
+      assert.deepEqual(
+        x,
+        vecf32a.scale(5).scale(2).values
+      );
+    });
+  });
 }());

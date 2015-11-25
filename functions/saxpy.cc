@@ -13,11 +13,11 @@ NAN_METHOD(saxpy) {
   assert(info[2]->IsFloat32Array());
   assert(info[4]->IsFloat32Array());
 
-  void *a_data = info[2].As<Float32Array>()->Buffer()->GetContents().Data(),
-       *b_data = info[4].As<Float32Array>()->Buffer()->GetContents().Data();
+  void *x_data = info[2].As<Float32Array>()->Buffer()->GetContents().Data(),
+       *y_data = info[4].As<Float32Array>()->Buffer()->GetContents().Data();
 
-  float *a = reinterpret_cast<float*>(a_data),
-        *b = reinterpret_cast<float*>(b_data);
+  float *x = reinterpret_cast<float*>(x_data),
+        *y = reinterpret_cast<float*>(y_data);
 
-  cblas_saxpy(n, alpha, a, inc_x, b, inc_y);
+  cblas_saxpy(n, alpha, x, inc_x, y, inc_y);
 }

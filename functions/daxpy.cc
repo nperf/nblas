@@ -13,11 +13,11 @@ NAN_METHOD(daxpy) {
   assert(info[2]->IsFloat64Array());
   assert(info[4]->IsFloat64Array());
 
-  void *a_data = info[2].As<Float64Array>()->Buffer()->GetContents().Data(),
-       *b_data = info[4].As<Float64Array>()->Buffer()->GetContents().Data();
+  void *x_data = info[2].As<Float64Array>()->Buffer()->GetContents().Data(),
+       *y_data = info[4].As<Float64Array>()->Buffer()->GetContents().Data();
 
-  double *a = reinterpret_cast<double*>(a_data),
-         *b = reinterpret_cast<double*>(b_data);
+  double *x = reinterpret_cast<double*>(x_data),
+         *y = reinterpret_cast<double*>(y_data);
 
-  cblas_daxpy(n, alpha, a, inc_x, b, inc_y);
+  cblas_daxpy(n, alpha, x, inc_x, y, inc_y);
 }

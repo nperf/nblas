@@ -50,4 +50,16 @@ void saxpy (
   const float *x, const int inc_x,
   const float *y, const int inc_y
 );
+
+void dscal (
+  const int n,
+  const double alpha,
+  const double *x, const int inc_x
+);
+
+void sscal(
+  const int n,
+  const float alpha,
+  const float *x, const int inc_x
+);
 ```

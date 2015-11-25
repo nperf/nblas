@@ -7,7 +7,9 @@
         "functions/sdot.cc",
         "functions/ddot.cc",
         "functions/daxpy.cc",
-        "functions/saxpy.cc"
+        "functions/saxpy.cc",
+        "functions/dscal.cc",
+        "functions/sscal.cc"
       ],
       "include_dirs" : [
         "<!(node -e \"require('nan')\")"
