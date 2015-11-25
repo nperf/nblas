@@ -8,5 +8,6 @@
 #include "functions/scal.h"
 #include "functions/copy.h"
 #include "functions/swap.h"
+#include "functions/iamax.h"
 
 #endif

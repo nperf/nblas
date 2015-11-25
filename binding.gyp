@@ -8,7 +8,8 @@
         "functions/axpy.cc",
         "functions/scal.cc",
         "functions/copy.cc",
-        "functions/swap.cc"
+        "functions/swap.cc",
+        "functions/iamax.cc"
       ],
       "include_dirs" : [
         "<!(node -e \"require('nan')\")"

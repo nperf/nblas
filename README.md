@@ -147,3 +147,25 @@ Double precision functions expect `Float64Array` vectors, single precision funct
     const int inc_y
   );
   ```
+
+  ### `iamax`
+
+  - [x] Returns the index of the element with the largest absolute value in a double precision vector `x`.
+
+  ```cpp
+  int cblas_idamax (
+    const int n,
+    const double *x,
+    const int inc_x
+  );
+  ```
+
+  - [x] Returns the index of the element with the largest absolute value in a single precision vector `x`.
+
+  ```cpp
+  int cblas_isamax (
+    const int n,
+    const float *x,
+    const int inc_x
+  );
+  ```

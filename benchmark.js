@@ -42,6 +42,14 @@
     .add('V::float::scale', function () {
       vecf32a.scale(Math.random());
     })
+    .add('V::double::indexOf::max', function () {
+      f64a.indexOf(vecf64a.max());
+    })
+    .add('V::float::indexOf::max', function () {
+      f32a.indexOf(vecf32a.max());
+    });
+
+  suite
     .add('BLAS::double::ddot', function () {
       addon.ddot(SIZE, f64a, 1, f64b, 1);
     })
@@ -59,6 +67,12 @@
     })
     .add('BLAS::float::sscal', function() {
       addon.sscal(SIZE, Math.random(), f32a.slice(0), 1);
+    })
+    .add('BLAS::double::idamax', function () {
+      addon.idamax(SIZE, f64a, 1);
+    })
+    .add('BLAS::float::isamax', function () {
+      addon.isamax(SIZE, f32a, 1);
     });
 
     suite

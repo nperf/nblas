@@ -119,4 +119,20 @@
       assert.deepEqual(x, f32b);
     });
   });
+
+  describe('idamax, isamax', function () {
+    it('should return the index of the element with the largest absolute value in a vector (double-precision)', function () {
+      assert.equal(
+        addon.idamax(SIZE, f64a, 1),
+        f64a.indexOf(vecf64a.max())
+      );
+    });
+
+    it('should return the index of the element with the largest absolute value in a vector (single-precision)', function () {
+      assert.equal(
+        addon.isamax(SIZE, f32a, 1),
+        f32a.indexOf(vecf32a.max())
+      );
+    });
+  });
 }());
