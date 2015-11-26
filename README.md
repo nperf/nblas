@@ -221,20 +221,30 @@ Double precision functions expect `Float64Array` vectors, single precision funct
 
   ```cpp
   void cblas_dgemm (
+    // row-major: 101, col-major: 102
     const int order,
+
+    // none: 111, transpose: 112, conjugate: 113, atlas: 114
     const int transpose_x,
     const int transpose_y,
-    const int m,
-    const int n,
-    const int k,
+
+    const int m, // rows in matrices x and z
+    const int n, // cols in matrices y and z
+    const int k, // cols in x; rows in y
+
+    // scaling factor for the product of matrices x and y
     const double alpha,
+
     const double *x,
-    const int ldx,
+    const int ldx, // size of the first dimension of matrix x
     const double *y,
-    const int ldy,
+    const int ldy, // size of the first dimension of matrix y
+
+    // scaling factor for the matrix z
     const double beta,
+    
     const double *z,
-    const int ldz
+    const int ldz // size of the first dimension of matrix z
   );
   ```
 
