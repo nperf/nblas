@@ -47,6 +47,12 @@
     })
     .add('V::float::indexOf::max', function () {
       f32a.indexOf(vecf32a.max());
+    })
+    .add('V::double::magnitude', function () {
+      f32a.indexOf(vecf64a.magnitude());
+    })
+    .add('V::float::magnitude', function () {
+      f32a.indexOf(vecf32a.magnitude());
     });
 
   suite
@@ -79,6 +85,12 @@
     })
     .add('BLAS::float::sasum', function () {
       addon.sasum(SIZE, f32a, 1);
+    })
+    .add('BLAS::double::dnrm2', function () {
+      addon.dnrm2(SIZE, f64a, 1);
+    })
+    .add('BLAS::float::snrm2', function () {
+      addon.snrm2(SIZE, f32a, 1);
     });
 
     suite

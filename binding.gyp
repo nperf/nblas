@@ -10,7 +10,8 @@
         "functions/copy.cc",
         "functions/swap.cc",
         "functions/iamax.cc",
-        "functions/asum.cc"
+        "functions/asum.cc",
+        "functions/nrm2.cc"
       ],
       "include_dirs" : [
         "<!(node -e \"require('nan')\")"

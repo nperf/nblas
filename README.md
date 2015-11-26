@@ -110,7 +110,7 @@ Double precision functions expect `Float64Array` vectors, single precision funct
   );
   ```
 
-  - [x] Scales a single precision vector `x` to a single precision vector `y`.
+  - [x] Copies a single precision vector `x` to a single precision vector `y`.
 
   ```cpp
   void scopy (
@@ -186,6 +186,28 @@ Double precision functions expect `Float64Array` vectors, single precision funct
 
   ```cpp
   float cblas_sasum (
+    const int n,
+    const float *x,
+    const int inc_x
+  );
+  ```
+
+### `nrm2`
+
+  - [x] Computes the L2 norm (eucliean length) of a double-precision vector `x`.
+
+  ```cpp
+  double cblas_dnrm2 (
+    const int n,
+    const double *x,
+    const int inc_x
+  );
+  ```
+
+  - [x] Computes the L2 norm (euclidean length) of a single-precision vector `x`.
+
+  ```cpp
+  float cblas_snrm2 (
     const int n,
     const float *x,
     const int inc_x

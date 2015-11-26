@@ -155,4 +155,20 @@
       );
     });
   });
+
+  describe('dnrm2, snrm2', function () {
+    it('should compute the L2 norm (euclidean length) of a vector (double-precision)', function () {
+      assert.equal(
+        Math.round(addon.dnrm2(SIZE, f64a, 1)),
+        Math.round(vecf64a.magnitude())
+      );
+    });
+
+    it('should compute the L2 norm (euclidean length) of a vector (double-precision)', function () {
+      assert.equal(
+        Math.round(addon.snrm2(SIZE, f32a, 1)),
+        Math.round(vecf32a.magnitude())
+      );
+    });
+  });
 }());

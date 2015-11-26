@@ -42,6 +42,11 @@ NAN_MODULE_INIT(init) {
     GetFunction(New<FunctionTemplate>(dasum)).ToLocalChecked());
   Set(target, New<String>("sasum").ToLocalChecked(),
     GetFunction(New<FunctionTemplate>(sasum)).ToLocalChecked());
+
+  Set(target, New<String>("dnrm2").ToLocalChecked(),
+    GetFunction(New<FunctionTemplate>(dnrm2)).ToLocalChecked());
+  Set(target, New<String>("snrm2").ToLocalChecked(),
+    GetFunction(New<FunctionTemplate>(snrm2)).ToLocalChecked());
 }
 
 NODE_MODULE(addon, init)
