@@ -11,7 +11,8 @@
         "functions/swap.cc",
         "functions/iamax.cc",
         "functions/asum.cc",
-        "functions/nrm2.cc"
+        "functions/nrm2.cc",
+        "functions/gemm.cc"
       ],
       "include_dirs" : [
         "<!(node -e \"require('nan')\")"

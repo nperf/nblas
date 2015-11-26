@@ -213,3 +213,49 @@ Double precision functions expect `Float64Array` vectors, single precision funct
     const int inc_x
   );
   ```
+
+### `gemm`
+
+  - [x] Computes the matrix product of two double precision matrices `x` and `y`
+  and puts the result into `z`.
+
+  ```cpp
+  void cblas_dgemm (
+    const int order,
+    const int transpose_x,
+    const int transpose_y,
+    const int m,
+    const int n,
+    const int k,
+    const double alpha,
+    const double *x,
+    const int ldx,
+    const double *y,
+    const int ldy,
+    const double beta,
+    const double *z,
+    const int ldz
+  );
+  ```
+
+  - [x] Computes the matrix product of two single precision matrices `x` and `y`
+  and puts the result into `z`.
+
+  ```cpp
+  void cblas_sgemm (
+    const int order,
+    const int transpose_x,
+    const int transpose_y,
+    const int m,
+    const int n,
+    const int k,
+    const float alpha,
+    const float *x,
+    const int ldx,
+    const float *y,
+    const int ldy,
+    const float beta,
+    const float *z,
+    const int ldz
+  );
+  ```

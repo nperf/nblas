@@ -12,7 +12,8 @@
       m = vectorious.Matrix,
       addon = require('./build/Release/addon');
 
-  const SIZE = 2048;
+  const SIZE = 1024,
+        DIM = Math.floor(Math.sqrt(SIZE));
   var f64a = new Float64Array(util.randomArray(SIZE)),
       f64b = new Float64Array(util.randomArray(SIZE)),
       f32a = new Float32Array(util.randomArray(SIZE)),
@@ -22,6 +23,11 @@
       vecf64b = new v(f64b),
       vecf32a = new v(Float32Array, f32a),
       vecf32b = new v(Float32Array, f32b);
+
+  var mat64a = new m(f64a, { shape: [DIM, DIM] }),
+      mat64b = new m(f64b, { shape: [DIM, DIM] }),
+      mat32a = new m(f32a, { shape: [DIM, DIM] }),
+      mat32b = new m(f32b, { shape: [DIM, DIM] });
 
   suite
     .add('V::double::dot', function () {
@@ -53,6 +59,12 @@
     })
     .add('V::float::magnitude', function () {
       f32a.indexOf(vecf32a.magnitude());
+    })
+    .add('M::double::multiply', function () {
+      mat64a.multiply(mat64b);
+    })
+    .add('M::float::multiply', function () {
+      mat32a.multiply(mat32b);
     });
 
   suite
@@ -91,6 +103,44 @@
     })
     .add('BLAS::float::snrm2', function () {
       addon.snrm2(SIZE, f32a, 1);
+    })
+    .add('BLAS::double::dgemm', function () {
+      var z = new Float64Array(SIZE);
+      addon.dgemm(
+        101,
+        111,
+        111,
+        DIM,
+        DIM,
+        DIM,
+        1,
+        f64a,
+        DIM,
+        f64b,
+        DIM,
+        1,
+        z,
+        DIM
+      );
+    })
+    .add('BLAS::float::sgemm', function () {
+      var z = new Float64Array(SIZE);
+      addon.dgemm(
+        101,
+        111,
+        111,
+        DIM,
+        DIM,
+        DIM,
+        1,
+        f64a,
+        DIM,
+        f64b,
+        DIM,
+        1,
+        z,
+        DIM
+      );
     });
 
     suite
@@ -106,6 +156,11 @@
         vecf64b = new v(f64b);
         vecf32a = new v(Float32Array, f32a);
         vecf32b = new v(Float32Array, f32b);
+
+        mat64a = new m(f64a, { shape: [DIM, DIM] });
+        mat64b = new m(f64b, { shape: [DIM, DIM] });
+        mat32a = new m(f32a, { shape: [DIM, DIM] });
+        mat32b = new m(f32b, { shape: [DIM, DIM] });
       })
       .on('complete', function () {
         console.log('finished');

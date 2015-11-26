@@ -11,5 +11,6 @@
 #include "functions/iamax.h"
 #include "functions/asum.h"
 #include "functions/nrm2.h"
+#include "functions/gemm.h"
 
 #endif

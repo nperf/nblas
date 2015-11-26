@@ -171,4 +171,62 @@
       );
     });
   });
+
+  describe('dgemm, sgemm', function () {
+    it('should compute the matrix product of two matrices (double-precision)', function () {
+      var x = new Float64Array(util.randomArray(2)),
+          y = new Float64Array(util.randomArray(2)),
+          z = new Float64Array(4);
+
+      addon.dgemm(
+        101, // row-major
+        111, // no transpose for x
+        112, // transpose y
+        2, // rows in x and z
+        2, // cols in y and z
+        1, // cols in x, rows in y
+        1, // product scaling factor
+        x,
+        1, // ldx
+        y,
+        1, // ldy
+        1, // scaling factor for z
+        z,
+        2 // ldz
+      );
+
+      assert.deepEqual(
+        z,
+        new m(x, { shape: [2, 1] }).multiply(new m(y, { shape: [1, 2] })).data
+      );
+    });
+
+    it('should compute the matrix product of two matrices (double-precision)', function () {
+      var x = new Float32Array(util.randomArray(2)),
+          y = new Float32Array(util.randomArray(2)),
+          z = new Float32Array(4);
+
+      addon.sgemm(
+        101, // row-major
+        111, // no transpose for x
+        112, // transpose y
+        2, // rows in x and z
+        2, // cols in y and z
+        1, // cols in x, rows in y
+        1, // product scaling factor
+        x,
+        1, // ldx
+        y,
+        1, // ldy
+        1, // scaling factor for z
+        z,
+        2 // ldz
+      );
+
+      assert.deepEqual(
+        z,
+        new m(x, { shape: [2, 1] }).multiply(new m(y, { shape: [1, 2] })).data
+      );
+    });
+  });
 }());

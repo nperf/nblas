@@ -47,6 +47,11 @@ NAN_MODULE_INIT(init) {
     GetFunction(New<FunctionTemplate>(dnrm2)).ToLocalChecked());
   Set(target, New<String>("snrm2").ToLocalChecked(),
     GetFunction(New<FunctionTemplate>(snrm2)).ToLocalChecked());
+
+  Set(target, New<String>("dgemm").ToLocalChecked(),
+    GetFunction(New<FunctionTemplate>(dgemm)).ToLocalChecked());
+  Set(target, New<String>("sgemm").ToLocalChecked(),
+    GetFunction(New<FunctionTemplate>(sgemm)).ToLocalChecked());
 }
 
 NODE_MODULE(addon, init)
