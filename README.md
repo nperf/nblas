@@ -2,9 +2,9 @@
 
 C++ bindings for single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.
 
-1. [x] [BLAS Level 1 Routines and Functions](https://software.intel.com/en-us/node/468390)
-2. [x] [BLAS Level 2 Routines](https://software.intel.com/en-us/node/468426)
-2. [x] [BLAS Level 3 Routines](https://software.intel.com/en-us/node/468478)
+- [x] [BLAS Level 1 Routines and Functions](https://software.intel.com/en-us/node/468390)
+- [x] [BLAS Level 2 Routines](https://software.intel.com/en-us/node/468426)
+- [x] [BLAS Level 3 Routines](https://software.intel.com/en-us/node/468478)
 
 Works out of the box with OSX since CBLAS is included in the standard Accelerate framework. You might have to download and build [LAPACK](http://www.netlib.org/lapack/#_lapack_version_3_6_0) from source on other operating systems (**LINUX:** `sudo apt-get libblas-dev`). Prebuilt copies of lblas will probably be included with this library in the future.
 
