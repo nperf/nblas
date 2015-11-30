@@ -1,4 +1,4 @@
-# nBLAS
+# nBLAS ![version](https://img.shields.io/npm/v/nblas.svg) ![total downloads](https://img.shields.io/npm/dt/nblas.svg)
 
 C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.
 
