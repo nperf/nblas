@@ -11,7 +11,7 @@ NAN_METHOD(dger) {
 	unsigned int inc_y = info[5]->Uint32Value();
 	double a = info[6]->NumberValue();
 	unsigned int lda = info[7]->Uint32Value();
-	cblas_dger(m, n, alpha, x, inc_x, inc_y, a, lda);
+	cblas_dger(101, m, n, alpha, x, inc_x, inc_y, a, lda);
 }
 
 NAN_METHOD(sger) {
@@ -25,5 +25,5 @@ NAN_METHOD(sger) {
 	unsigned int inc_y = info[5]->Uint32Value();
 	double a = info[6]->NumberValue();
 	unsigned int lda = info[7]->Uint32Value();
-	cblas_sger(m, n, alpha, x, inc_x, inc_y, a, lda);
+	cblas_sger(101, m, n, alpha, x, inc_x, inc_y, a, lda);
 }

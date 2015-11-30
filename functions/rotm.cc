@@ -10,7 +10,8 @@ NAN_METHOD(drotm) {
 	void *y_data = info[3].As<v8::Float64Array>()->Buffer()->GetContents().Data();
 	double *y = reinterpret_cast<double*>(y_data);
 	unsigned int inc_y = info[4]->Uint32Value();
-	float param = info[5]->NumberValue();
+	void *param_data = info[5].As<v8::Float64Array>()->Buffer()->GetContents().Data();
+	double *param = reinterpret_cast<double*>(param_data);
 	cblas_drotm(n, x, inc_x, y, inc_y, param);
 }
 
@@ -24,6 +25,7 @@ NAN_METHOD(srotm) {
 	void *y_data = info[3].As<v8::Float32Array>()->Buffer()->GetContents().Data();
 	float *y = reinterpret_cast<float*>(y_data);
 	unsigned int inc_y = info[4]->Uint32Value();
-	float param = info[5]->NumberValue();
+	void *param_data = info[5].As<v8::Float32Array>()->Buffer()->GetContents().Data();
+	float *param = reinterpret_cast<float*>(param_data);
 	cblas_srotm(n, x, inc_x, y, inc_y, param);
 }

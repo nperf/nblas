@@ -1,8 +1,8 @@
 {
   "name": "nblas",
-  "version": "0.1.0",
-  "description": "Native BLAS bindings",
-  "main": "./build/Release/addon",
+  "version": "1.0.0",
+  "description": "C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.",
+  "main": "./addon.js",
   "scripts": {
     "test": "mocha",
     "install": "node-gyp configure && node-gyp rebuild",

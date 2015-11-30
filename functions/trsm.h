@@ -11,6 +11,7 @@ extern "C" void cblas_dtrsm (
 	const int,
 	const int,
 	const int,
+	const int,
 	const double,
 	const double*,
 	const int,
@@ -20,6 +21,7 @@ extern "C" void cblas_dtrsm (
 
 NAN_METHOD(strsm);
 extern "C" void cblas_strsm (
+	const int,
 	const int,
 	const int,
 	const int,

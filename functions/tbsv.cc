@@ -14,7 +14,7 @@ NAN_METHOD(dtbsv) {
 	void *x_data = info[7].As<v8::Float64Array>()->Buffer()->GetContents().Data();
 	double *x = reinterpret_cast<double*>(x_data);
 	unsigned int inc_x = info[8]->Uint32Value();
-	cblas_dtbsv(uplo, trans, diag, n, k, a, lda, x, inc_x);
+	cblas_dtbsv(101, uplo, trans, diag, n, k, a, lda, x, inc_x);
 }
 
 NAN_METHOD(stbsv) {
@@ -31,5 +31,5 @@ NAN_METHOD(stbsv) {
 	void *x_data = info[7].As<v8::Float32Array>()->Buffer()->GetContents().Data();
 	float *x = reinterpret_cast<float*>(x_data);
 	unsigned int inc_x = info[8]->Uint32Value();
-	cblas_stbsv(uplo, trans, diag, n, k, a, lda, x, inc_x);
+	cblas_stbsv(101, uplo, trans, diag, n, k, a, lda, x, inc_x);
 }

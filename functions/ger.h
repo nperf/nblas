@@ -7,6 +7,7 @@ NAN_METHOD(dger);
 extern "C" void cblas_dger (
 	const int,
 	const int,
+	const int,
 	const double,
 	const double*,
 	const int,
@@ -17,6 +18,7 @@ extern "C" void cblas_dger (
 
 NAN_METHOD(sger);
 extern "C" void cblas_sger (
+	const int,
 	const int,
 	const int,
 	const double,

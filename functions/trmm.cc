@@ -16,7 +16,7 @@ NAN_METHOD(dtrmm) {
 	void *b_data = info[9].As<v8::Float64Array>()->Buffer()->GetContents().Data();
 	double *b = reinterpret_cast<double*>(b_data);
 	unsigned int ldb = info[10]->Uint32Value();
-	cblas_dtrmm(side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb);
+	cblas_dtrmm(101, side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb);
 }
 
 NAN_METHOD(strmm) {
@@ -35,5 +35,5 @@ NAN_METHOD(strmm) {
 	void *b_data = info[9].As<v8::Float32Array>()->Buffer()->GetContents().Data();
 	float *b = reinterpret_cast<float*>(b_data);
 	unsigned int ldb = info[10]->Uint32Value();
-	cblas_strmm(side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb);
+	cblas_strmm(101, side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb);
 }

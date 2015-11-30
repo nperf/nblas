@@ -19,7 +19,7 @@ NAN_METHOD(dsymm) {
 	void *c_data = info[10].As<v8::Float64Array>()->Buffer()->GetContents().Data();
 	double *c = reinterpret_cast<double*>(c_data);
 	unsigned int ldc = info[11]->Uint32Value();
-	cblas_dsymm(side, uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc);
+	cblas_dsymm(101, side, uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc);
 }
 
 NAN_METHOD(ssymm) {
@@ -41,5 +41,5 @@ NAN_METHOD(ssymm) {
 	void *c_data = info[10].As<v8::Float32Array>()->Buffer()->GetContents().Data();
 	float *c = reinterpret_cast<float*>(c_data);
 	unsigned int ldc = info[11]->Uint32Value();
-	cblas_ssymm(side, uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc);
+	cblas_ssymm(101, side, uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc);
 }

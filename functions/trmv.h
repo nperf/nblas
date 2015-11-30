@@ -9,6 +9,7 @@ extern "C" void cblas_dtrmv (
 	const int,
 	const int,
 	const int,
+	const int,
 	const double*,
 	const int,
 	const double*,
@@ -17,6 +18,7 @@ extern "C" void cblas_dtrmv (
 
 NAN_METHOD(strmv);
 extern "C" void cblas_strmv (
+	const int,
 	const int,
 	const int,
 	const int,

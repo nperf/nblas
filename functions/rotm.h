@@ -10,7 +10,7 @@ extern "C" void cblas_drotm (
 	const int,
 	const double*,
 	const int,
-	const double
+	const double*
 );
 
 NAN_METHOD(srotm);
@@ -20,7 +20,7 @@ extern "C" void cblas_srotm (
 	const int,
 	const float*,
 	const int,
-	const float
+	const float*
 );
 
 #endif

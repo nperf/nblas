@@ -12,7 +12,7 @@ NAN_METHOD(dtpmv) {
 	void *x_data = info[5].As<v8::Float64Array>()->Buffer()->GetContents().Data();
 	double *x = reinterpret_cast<double*>(x_data);
 	unsigned int inc_x = info[6]->Uint32Value();
-	cblas_dtpmv(uplo, trans, diag, n, ap, x, inc_x);
+	cblas_dtpmv(101, uplo, trans, diag, n, ap, x, inc_x);
 }
 
 NAN_METHOD(stpmv) {
@@ -27,5 +27,5 @@ NAN_METHOD(stpmv) {
 	void *x_data = info[5].As<v8::Float32Array>()->Buffer()->GetContents().Data();
 	float *x = reinterpret_cast<float*>(x_data);
 	unsigned int inc_x = info[6]->Uint32Value();
-	cblas_stpmv(uplo, trans, diag, n, ap, x, inc_x);
+	cblas_stpmv(101, uplo, trans, diag, n, ap, x, inc_x);
 }

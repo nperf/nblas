@@ -11,7 +11,7 @@ NAN_METHOD(dsyr2) {
 	unsigned int inc_y = info[5]->Uint32Value();
 	double a = info[6]->NumberValue();
 	unsigned int lda = info[7]->Uint32Value();
-	cblas_dsyr2(uplo, n, alpha, x, inc_x, inc_y, a, lda);
+	cblas_dsyr2(101, uplo, n, alpha, x, inc_x, inc_y, a, lda);
 }
 
 NAN_METHOD(ssyr2) {
@@ -25,5 +25,5 @@ NAN_METHOD(ssyr2) {
 	unsigned int inc_y = info[5]->Uint32Value();
 	float a = info[6]->NumberValue();
 	unsigned int lda = info[7]->Uint32Value();
-	cblas_ssyr2(uplo, n, alpha, x, inc_x, inc_y, a, lda);
+	cblas_ssyr2(101, uplo, n, alpha, x, inc_x, inc_y, a, lda);
 }

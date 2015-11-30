@@ -9,6 +9,7 @@ extern "C" void cblas_dtpsv (
 	const int,
 	const int,
 	const int,
+	const int,
 	const double*,
 	const double*,
 	const int
@@ -16,6 +17,7 @@ extern "C" void cblas_dtpsv (
 
 NAN_METHOD(stpsv);
 extern "C" void cblas_stpsv (
+	const int,
 	const int,
 	const int,
 	const int,

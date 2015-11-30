@@ -8,6 +8,7 @@ extern "C" void cblas_dsbmv (
 	const int,
 	const int,
 	const int,
+	const int,
 	const double,
 	const double*,
 	const int,
@@ -20,6 +21,7 @@ extern "C" void cblas_dsbmv (
 
 NAN_METHOD(ssbmv);
 extern "C" void cblas_ssbmv (
+	const int,
 	const int,
 	const int,
 	const int,

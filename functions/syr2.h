@@ -7,6 +7,7 @@ NAN_METHOD(dsyr2);
 extern "C" void cblas_dsyr2 (
 	const int,
 	const int,
+	const int,
 	const double,
 	const double*,
 	const int,
@@ -17,6 +18,7 @@ extern "C" void cblas_dsyr2 (
 
 NAN_METHOD(ssyr2);
 extern "C" void cblas_ssyr2 (
+	const int,
 	const int,
 	const int,
 	const float,

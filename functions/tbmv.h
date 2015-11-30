@@ -10,6 +10,7 @@ extern "C" void cblas_dtbmv (
 	const int,
 	const int,
 	const int,
+	const int,
 	const double*,
 	const int,
 	const double*,
@@ -18,6 +19,7 @@ extern "C" void cblas_dtbmv (
 
 NAN_METHOD(stbmv);
 extern "C" void cblas_stbmv (
+	const int,
 	const int,
 	const int,
 	const int,

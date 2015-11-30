@@ -15,7 +15,7 @@ NAN_METHOD(dsyrk) {
 	void *c_data = info[8].As<v8::Float64Array>()->Buffer()->GetContents().Data();
 	double *c = reinterpret_cast<double*>(c_data);
 	unsigned int ldc = info[9]->Uint32Value();
-	cblas_dsyrk(uplo, trans, n, k, alpha, a, lda, beta, c, ldc);
+	cblas_dsyrk(101, uplo, trans, n, k, alpha, a, lda, beta, c, ldc);
 }
 
 NAN_METHOD(ssyrk) {
@@ -33,5 +33,5 @@ NAN_METHOD(ssyrk) {
 	void *c_data = info[8].As<v8::Float32Array>()->Buffer()->GetContents().Data();
 	float *c = reinterpret_cast<float*>(c_data);
 	unsigned int ldc = info[9]->Uint32Value();
-	cblas_ssyrk(uplo, trans, n, k, alpha, a, lda, beta, c, ldc);
+	cblas_ssyrk(101, uplo, trans, n, k, alpha, a, lda, beta, c, ldc);
 }

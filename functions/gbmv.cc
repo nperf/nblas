@@ -20,7 +20,7 @@ NAN_METHOD(dgbmv) {
 	void *y_data = info[11].As<v8::Float64Array>()->Buffer()->GetContents().Data();
 	double *y = reinterpret_cast<double*>(y_data);
 	unsigned int inc_y = info[12]->Uint32Value();
-	cblas_dgbmv(trans, m, n, kl, ku, alpha, a, lda, x, inc_x, beta, y, inc_y);
+	cblas_dgbmv(101, trans, m, n, kl, ku, alpha, a, lda, x, inc_x, beta, y, inc_y);
 }
 
 NAN_METHOD(sgbmv) {
@@ -43,5 +43,5 @@ NAN_METHOD(sgbmv) {
 	void *y_data = info[11].As<v8::Float32Array>()->Buffer()->GetContents().Data();
 	float *y = reinterpret_cast<float*>(y_data);
 	unsigned int inc_y = info[12]->Uint32Value();
-	cblas_sgbmv(trans, m, n, kl, ku, alpha, a, lda, x, inc_x, beta, y, inc_y);
+	cblas_sgbmv(101, trans, m, n, kl, ku, alpha, a, lda, x, inc_x, beta, y, inc_y);
 }

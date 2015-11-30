@@ -8,6 +8,7 @@ extern "C" void cblas_dgemv (
 	const int,
 	const int,
 	const int,
+	const int,
 	const double,
 	const double*,
 	const int,
@@ -20,6 +21,7 @@ extern "C" void cblas_dgemv (
 
 NAN_METHOD(sgemv);
 extern "C" void cblas_sgemv (
+	const int,
 	const int,
 	const int,
 	const int,

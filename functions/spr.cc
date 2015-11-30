@@ -9,7 +9,7 @@ NAN_METHOD(dspr) {
 	double *x = reinterpret_cast<double*>(x_data);
 	unsigned int inc_x = info[4]->Uint32Value();
 	double ap = info[5]->NumberValue();
-	cblas_dspr(uplo, n, alpha, x, inc_x, ap);
+	cblas_dspr(101, uplo, n, alpha, x, inc_x, ap);
 }
 
 NAN_METHOD(sspr) {
@@ -21,5 +21,5 @@ NAN_METHOD(sspr) {
 	float *x = reinterpret_cast<float*>(x_data);
 	unsigned int inc_x = info[4]->Uint32Value();
 	float ap = info[5]->NumberValue();
-	cblas_sspr(uplo, n, alpha, x, inc_x, ap);
+	cblas_sspr(101, uplo, n, alpha, x, inc_x, ap);
 }

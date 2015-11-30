@@ -7,6 +7,7 @@ NAN_METHOD(dspmv);
 extern "C" void cblas_dspmv (
 	const int,
 	const int,
+	const int,
 	const double,
 	const double*,
 	const double*,
@@ -18,6 +19,7 @@ extern "C" void cblas_dspmv (
 
 NAN_METHOD(sspmv);
 extern "C" void cblas_sspmv (
+	const int,
 	const int,
 	const int,
 	const float,

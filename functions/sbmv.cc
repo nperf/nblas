@@ -18,7 +18,7 @@ NAN_METHOD(dsbmv) {
 	void *y_data = info[9].As<v8::Float64Array>()->Buffer()->GetContents().Data();
 	double *y = reinterpret_cast<double*>(y_data);
 	unsigned int inc_y = info[10]->Uint32Value();
-	cblas_dsbmv(uplo, n, k, alpha, a, lda, x, inc_x, beta, y, inc_y);
+	cblas_dsbmv(101, uplo, n, k, alpha, a, lda, x, inc_x, beta, y, inc_y);
 }
 
 NAN_METHOD(ssbmv) {
@@ -39,5 +39,5 @@ NAN_METHOD(ssbmv) {
 	void *y_data = info[9].As<v8::Float32Array>()->Buffer()->GetContents().Data();
 	float *y = reinterpret_cast<float*>(y_data);
 	unsigned int inc_y = info[10]->Uint32Value();
-	cblas_ssbmv(uplo, n, k, alpha, a, lda, x, inc_x, beta, y, inc_y);
+	cblas_ssbmv(101, uplo, n, k, alpha, a, lda, x, inc_x, beta, y, inc_y);
 }

@@ -19,7 +19,7 @@ NAN_METHOD(dsyr2k) {
 	void *c_data = info[10].As<v8::Float64Array>()->Buffer()->GetContents().Data();
 	double *c = reinterpret_cast<double*>(c_data);
 	unsigned int ldc = info[11]->Uint32Value();
-	cblas_dsyr2k(uplo, trans, n, k, alpha, a, lda, b, ldb, beta, c, ldc);
+	cblas_dsyr2k(101, uplo, trans, n, k, alpha, a, lda, b, ldb, beta, c, ldc);
 }
 
 NAN_METHOD(ssyr2k) {
@@ -41,5 +41,5 @@ NAN_METHOD(ssyr2k) {
 	void *c_data = info[10].As<v8::Float32Array>()->Buffer()->GetContents().Data();
 	float *c = reinterpret_cast<float*>(c_data);
 	unsigned int ldc = info[11]->Uint32Value();
-	cblas_ssyr2k(uplo, trans, n, k, alpha, a, lda, b, ldb, beta, c, ldc);
+	cblas_ssyr2k(101, uplo, trans, n, k, alpha, a, lda, b, ldb, beta, c, ldc);
 }

@@ -9,6 +9,7 @@ extern "C" void cblas_dsymm (
 	const int,
 	const int,
 	const int,
+	const int,
 	const double,
 	const double*,
 	const int,
@@ -21,6 +22,7 @@ extern "C" void cblas_dsymm (
 
 NAN_METHOD(ssymm);
 extern "C" void cblas_ssymm (
+	const int,
 	const int,
 	const int,
 	const int,
