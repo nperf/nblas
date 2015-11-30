@@ -90,22 +90,22 @@
 
   // BLAS Level 2 Routines
   addon.gbmv =
-    (a, x, y, m, n, kl, ku, alpha, beta, trans) =>
+    (a, x, y, kl, ku, alpha, beta, trans) =>
       a.constructor === Float64Array ?
-        addon.dgbmv(trans || 86, m, n, kl || 0, ku || 0, alpha || 1.0, a, m, x, 1, beta || 1.0, y, 1) :
-        addon.sgbmv(trans || 111, m, n, kl || 0, ku || 0, alpha || 1.0, a, m, x, 1, beta || 1.0, y, 1);
+        addon.dgbmv(trans || 86, x.length, y.length, kl || 0, ku || 0, alpha || 1.0, a, m, x, 1, beta || 1.0, y, 1) :
+        addon.sgbmv(trans || 111, x.length, y.length, kl || 0, ku || 0, alpha || 1.0, a, m, x, 1, beta || 1.0, y, 1);
 
   addon.gemv =
-    (a, x, y, m, n, alpha, beta, trans) =>
+    (a, x, y, alpha, beta, trans) =>
       a.constructor === Float64Array ?
-        addon.dgemv(trans || 111, m, n, alpha || 1.0, a, m, x, 1, beta || 1.0, y, 1) :
-        addon.sgemv(trans || 111, m, n, alpha || 1.0, a, m, x, 1, beta || 1.0, y, 1);
+        addon.dgemv(trans || 111, x.length, y.length, alpha || 1.0, a, m, x, 1, beta || 1.0, y, 1) :
+        addon.sgemv(trans || 111, x.length, y.length, alpha || 1.0, a, m, x, 1, beta || 1.0, y, 1);
 
   addon.ger =
     (a, x, y, alpha) =>
       a.constructor === Float64Array ?
-        addon.drot(m, n, alpha || 1.0, x, 1, y, 1, a, m) :
-        addon.srot(m, n, alpha || 1.0, x, 1, y, 1, a, m);
+        addon.drot(x.length, y.length, alpha || 1.0, x, 1, y, 1, a, x.length) :
+        addon.srot(x.length, y.length, alpha || 1.0, x, 1, y, 1, a, x.length);
 
   addon.sbmv =
     (a, x, y, uplo, alpha, beta) =>
