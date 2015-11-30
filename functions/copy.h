@@ -5,20 +5,20 @@
 
 NAN_METHOD(dcopy);
 extern "C" void cblas_dcopy (
-  const int n,
-  const double *x,
-  const int inc_x,
-  const double *y,
-  const int inc_y
+	const int,
+	const double*,
+	const int,
+	const double*,
+	const int
 );
 
 NAN_METHOD(scopy);
 extern "C" void cblas_scopy (
-  const int n,
-  const float *x,
-  const int inc_x,
-  const float *y,
-  const int inc_y
+	const int,
+	const float*,
+	const int,
+	const float*,
+	const int
 );
 
 #endif

@@ -1,92 +1,47 @@
 #include "gemm.h"
 
-using v8::Float64Array;
-using v8::Float32Array;
-using v8::Number;
-using Nan::New;
-
 NAN_METHOD(dgemm) {
-  unsigned int order = info[0]->Uint32Value(),
-               transpose_x = info[1]->Uint32Value(),
-               transpose_y = info[2]->Uint32Value(),
-               m = info[3]->Uint32Value(),
-               n = info[4]->Uint32Value(),
-               k = info[5]->Uint32Value(),
-               ldx = info[8]->Uint32Value(),
-               ldy = info[10]->Uint32Value(),
-               ldz = info[13]->Uint32Value();
-  double alpha = info[6]->NumberValue(),
-         beta = info[11]->NumberValue();
-
-  assert(info[7]->IsFloat64Array());
-  assert(info[9]->IsFloat64Array());
-  assert(info[12]->IsFloat64Array());
-
-  void *x_data = info[7].As<Float64Array>()->Buffer()->GetContents().Data(),
-       *y_data = info[9].As<Float64Array>()->Buffer()->GetContents().Data(),
-       *z_data = info[12].As<Float64Array>()->Buffer()->GetContents().Data();
-
-  double *x = reinterpret_cast<double*>(x_data),
-         *y = reinterpret_cast<double*>(y_data),
-         *z = reinterpret_cast<double*>(z_data);
-
-  cblas_dgemm(
-    order,
-    transpose_x,
-    transpose_y,
-    m,
-    n,
-    k,
-    alpha,
-    x,
-    ldx,
-    y,
-    ldy,
-    beta,
-    z,
-    ldz
-  );
+	unsigned int transa = info[0]->Uint32Value();
+	unsigned int transb = info[1]->Uint32Value();
+	unsigned int m = info[2]->Uint32Value();
+	unsigned int n = info[3]->Uint32Value();
+	unsigned int k = info[4]->Uint32Value();
+	double alpha = info[5]->NumberValue();
+	assert(info[6]->IsFloat64Array());
+	void *a_data = info[6].As<v8::Float64Array>()->Buffer()->GetContents().Data();
+	double *a = reinterpret_cast<double*>(a_data);
+	unsigned int lda = info[7]->Uint32Value();
+	assert(info[8]->IsFloat64Array());
+	void *b_data = info[8].As<v8::Float64Array>()->Buffer()->GetContents().Data();
+	double *b = reinterpret_cast<double*>(b_data);
+	unsigned int ldb = info[9]->Uint32Value();
+	double beta = info[10]->NumberValue();
+	assert(info[11]->IsFloat64Array());
+	void *c_data = info[11].As<v8::Float64Array>()->Buffer()->GetContents().Data();
+	double *c = reinterpret_cast<double*>(c_data);
+	unsigned int ldc = info[12]->Uint32Value();
+	cblas_dgemm(101, transa, transb, m, n, k, alpha, a, lda, b, ldb, beta, c, ldc);
 }
 
 NAN_METHOD(sgemm) {
-  unsigned int order = info[0]->Uint32Value(),
-               transpose_x = info[1]->Uint32Value(),
-               transpose_y = info[2]->Uint32Value(),
-               m = info[3]->Uint32Value(),
-               n = info[4]->Uint32Value(),
-               k = info[5]->Uint32Value(),
-               ldx = info[8]->Uint32Value(),
-               ldy = info[10]->Uint32Value(),
-               ldz = info[13]->Uint32Value();
-  float alpha = info[6]->NumberValue(),
-         beta = info[11]->NumberValue();
-
-  assert(info[7]->IsFloat32Array());
-  assert(info[9]->IsFloat32Array());
-  assert(info[12]->IsFloat32Array());
-
-  void *x_data = info[7].As<Float32Array>()->Buffer()->GetContents().Data(),
-       *y_data = info[9].As<Float32Array>()->Buffer()->GetContents().Data(),
-       *z_data = info[12].As<Float32Array>()->Buffer()->GetContents().Data();
-
-  float *x = reinterpret_cast<float*>(x_data),
-        *y = reinterpret_cast<float*>(y_data),
-        *z = reinterpret_cast<float*>(z_data);
-
-  cblas_sgemm(
-    order,
-    transpose_x,
-    transpose_y,
-    m,
-    n,
-    k,
-    alpha,
-    x,
-    ldx,
-    y,
-    ldy,
-    beta,
-    z,
-    ldz
-  );
+	unsigned int transa = info[0]->Uint32Value();
+	unsigned int transb = info[1]->Uint32Value();
+	unsigned int m = info[2]->Uint32Value();
+	unsigned int n = info[3]->Uint32Value();
+	unsigned int k = info[4]->Uint32Value();
+	float alpha = info[5]->NumberValue();
+	assert(info[6]->IsFloat32Array());
+	void *a_data = info[6].As<v8::Float32Array>()->Buffer()->GetContents().Data();
+	float *a = reinterpret_cast<float*>(a_data);
+	unsigned int lda = info[7]->Uint32Value();
+	assert(info[8]->IsFloat32Array());
+	void *b_data = info[8].As<v8::Float32Array>()->Buffer()->GetContents().Data();
+	float *b = reinterpret_cast<float*>(b_data);
+	unsigned int ldb = info[9]->Uint32Value();
+	float beta = info[10]->NumberValue();
+	assert(info[11]->IsFloat32Array());
+	void *c_data = info[11].As<v8::Float32Array>()->Buffer()->GetContents().Data();
+	float *c = reinterpret_cast<float*>(c_data);
+	unsigned int ldc = info[12]->Uint32Value();
+	cblas_sgemm(101, transa, transb, m, n, k, alpha, a, lda, b, ldb, beta, c, ldc);
 }

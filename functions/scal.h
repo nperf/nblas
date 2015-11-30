@@ -5,18 +5,18 @@
 
 NAN_METHOD(dscal);
 extern "C" void cblas_dscal (
-  const int n,
-  const double alpha,
-  const double *x,
-  const int inc_x
+	const int,
+	const double,
+	const double*,
+	const int
 );
 
 NAN_METHOD(sscal);
 extern "C" void cblas_sscal (
-  const int n,
-  const float alpha,
-  const float *x,
-  const int inc_x
+	const int,
+	const float,
+	const float*,
+	const int
 );
 
 #endif

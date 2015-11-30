@@ -5,16 +5,16 @@
 
 NAN_METHOD(idamax);
 extern "C" int cblas_idamax (
-  const int n,
-  const double *x,
-  const int inc_x
+	const int,
+	const double*,
+	const int
 );
 
 NAN_METHOD(isamax);
 extern "C" int cblas_isamax (
-  const int n,
-  const float *x,
-  const int inc_x
+	const int,
+	const float*,
+	const int
 );
 
 #endif

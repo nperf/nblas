@@ -5,16 +5,16 @@
 
 NAN_METHOD(dnrm2);
 extern "C" double cblas_dnrm2 (
-  const int n,
-  const double *x,
-  const int inc_x
+	const int,
+	const double*,
+	const int
 );
 
 NAN_METHOD(snrm2);
 extern "C" float cblas_snrm2 (
-  const int n,
-  const float *x,
-  const int inc_x
+	const int,
+	const float*,
+	const int
 );
 
 #endif

@@ -179,18 +179,17 @@
           z = new Float64Array(4);
 
       addon.dgemm(
-        101, // row-major
         111, // no transpose for x
         112, // transpose y
         2, // rows in x and z
         2, // cols in y and z
         1, // cols in x, rows in y
-        1, // product scaling factor
+        1.0, // product scaling factor
         x,
         1, // ldx
         y,
         1, // ldy
-        1, // scaling factor for z
+        1.0, // scaling factor for z
         z,
         2 // ldz
       );
@@ -207,7 +206,6 @@
           z = new Float32Array(4);
 
       addon.sgemm(
-        101, // row-major
         111, // no transpose for x
         112, // transpose y
         2, // rows in x and z

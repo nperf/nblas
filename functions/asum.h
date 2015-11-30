@@ -5,16 +5,16 @@
 
 NAN_METHOD(dasum);
 extern "C" double cblas_dasum (
-  const int n,
-  const double *x,
-  const int inc_x
+	const int,
+	const double*,
+	const int
 );
 
 NAN_METHOD(sasum);
 extern "C" float cblas_sasum (
-  const int n,
-  const float *x,
-  const int inc_x
+	const int,
+	const float*,
+	const int
 );
 
 #endif
