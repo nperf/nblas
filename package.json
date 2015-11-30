@@ -1,11 +1,12 @@
 {
-  "name": "nlapack",
-  "version": "0.1.0",
-  "description": "C++ bindings for all single- and double-precision CLAPACK (Linear Algebra Package) routines.",
+  "name": "nblas",
+  "version": "1.0.2",
+  "description": "C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.",
   "main": "./addon.js",
   "scripts": {
     "test": "mocha",
-    "install": "node-gyp configure && node-gyp rebuild"
+    "install": "node-gyp configure && node-gyp rebuild",
+    "benchmark": "node benchmark.js"
   },
   "repository": {
     "git": "https://github.com/mateogianolio/nblas"
