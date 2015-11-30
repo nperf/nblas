@@ -2,6 +2,11 @@
 
 C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.
 
+```bash
+$ npm install nblas
+$ npm test
+```
+
 **[BLAS Level 1 Routines and Functions](https://software.intel.com/en-us/node/468390)**
 - [x] [`?asum`](https://software.intel.com/node/e49cf403-8071-4252-a85f-28964ac3da9e#E49CF403-8071-4252-A85F-28964AC3DA9E)
 - [x] [`?axpy`](https://software.intel.com/node/e25d8e10-0440-4827-bc58-bc71128ea6ee#E25D8E10-0440-4827-BC58-BC71128EA6EE)
@@ -45,11 +50,6 @@ C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Su
 - [x] [`?trsm`](https://software.intel.com/node/ce40548f-549d-4af8-9668-b63b28c8c63f#CE40548F-549D-4AF8-9668-B63B28C8C63F)
 
 Works out of the box with OSX since CBLAS is included in the standard Accelerate framework. You might have to download and build [LAPACK](http://www.netlib.org/lapack/#_lapack_version_3_6_0) from source on other operating systems (**LINUX:** `sudo apt-get libblas-dev`).
-
-```bash
-$ npm install mateogianolio/nblas
-$ npm test
-```
 
 ```javascript
 var nblas = require('nblas');
