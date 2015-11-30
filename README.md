@@ -1,6 +1,6 @@
 # nBLAS ![version](https://img.shields.io/npm/v/nblas.svg) ![travis](https://img.shields.io/travis/mateogianolio/nblas.svg) ![codeclimate coverage](https://img.shields.io/codeclimate/coverage/github/mateogianolio/nblas.svg)
 
-C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.
+Node.js `>=4.0` C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.
 
 ```bash
 $ npm install nblas
