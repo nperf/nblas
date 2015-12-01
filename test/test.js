@@ -20,23 +20,27 @@
       vecf32a = new v(Float32Array, f32a),
       vecf32b = new v(Float32Array, f32b);
 
-  describe('ddot, sdot', function () {
-    it('should perform vector dot product (double precision)', function () {
+  describe('?asum', function () {
+    it('should compute the sum of the absolute values of elements in a vector (double-precision)', function () {
       assert.equal(
-        addon.dot(f64a, f64b),
-        vecf64a.dot(vecf64b)
+        addon.asum(f64a),
+        vecf64a.values.reduce(function (a, b) {
+          return Math.abs(a) + Math.abs(b);
+        })
       );
     });
 
-    it('should perform vector dot product (single precision)', function () {
+    it('should compute the sum of the absolute values of elements in a vector (single-precision)', function () {
       assert.equal(
-        addon.dot(f32a, f32b),
-        vecf32a.dot(vecf32b)
+        addon.asum(f32a),
+        vecf32a.values.reduce(function (a, b) {
+          return Math.abs(a) + Math.abs(b);
+        })
       );
     });
   });
 
-  describe('daxpy, saxpy', function () {
+  describe('?axpy', function () {
     it('should compute a constant times a vector plus a vector (double precision)', function () {
       var y = f64b.slice(0);
       addon.axpy(f64a, y);
@@ -56,11 +60,63 @@
     });
   });
 
+  describe('?copy', function () {
+    it('should copy a vector to another vector (double precision)', function () {
+      var y = f64b.slice(0);
 
-  describe('dscal, sscal', function () {
+      addon.copy(f64a, y);
+      assert.deepEqual(f64a, y);
+    });
+
+    it('should copy a vector to another vector (single precision)', function () {
+      var y = f32b.slice(0);
+
+      addon.copy(f32a, y);
+      assert.deepEqual(f32a, y);
+    });
+  });
+
+  describe('?dot', function () {
+    it('should perform vector dot product (double precision)', function () {
+      assert.equal(
+        addon.dot(f64a, f64b),
+        vecf64a.dot(vecf64b)
+      );
+    });
+
+    it('should perform vector dot product (single precision)', function () {
+      assert.equal(
+        addon.dot(f32a, f32b),
+        vecf32a.dot(vecf32b)
+      );
+    });
+  });
+
+  describe('?nrm2', function () {
+    it('should compute the L2 norm (euclidean length) of a vector (double-precision)', function () {
+      assert.equal(
+        Math.round(addon.nrm2(f64a)),
+        Math.round(vecf64a.magnitude())
+      );
+    });
+
+    it('should compute the L2 norm (euclidean length) of a vector (double-precision)', function () {
+      assert.equal(
+        Math.round(addon.nrm2(f32a)),
+        Math.round(vecf32a.magnitude())
+      );
+    });
+  });
+
+  describe('?rot', function () {
+    it('should perform plane rotation of points (double precision)', function () {
+      
+    });
+  });
+
+  describe('?scal', function () {
     it('should scale all elements in a vector (double precision)', function () {
       var x = f64a.slice(0);
-      console.log(x.constructor);
       addon.scal(x, 5);
       assert.deepEqual(
         x,
@@ -85,23 +141,7 @@
     });
   });
 
-  describe('dcopy, scopy', function () {
-    it('should copy a vector to another vector (double precision)', function () {
-      var y = f64b.slice(0);
-
-      addon.copy(f64a, y);
-      assert.deepEqual(f64a, y);
-    });
-
-    it('should copy a vector to another vector (single precision)', function () {
-      var y = f32b.slice(0);
-
-      addon.copy(f32a, y);
-      assert.deepEqual(f32a, y);
-    });
-  });
-
-  describe('dswap, sswap', function () {
+  describe('?swap', function () {
     it('should swap the elements of a vector with another vector (double precision)', function () {
       var x = f64a.slice(0),
           y = f64b.slice(0);
@@ -120,7 +160,7 @@
     });
   });
 
-  describe('idamax, isamax', function () {
+  describe('i?amax', function () {
     it('should return the index of the element with the largest absolute value in a vector (double-precision)', function () {
       assert.equal(
         addon.iamax(f64a),
@@ -136,43 +176,7 @@
     });
   });
 
-  describe('dasum, sasum', function () {
-    it('should compute the sum of the absolute values of elements in a vector (double-precision)', function () {
-      assert.equal(
-        addon.asum(f64a),
-        vecf64a.values.reduce(function (a, b) {
-          return Math.abs(a) + Math.abs(b);
-        })
-      );
-    });
-
-    it('should compute the sum of the absolute values of elements in a vector (single-precision)', function () {
-      assert.equal(
-        addon.asum(f32a),
-        vecf32a.values.reduce(function (a, b) {
-          return Math.abs(a) + Math.abs(b);
-        })
-      );
-    });
-  });
-
-  describe('dnrm2, snrm2', function () {
-    it('should compute the L2 norm (euclidean length) of a vector (double-precision)', function () {
-      assert.equal(
-        Math.round(addon.nrm2(f64a)),
-        Math.round(vecf64a.magnitude())
-      );
-    });
-
-    it('should compute the L2 norm (euclidean length) of a vector (double-precision)', function () {
-      assert.equal(
-        Math.round(addon.nrm2(f32a)),
-        Math.round(vecf32a.magnitude())
-      );
-    });
-  });
-
-  describe('dgemm, sgemm', function () {
+  describe('?gemm', function () {
     it('should compute the matrix product of two matrices (double-precision)', function () {
       var x = new Float64Array(util.randomArray(2)),
           y = new Float64Array(util.randomArray(2)),

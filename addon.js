@@ -28,11 +28,13 @@
         addon.ddot(x.length, x, 1, y, 1) :
         addon.sdot(x.length, x, 1, y, 1);
 
+  /*
   addon._sdot =
     (sx, sy, sb) =>
       x.constructor === Float64Array ?
         addon.dsdot(x.length, sx, 1, sy, 1) :
         addon.sdsdot(x.length, sb || 1.0, sx, 1, sy, 1);
+  */
 
   addon.nrm2 =
     (x) =>
@@ -47,10 +49,10 @@
         addon.srot(x.length, x, 1, y, 1, c, s);
 
   addon.rotg =
-    (a, b, c, s) =>
+    (x, y, c, s) =>
       x.constructor === Float64Array ?
-        addon.drotg(a, b, c, s) :
-        addon.srotg(a, b, c, s);
+        addon.drotg(x, y, c, s) :
+        addon.srotg(x, y, c, s);
 
   addon.rotm =
     (x, y, param) =>
@@ -65,10 +67,10 @@
         addon.srotg(d1, d2, x1, y1, param);
 
   addon.scal =
-    (x, a) =>
+    (x, alpha) =>
       x.constructor === Float64Array ?
-        addon.dscal(x.length, a, x, 1) :
-        addon.sscal(x.length, a, x, 1);
+        addon.dscal(x.length, alpha, x, 1) :
+        addon.sscal(x.length, alpha, x, 1);
 
   addon.swap =
     (x, y) =>
