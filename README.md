@@ -46,10 +46,10 @@ $ npm test
 - [x] [`?swap (x, y)`](https://software.intel.com/node/423ea638-1a23-46d8-a882-e022064edad7#423EA638-1A23-46D8-A882-E022064EDAD7)
 
   ![?swap](tex/swap.png)
-- [x] [`i?amax`](https://software.intel.com/node/c43c2490-109a-4a3b-8c5c-e8b67224bc03#C43C2490-109A-4A3B-8C5C-E8B67224BC03)
+- [x] [`i?amax (x)`](https://software.intel.com/node/c43c2490-109a-4a3b-8c5c-e8b67224bc03#C43C2490-109A-4A3B-8C5C-E8B67224BC03)
 
   ![?iamax](tex/iamax.png)
-- [x] [`i?amin`](https://software.intel.com/node/108f9e63-32ef-466b-bed2-58fe6628a058#108F9E63-32EF-466B-BED2-58FE6628A058)
+- [x] [`i?amin (x)`](https://software.intel.com/node/108f9e63-32ef-466b-bed2-58fe6628a058#108F9E63-32EF-466B-BED2-58FE6628A058)
 
   ![?iamin](tex/iamin.png)
 
