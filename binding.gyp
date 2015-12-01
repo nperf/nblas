@@ -17,7 +17,6 @@
         "functions/scal.cc",
         "functions/swap.cc",
         "functions/iamax.cc",
-        "functions/iamin.cc",
         "functions/gbmv.cc",
         "functions/gemv.cc",
         "functions/ger.cc",

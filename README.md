@@ -47,7 +47,6 @@ $ npm test
 
   ![?swap](tex/swap.png)
 - [x] [`i?amax (x)`](https://software.intel.com/node/c43c2490-109a-4a3b-8c5c-e8b67224bc03#C43C2490-109A-4A3B-8C5C-E8B67224BC03)
-- [x] [`i?amin (x)`](https://software.intel.com/node/108f9e63-32ef-466b-bed2-58fe6628a058#108F9E63-32EF-466B-BED2-58FE6628A058)
 
 **[BLAS Level 2 Routines](https://software.intel.com/en-us/node/468426)**
 - [x] [`?gbmv (a, x, y, [kl = 0], [ku = 0], [alpha = 1.0], [beta = 1.0], [trans = 111])`](https://software.intel.com/node/bc780af8-f243-4a20-b264-06424a8b5621#BC780AF8-F243-4A20-B264-06424A8B5621)

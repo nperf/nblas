@@ -34,8 +34,6 @@ NAN_MODULE_INIT(init) {
   Set(target, New<String>("sswap").ToLocalChecked(), GetFunction(New<FunctionTemplate>(sswap)).ToLocalChecked());
   Set(target, New<String>("idamax").ToLocalChecked(), GetFunction(New<FunctionTemplate>(idamax)).ToLocalChecked());
   Set(target, New<String>("isamax").ToLocalChecked(), GetFunction(New<FunctionTemplate>(isamax)).ToLocalChecked());
-  Set(target, New<String>("idamin").ToLocalChecked(), GetFunction(New<FunctionTemplate>(idamin)).ToLocalChecked());
-  Set(target, New<String>("isamin").ToLocalChecked(), GetFunction(New<FunctionTemplate>(isamin)).ToLocalChecked());
 
   Set(target, New<String>("dgbmv").ToLocalChecked(), GetFunction(New<FunctionTemplate>(dgbmv)).ToLocalChecked());
   Set(target, New<String>("sgbmv").ToLocalChecked(), GetFunction(New<FunctionTemplate>(sgbmv)).ToLocalChecked());

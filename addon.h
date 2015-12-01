@@ -17,7 +17,6 @@
 #include "functions/scal.h"
 #include "functions/swap.h"
 #include "functions/iamax.h"
-#include "functions/iamin.h"
 
 // BLAS Level 2 routines
 #include "functions/gbmv.h"
