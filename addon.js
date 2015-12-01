@@ -94,8 +94,8 @@
   addon.gbmv =
     (a, x, y, kl, ku, alpha, beta, trans) =>
       a.constructor === Float64Array ?
-        addon.dgbmv(trans || 86, x.length, y.length, kl || 0, ku || 0, alpha || 1.0, a, m, x, 1, beta || 1.0, y, 1) :
-        addon.sgbmv(trans || 111, x.length, y.length, kl || 0, ku || 0, alpha || 1.0, a, m, x, 1, beta || 1.0, y, 1);
+        addon.dgbmv(trans || 111, x.length, y.length, kl || 0, ku || 0, alpha || 1.0, a, x.length, x, 1, beta || 1.0, y, 1) :
+        addon.sgbmv(trans || 111, x.length, y.length, kl || 0, ku || 0, alpha || 1.0, a, x.length, x, 1, beta || 1.0, y, 1);
 
   addon.gemv =
     (a, x, y, alpha, beta, trans) =>
