@@ -176,22 +176,6 @@
     });
   });
 
-  describe('i?amin', function () {
-    it('should return the index of the element with the largest absolute value in a vector (double-precision)', function () {
-      assert.equal(
-        addon.iamin(f64a),
-        f64a.indexOf(vecf64a.min())
-      );
-    });
-
-    it('should return the index of the element with the largest absolute value in a vector (single-precision)', function () {
-      assert.equal(
-        addon.iamin(f32a),
-        f32a.indexOf(vecf32a.min())
-      );
-    });
-  });
-
   describe('?gemm', function () {
     it('should compute the matrix product of two matrices (double-precision)', function () {
       var x = new Float64Array(util.randomArray(2)),
