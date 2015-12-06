@@ -100,92 +100,92 @@
   addon.gemv =
     (a, x, y, alpha, beta, trans) =>
       a.constructor === Float64Array ?
-        addon.dgemv(trans || 111, x.length, y.length, alpha || 1.0, a, m, x, 1, beta || 1.0, y, 1) :
-        addon.sgemv(trans || 111, x.length, y.length, alpha || 1.0, a, m, x, 1, beta || 1.0, y, 1);
+        addon.dgemv(trans || 111, x.length, y.length, alpha || 1.0, a, x.length, x, 1, beta || 1.0, y, 1) :
+        addon.sgemv(trans || 111, x.length, y.length, alpha || 1.0, a, x.length, x, 1, beta || 1.0, y, 1);
 
   addon.ger =
     (a, x, y, alpha) =>
       a.constructor === Float64Array ?
-        addon.drot(x.length, y.length, alpha || 1.0, x, 1, y, 1, a, x.length) :
-        addon.srot(x.length, y.length, alpha || 1.0, x, 1, y, 1, a, x.length);
+        addon.dger(x.length, y.length, alpha || 1.0, x, 1, y, 1, a, x.length) :
+        addon.sger(x.length, y.length, alpha || 1.0, x, 1, y, 1, a, x.length);
 
   addon.sbmv =
     (a, x, y, uplo, alpha, beta) =>
       a.constructor === Float64Array ?
-        addon.dsbmv(uplo || 86, x.length, 0, alpha || 1.0, a, lda, x, 1, beta || 0.0, y, 1) :
-        addon.ssbmv(uplo || 86, x.length, 0, alpha || 1.0, a, lda, x, 1, beta || 0.0, y, 1);
+        addon.dsbmv(uplo || 121, x.length, 0, alpha || 1.0, a, lda, x, 1, beta || 0.0, y, 1) :
+        addon.ssbmv(uplo || 121, x.length, 0, alpha || 1.0, a, lda, x, 1, beta || 0.0, y, 1);
 
   addon.spmv =
     (ap, x, y, uplo, alpha, beta) =>
       ap.constructor === Float64Array ?
-        addon.dspmv(uplo || 86, x.length, 0, alpha || 1.0, ap, x, 1, beta || 0.0, y, 1) :
-        addon.sspmv(uplo || 86, x.length, 0, alpha || 1.0, ap, x, 1, beta || 0.0, y, 1);
+        addon.dspmv(uplo || 121, x.length, 0, alpha || 1.0, ap, x, 1, beta || 0.0, y, 1) :
+        addon.sspmv(uplo || 121, x.length, 0, alpha || 1.0, ap, x, 1, beta || 0.0, y, 1);
 
   addon.spr =
     (ap, x, uplo, alpha) =>
       ap.constructor === Float64Array ?
-        addon.dspr(uplo || 86, x.length, alpha || 1.0, x, 1, ap) :
-        addon.sspr(uplo || 86, x.length, alpha || 1.0, x, 1, ap);
+        addon.dspr(uplo || 121, x.length, alpha || 1.0, x, 1, ap) :
+        addon.sspr(uplo || 121, x.length, alpha || 1.0, x, 1, ap);
 
   addon.spr2 =
     (ap, x, y, uplo, alpha) =>
       ap.constructor === Float64Array ?
-        addon.dspr(uplo || 86, x.length, alpha || 1.0, x, 1, y, 1, ap) :
-        addon.sspr(uplo || 86, x.length, alpha || 1.0, x, 1, y, 1, ap);
+        addon.dspr(uplo || 121, x.length, alpha || 1.0, x, 1, y, 1, ap) :
+        addon.sspr(uplo || 121, x.length, alpha || 1.0, x, 1, y, 1, ap);
 
   addon.symv =
     (a, x, y, uplo, alpha, beta) =>
       a.constructor === Float64Array ?
-        addon.dsymv(uplo || 86, x.length, alpha || 1.0, a, lda, x, 1, beta, y, 1) :
-        addon.dsymv(uplo || 86, x.length, alpha || 1.0, a, lda, x, 1, beta, y, 1);
+        addon.dsymv(uplo || 121, x.length, alpha || 1.0, a, lda, x, 1, beta, y, 1) :
+        addon.dsymv(uplo || 121, x.length, alpha || 1.0, a, lda, x, 1, beta, y, 1);
 
   addon.syr =
     (a, x, uplo, alpha) =>
       a.constructor === Float64Array ?
-        addon.dsyr(uplo || 86, x.length, alpha || 1.0, x, 1, a, x.length) :
-        addon.ssyr(uplo || 86, x.length, alpha || 1.0, x, 1, a, x.length);
+        addon.dsyr(uplo || 121, x.length, alpha || 1.0, x, 1, a, x.length) :
+        addon.ssyr(uplo || 121, x.length, alpha || 1.0, x, 1, a, x.length);
 
   addon.syr2 =
     (a, x, y, uplo, alpha, beta) =>
       a.constructor === Float64Array ?
-        addon.dsyr2(uplo || 86, x.length, alpha || 1.0, x, 1, y, 1, a, x.length) :
-        addon.ssyr2(uplo || 86, x.length, alpha || 1.0, x, 1, y, 1, a, x.length);
+        addon.dsyr2(uplo || 121, x.length, alpha || 1.0, x, 1, y, 1, a, x.length) :
+        addon.ssyr2(uplo || 121, x.length, alpha || 1.0, x, 1, y, 1, a, x.length);
 
   addon.tbmv =
     (a, x, y, uplo, trans, diag) =>
       a.constructor === Float64Array ?
-        addon.dtbmv(uplo || 86, trans || 111, diag || 111, x.length, 0, a, x.length, x, 1) :
-        addon.stbmv(uplo || 86, trans || 111, diag || 111, x.length, 0, a, x.length, x, 1);
+        addon.dtbmv(uplo || 121, trans || 111, diag || 131, x.length, 0, a, x.length, x, 1) :
+        addon.stbmv(uplo || 121, trans || 111, diag || 131, x.length, 0, a, x.length, x, 1);
 
   addon.tbsv =
     (a, x, uplo, trans, diag) =>
       a.constructor === Float64Array ?
-        addon.dtbsv(uplo || 86, trans || 111, diag || 111, x.length, 0, a, x.length, x, 1) :
-        addon.stbsv(uplo || 86, trans || 111, diag || 111, x.length, 0, a, x.length, x, 1);
+        addon.dtbsv(uplo || 121, trans || 111, diag || 131, x.length, 0, a, x.length, x, 1) :
+        addon.stbsv(uplo || 121, trans || 111, diag || 131, x.length, 0, a, x.length, x, 1);
 
   addon.tpmv =
     (ap, x, uplo, trans, diag) =>
       ap.constructor === Float64Array ?
-        addon.dtpmv(uplo || 86, trans || 111, diag || 111, x.length, ap, x, 1) :
-        addon.stpmv(uplo || 86, trans || 111, diag || 111, x.length, ap, x, 1);
+        addon.dtpmv(uplo || 121, trans || 111, diag || 131, x.length, ap, x, 1) :
+        addon.stpmv(uplo || 121, trans || 111, diag || 131, x.length, ap, x, 1);
 
   addon.tpsv =
     (ap, x, uplo, trans, diag) =>
       ap.constructor === Float64Array ?
-        addon.dtpsv(uplo || 86, trans || 111, diag || 111, x.length, ap, x, 1) :
-        addon.stpsv(uplo || 86, trans || 111, diag || 111, x.length, ap, x, 1);
+        addon.dtpsv(uplo || 121, trans || 111, diag || 131, x.length, ap, x, 1) :
+        addon.stpsv(uplo || 121, trans || 111, diag || 131, x.length, ap, x, 1);
 
   addon.trmv =
     (a, x, uplo, trans, diag) =>
       a.constructor === Float64Array ?
-        addon.dtrmv(uplo || 86, trans || 111, diag || 111, x.length, a, x.length, x, 1) :
-        addon.strmv(uplo || 86, trans || 111, diag || 111, x.length, a, x.length, x, 1);
+        addon.dtrmv(uplo || 121, trans || 111, diag || 131, x.length, a, x.length, x, 1) :
+        addon.strmv(uplo || 121, trans || 111, diag || 131, x.length, a, x.length, x, 1);
 
   addon.trsv =
     (a, x, uplo, trans, diag) =>
       a.constructor === Float64Array ?
-        addon.dtrsv(uplo || 86, trans || 111, diag || 111, x.length, a, x.length, x, 1) :
-        addon.strsv(uplo || 86, trans || 111, diag || 111, x.length, a, x.length, x, 1);
+        addon.dtrsv(uplo || 121, trans || 111, diag || 131, x.length, a, x.length, x, 1) :
+        addon.strsv(uplo || 121, trans || 111, diag || 131, x.length, a, x.length, x, 1);
 
   // BLAS Level 3 Routines
   addon.gemm =
@@ -197,32 +197,32 @@
   addon.symm =
     (a, b, c, m, n, side, uplo, alpha, beta) =>
       a.constructor === Float64Array ?
-        addon.dsymm(side || 77, uplo || 86, m, n, alpha || 1.0, a, m, b, n, beta || 0.0, c, m) :
-        addon.dsymm(side || 77, uplo || 86, m, n, alpha || 1.0, a, m, b, n, beta || 0.0, c, m);
+        addon.dsymm(side || 141, uplo || 121, m, n, alpha || 1.0, a, m, b, n, beta || 0.0, c, m) :
+        addon.dsymm(side || 141, uplo || 121, m, n, alpha || 1.0, a, m, b, n, beta || 0.0, c, m);
 
   addon.syrk =
     (a, c, n, k, uplo, trans, alpha, beta) =>
       a.constructor === Float64Array ?
-        addon.dsyrk(uplo || 86, trans || 111, n, k, alpha || 1.0, a, n, beta || 0.0, c, n) :
-        addon.ssyrk(uplo || 86, trans || 111, n, k, alpha || 1.0, a, n, beta || 0.0, c, n);
+        addon.dsyrk(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, beta || 0.0, c, n) :
+        addon.ssyrk(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, beta || 0.0, c, n);
 
   addon.syr2k =
     (a, b, c, n, k, uplo, trans, alpha, beta) =>
       a.constructor === Float64Array ?
-        addon.dsyr2k(uplo || 86, trans || 111, n, k, alpha || 1.0, a, n, b, n, beta || 0.0, c, n) :
-        addon.ssyr2k(uplo || 86, trans || 111, n, k, alpha || 1.0, a, n, b, n, beta || 0.0, c, n);
+        addon.dsyr2k(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, b, n, beta || 0.0, c, n) :
+        addon.ssyr2k(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, b, n, beta || 0.0, c, n);
 
   addon.trmm =
     (a, b, m, n, side, uplo, transa, diag, alpha) =>
       a.constructor === Float64Array ?
-        addon.dtrmm(side || 77, uplo || 86, transa || 111, diag || 111, m, n, alpha || 1.0, a, m, b, m) :
-        addon.strmm(side || 77, uplo || 86, transa || 111, diag || 111, m, n, alpha || 1.0, a, m, b, m);
+        addon.dtrmm(side || 141, uplo || 121, transa || 111, diag || 131, m, n, alpha || 1.0, a, m, b, m) :
+        addon.strmm(side || 141, uplo || 121, transa || 111, diag || 131, m, n, alpha || 1.0, a, m, b, m);
 
   addon.trsm =
     (a, b, m, n, side, uplo, transa, diag, alpha) =>
       a.constructor === Float64Array ?
-        addon.dtrsm(side || 77, uplo || 86, transa || 111, diag || 111, m, n, alpha || 1.0, a, m, b, m) :
-        addon.strsm(side || 77, uplo || 86, transa || 111, diag || 111, m, n, alpha || 1.0, a, m, b, m);
+        addon.dtrsm(side || 141, uplo || 121, transa || 111, diag || 131, m, n, alpha || 1.0, a, m, b, m) :
+        addon.strsm(side || 141, uplo || 121, transa || 111, diag || 131, m, n, alpha || 1.0, a, m, b, m);
 
   module.exports = addon;
 }());

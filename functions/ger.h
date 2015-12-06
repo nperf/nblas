@@ -11,8 +11,9 @@ extern "C" void cblas_dger (
 	const double,
 	const double*,
 	const int,
+	const double*,
 	const int,
-	const double,
+	const double*,
 	const int
 );
 
@@ -21,11 +22,12 @@ extern "C" void cblas_sger (
 	const int,
 	const int,
 	const int,
-	const double,
-	const double*,
+	const float,
+	const float*,
 	const int,
+	const float*,
 	const int,
-	const double,
+	const float*,
 	const int
 );
 

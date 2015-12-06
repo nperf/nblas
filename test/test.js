@@ -176,6 +176,27 @@
     });
   });
 
+  describe('?gbmv', function () {
+    it('should not generate runtime errors', function () {
+      addon.gbmv(f64a.slice(0), f64a.slice(0, Math.sqrt(SIZE)), f64a.slice(0, Math.sqrt(SIZE)));
+      addon.gbmv(f32a.slice(0), f32a.slice(0, Math.sqrt(SIZE)), f32a.slice(0, Math.sqrt(SIZE)));
+    });
+  });
+
+  describe('?gemv', function () {
+    it('should not generate runtime errors', function () {
+      addon.gemv(f64a.slice(0), f64a.slice(0, Math.sqrt(SIZE)), f64a.slice(0, Math.sqrt(SIZE)));
+      addon.gemv(f32a.slice(0), f32a.slice(0, Math.sqrt(SIZE)), f32a.slice(0, Math.sqrt(SIZE)));
+    });
+  });
+
+  describe('?ger', function () {
+    it('should not generate runtime errors', function () {
+      addon.ger(f64a.slice(0), f64a.slice(0, Math.sqrt(SIZE)), f64a.slice(0, Math.sqrt(SIZE)));
+      addon.ger(f32a.slice(0), f32a.slice(0, Math.sqrt(SIZE)), f32a.slice(0, Math.sqrt(SIZE)));
+    });
+  });
+
   describe('?gemm', function () {
     it('should compute the matrix product of two matrices (double-precision)', function () {
       var x = new Float64Array(util.randomArray(2)),

@@ -38,7 +38,7 @@ NAN_MODULE_INIT(init) {
   Set(target, New<String>("dgbmv").ToLocalChecked(), GetFunction(New<FunctionTemplate>(dgbmv)).ToLocalChecked());
   Set(target, New<String>("sgbmv").ToLocalChecked(), GetFunction(New<FunctionTemplate>(sgbmv)).ToLocalChecked());
   Set(target, New<String>("dgemv").ToLocalChecked(), GetFunction(New<FunctionTemplate>(dgemv)).ToLocalChecked());
-  Set(target, New<String>("sgemv").ToLocalChecked(), GetFunction(New<FunctionTemplate>(sgbmv)).ToLocalChecked());
+  Set(target, New<String>("sgemv").ToLocalChecked(), GetFunction(New<FunctionTemplate>(sgemv)).ToLocalChecked());
   Set(target, New<String>("dger").ToLocalChecked(), GetFunction(New<FunctionTemplate>(dger)).ToLocalChecked());
   Set(target, New<String>("sger").ToLocalChecked(), GetFunction(New<FunctionTemplate>(sger)).ToLocalChecked());
   Set(target, New<String>("dsbmv").ToLocalChecked(), GetFunction(New<FunctionTemplate>(dsbmv)).ToLocalChecked());
