@@ -73,92 +73,92 @@ $ npm test
 
 - [x] [`?gbmv (a, x, y, [kl = 0], [ku = 0], [alpha = 1.0], [beta = 1.0], [trans = 111])`](https://software.intel.com/node/bc780af8-f243-4a20-b264-06424a8b5621#BC780AF8-F243-4A20-B264-06424A8B5621)
 
-  - ![?gbmv](tex/gbmv.png)
+  ![?gbmv](tex/gbmv.png)
 
 - [x] [`?gemv (a, x, y, [alpha = 1.0], [beta = 1.0], [trans = 111])`](https://software.intel.com/node/443228c4-626e-48a7-b230-26fb061eacf2#443228C4-626E-48A7-B230-26FB061EACF2)
 
-  - ![?gemv](tex/gbmv.png)
+  ![?gemv](tex/gbmv.png)
 
 - [x] [`?ger (a, x, y, [alpha = 1.0])`](https://software.intel.com/node/26a7befc-1a1d-4c19-b482-5e72e6b02417#26A7BEFC-1A1D-4C19-B482-5E72E6B02417)
 
-  - ![?ger](tex/ger.png)
+  ![?ger](tex/ger.png)
 
 - [x] [`?sbmv (a, x, y, [uplo = 121], [alpha = 1.0], [beta = 1.0])`](https://software.intel.com/node/c80f5eb2-d6c3-44e5-b0c8-9813a0c2340a#C80F5EB2-D6C3-44E5-B0C8-9813A0C2340A)
 
-  - ![?sbmv](tex/gbmv.png)
+  ![?sbmv](tex/gbmv.png)
 
 - [x] [`?spmv (ap, x, y, [uplo = 121], [alpha = 1.0], [beta = 1.0])`](https://software.intel.com/node/16cb58c4-105b-486c-b6aa-42bb0c721a76#16CB58C4-105B-486C-B6AA-42BB0C721A76)
 
-  - ![?spmv](tex/gbmv.png)
+  ![?spmv](tex/gbmv.png)
 
 - [x] [`?spr (ap, x, [uplo = 121], [alpha = 1.0])`](https://software.intel.com/node/f460bc61-5a47-4c0d-a2e0-a29adaa1b613#F460BC61-5A47-4C0D-A2E0-A29ADAA1B613)
 
-  - ![?spr](tex/spr.png)
+  ![?spr](tex/spr.png)
 
 - [x] [`?spr2 (ap, x, y, [uplo = 121], [alpha = 1.0])`](https://software.intel.com/node/c8dd665d-5e52-4214-aeab-ba4de61418e1#C8DD665D-5E52-4214-AEAB-BA4DE61418E1)
 
-  - ![?spr2](tex/spr2.png)
+  ![?spr2](tex/spr2.png)
 
 - [x] [`?symv (a, x, y, [uplo = 121], [alpha = 1.0], [beta = 1.0])`](https://software.intel.com/node/6265ba37-6e58-4c27-8035-92d836f58ec4#6265BA37-6E58-4C27-8035-92D836F58EC4)
 
-  - ![?symv](tex/gbmv.png)
+  ![?symv](tex/gbmv.png)
 
 - [x] [`?syr (a, x, [uplo = 121], [alpha = 1.0])`](https://software.intel.com/node/fcfba6db-8859-42e9-a626-3c74fc34b6c1#FCFBA6DB-8859-42E9-A626-3C74FC34B6C1)
 
-  - ![?syr](tex/syr.png)
+  ![?syr](tex/syr.png)
 
 - [x] [`?syr2 (a, x, [uplo = 121], [alpha = 1.0])`](https://software.intel.com/node/34efa07b-4a2a-42c3-90e2-d27b8a8f744e#34EFA07B-4A2A-42C3-90E2-D27B8A8F744E)
 
-  - ![?syr2](tex/spr2.png)
+  ![?syr2](tex/spr2.png)
 
 - [x] [`?tbmv (a, x, y, [uplo = 121], [trans = 111], [diag = 131])`](https://software.intel.com/node/14dfa68e-00c5-44c5-9e61-7279602af0c7#14DFA68E-00C5-44C5-9E61-7279602AF0C7)
 
-  - ![?tbmv](tex/tbmv.png)
+  ![?tbmv](tex/tbmv.png)
 
 - [x] [`?tbsv (a, x, [uplo = 121], [diag = 131])`](https://software.intel.com/node/0e673aed-9c3a-44af-92a5-4a5326d6a007#0E673AED-9C3A-44AF-92A5-4A5326D6A007)
 
-  - ![?tbsv](tex/tbsv.png)
+  ![?tbsv](tex/tbsv.png)
 
 - [x] [`?tpmv (ap, x, [uplo = 121], [trans = 111], [diag = 131])`](https://software.intel.com/node/f6666c0e-b843-4e12-9ad4-8898a6ef4018#F6666C0E-B843-4E12-9AD4-8898A6EF4018)
 
-  - ![?tpmv](tex/tbmv.png)
+  ![?tpmv](tex/tbmv.png)
 
 - [x] [`?tpsv (ap, x, [uplo = 121], [trans = 111], [diag = 131])`](https://software.intel.com/node/0eecd264-9871-4097-8af5-68eedae0d00a#0EECD264-9871-4097-8AF5-68EEDAE0D00A)
 
-  - ![?tpsv](tex/tbsv.png)
+  ![?tpsv](tex/tbsv.png)
 
 - [x] [`?trmv (a, x, [uplo = 121], [trans = 111], [diag = 131])`](https://software.intel.com/node/feb986db-24ff-4e64-9c44-289dde419eeb#FEB986DB-24FF-4E64-9C44-289DDE419EEB)
 
-  - ![?trmv](tex/tbmv.png)
+  ![?trmv](tex/tbmv.png)
 
 - [x] [`?trsv (a, x, [uplo = 121], [trans = 111], [diag = 131])`](https://software.intel.com/node/d8733073-f041-4aa1-b82c-123dfa993ad7#D8733073-F041-4AA1-B82C-123DFA993AD7)
 
-  - ![?trsv](tex/tbsv.png)
+  ![?trsv](tex/tbsv.png)
 
 **[BLAS Level 3 Routines](https://software.intel.com/en-us/node/468478)**
 - [x] [`?gemm (a, b, c, m, n, k, [transa = 111], [transb = 111], [alpha = 1.0], [beta = 1.0])`](https://software.intel.com/node/90eaa001-d4c8-4211-9ea0-b62f5ade9cf0#90EAA001-D4C8-4211-9EA0-B62F5ADE9CF0)
 
-  - ![?gemm](tex/gemm.png)
+  ![?gemm](tex/gemm.png)
 
 - [x] [`?symm (a, b, c, m, n, [side = 141], [uplo = 121], [alpha = 1.0], [beta = 1.0])`](https://software.intel.com/node/cae55cbe-8e83-4c7f-9c54-0a8598f8a8ef#CAE55CBE-8E83-4C7F-9C54-0A8598F8A8EF)
 
-  - ![?symm](tex/gemm.png)
+  ![?symm](tex/gemm.png)
 
 - [x] [`?syrk (a, c, n, k, [uplo = 121], [trans = 111], [alpha = 1.0], [beta = 1.0])`](https://software.intel.com/node/e8986ce9-3048-4295-86ff-c2512669b498#E8986CE9-3048-4295-86FF-C2512669B498)
 
-  - ![?syrk](tex/syrk.png)
+  ![?syrk](tex/syrk.png)
 
 - [x] [`?syr2k (a, b, c, n, k, [uplo = 121], [trans = 111], [alpha = 1.0], [beta = 1.0])`](https://software.intel.com/node/1233ba19-4666-4233-ba59-106b9e644893#1233BA19-4666-4233-BA59-106B9E644893)
 
-  - ![?syr2k](tex/syr2k.png)
+  ![?syr2k](tex/syr2k.png)
 
 - [x] [`?trmm (a, b, m, n, [side = 141], [uplo = 121], [transa = 111], [diag = 131], [alpha = 1.0])`](https://software.intel.com/node/fe86b64a-4620-4e8f-8263-8442ace782df#FE86B64A-4620-4E8F-8263-8442ACE782DF)
 
-  - ![?trmm](tex/trmm.png)
+  ![?trmm](tex/trmm.png)
 
 - [x] [`?trsm (a, b, m, n, [side = 141], [uplo = 121], [transa = 111], [diag = 131], [alpha = 1.0])`](https://software.intel.com/node/ce40548f-549d-4af8-9668-b63b28c8c63f#CE40548F-549D-4AF8-9668-B63B28C8C63F)
 
-  - ![?trsm](tex/trsm.png)
+  ![?trsm](tex/trsm.png)
 
 Works out of the box with OSX since CBLAS is included in the standard Accelerate framework. You might have to download and build [LAPACK](http://www.netlib.org/lapack/#_lapack_version_3_6_0) from source on other operating systems (**LINUX:** `sudo apt-get libblas-dev`).
 
