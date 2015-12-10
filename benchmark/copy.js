@@ -37,9 +37,6 @@
       for (var i = 0; i < SIZE; i++)
         f64c[i] = f64a[i];
     })
-    .add('util.memcpy', () => {
-      util.memcpy(f64c.buffer, f64a.buffer);
-    })
     .add('slice', () => {
       f64c = f64a.slice(0);
     })
@@ -62,9 +59,6 @@
       var sum = 0;
       for (var i = 0; i < SIZE; i++)
         f64c[i] = f32a[i];
-    })
-    .add('util.memcpy', () => {
-      util.memcpy(f32c.buffer, f32a.buffer);
     })
     .add('slice', () => {
       f32c = f32a.slice(0);

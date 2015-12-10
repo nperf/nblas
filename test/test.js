@@ -15,6 +15,14 @@
       f32a = new Float32Array(util.randomArray(SIZE)),
       f32b = new Float32Array(util.randomArray(SIZE));
 
+  describe('util.randomArray', function () {
+    it('should work', function () {
+      var x = util.randomArray(10, 10);
+      assert.equal(x.length, 10);
+      assert.equal(x[0].length, 10);
+    });
+  });
+
   describe('?asum', function () {
     it('should compute the sum of the absolute values of elements in a vector (double-precision)', function () {
       assert.equal(
