@@ -149,14 +149,14 @@
     it('should return the index of the element with the largest absolute value in a vector (double-precision)', function () {
       assert.equal(
         addon.iamax(f64a),
-        f64a.indexOf(Math.max(...f64a))
+        f64a.indexOf(Math.max.apply(null, f64a))
       );
     });
 
     it('should return the index of the element with the largest absolute value in a vector (single-precision)', function () {
       assert.equal(
         addon.iamax(f32a),
-        f32a.indexOf(Math.max(...f32a))
+        f32a.indexOf(Math.max.apply(null, f32a))
       );
     });
   });
