@@ -27,7 +27,7 @@ nblas.sdot(3, f32a, 1, f32b, 1); // 32
 
 Double precision functions expect `Float64Array` vectors, single precision functions expect `Float32Array` vectors.
 
----
+### Documentation
 
 **[BLAS Level 1 Routines and Functions](https://software.intel.com/en-us/node/468390)**
 - [x] [`?asum (x)`](https://software.intel.com/node/e49cf403-8071-4252-a85f-28964ac3da9e#E49CF403-8071-4252-A85F-28964AC3DA9E)
