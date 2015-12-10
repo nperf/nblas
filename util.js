@@ -11,6 +11,11 @@
         data.push(row.length ? row : Math.floor(10 * Math.random()));
       }
       return data;
+    },
+    memcpy: function (dst, dstOffset, src, srcOffset, length) {
+      var dstu8 = new Uint8Array(dst, dstOffset, length),
+          srcu8 = new Uint8Array(src, srcOffset, length);
+      dstu8.set(srcu8);
     }
   };
 }());

@@ -11,8 +11,9 @@ extern "C" void cblas_dsyr2 (
 	const double,
 	const double*,
 	const int,
+	const double*,
 	const int,
-	const double,
+	const double*,
 	const int
 );
 
@@ -24,8 +25,9 @@ extern "C" void cblas_ssyr2 (
 	const float,
 	const float*,
 	const int,
+	const float*,
 	const int,
-	const float,
+	const float*,
 	const int
 );
 

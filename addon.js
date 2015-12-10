@@ -110,16 +110,16 @@
         addon.sger(x.length, y.length, alpha || 1.0, x, 1, y, 1, a, x.length);
 
   addon.sbmv =
-    (a, x, y, uplo, alpha, beta) =>
+    (a, x, y, k, uplo, alpha, beta) =>
       a.constructor === Float64Array ?
-        addon.dsbmv(uplo || 121, x.length, 0, alpha || 1.0, a, lda, x, 1, beta || 0.0, y, 1) :
-        addon.ssbmv(uplo || 121, x.length, 0, alpha || 1.0, a, lda, x, 1, beta || 0.0, y, 1);
+        addon.dsbmv(uplo || 121, x.length, k || 0, alpha || 1.0, a, x.length, x, 1, beta || 0.0, y, 1) :
+        addon.ssbmv(uplo || 121, x.length, k || 0, alpha || 1.0, a, x.length, x, 1, beta || 0.0, y, 1);
 
   addon.spmv =
     (ap, x, y, uplo, alpha, beta) =>
       ap.constructor === Float64Array ?
-        addon.dspmv(uplo || 121, x.length, 0, alpha || 1.0, ap, x, 1, beta || 0.0, y, 1) :
-        addon.sspmv(uplo || 121, x.length, 0, alpha || 1.0, ap, x, 1, beta || 0.0, y, 1);
+        addon.dspmv(uplo || 121, x.length, alpha || 1.0, ap, x, 1, beta || 0.0, y, 1) :
+        addon.sspmv(uplo || 121, x.length, alpha || 1.0, ap, x, 1, beta || 0.0, y, 1);
 
   addon.spr =
     (ap, x, uplo, alpha) =>
@@ -130,14 +130,14 @@
   addon.spr2 =
     (ap, x, y, uplo, alpha) =>
       ap.constructor === Float64Array ?
-        addon.dspr(uplo || 121, x.length, alpha || 1.0, x, 1, y, 1, ap) :
-        addon.sspr(uplo || 121, x.length, alpha || 1.0, x, 1, y, 1, ap);
+        addon.dspr2(uplo || 121, x.length, alpha || 1.0, x, 1, y, 1, ap) :
+        addon.sspr2(uplo || 121, x.length, alpha || 1.0, x, 1, y, 1, ap);
 
   addon.symv =
     (a, x, y, uplo, alpha, beta) =>
       a.constructor === Float64Array ?
-        addon.dsymv(uplo || 121, x.length, alpha || 1.0, a, lda, x, 1, beta, y, 1) :
-        addon.dsymv(uplo || 121, x.length, alpha || 1.0, a, lda, x, 1, beta, y, 1);
+        addon.dsymv(uplo || 121, x.length, alpha || 1.0, a, x.length, x, 1, beta || 1.0, y, 1) :
+        addon.ssymv(uplo || 121, x.length, alpha || 1.0, a, x.length, x, 1, beta || 1.0, y, 1);
 
   addon.syr =
     (a, x, uplo, alpha) =>
@@ -198,7 +198,7 @@
     (a, b, c, m, n, side, uplo, alpha, beta) =>
       a.constructor === Float64Array ?
         addon.dsymm(side || 141, uplo || 121, m, n, alpha || 1.0, a, m, b, n, beta || 0.0, c, m) :
-        addon.dsymm(side || 141, uplo || 121, m, n, alpha || 1.0, a, m, b, n, beta || 0.0, c, m);
+        addon.ssymm(side || 141, uplo || 121, m, n, alpha || 1.0, a, m, b, n, beta || 0.0, c, m);
 
   addon.syrk =
     (a, c, n, k, uplo, trans, alpha, beta) =>

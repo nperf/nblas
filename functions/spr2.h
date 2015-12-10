@@ -13,7 +13,7 @@ extern "C" void cblas_dspr2 (
 	const int,
 	const double*,
 	const int,
-	const double
+	const double*
 );
 
 NAN_METHOD(sspr2);
@@ -26,7 +26,7 @@ extern "C" void cblas_sspr2 (
 	const int,
 	const float*,
 	const int,
-	const float
+	const float*
 );
 
 #endif

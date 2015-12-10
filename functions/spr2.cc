@@ -12,7 +12,9 @@ NAN_METHOD(dspr2) {
 	void *y_data = info[5].As<v8::Float64Array>()->Buffer()->GetContents().Data();
 	double *y = reinterpret_cast<double*>(y_data);
 	unsigned int inc_y = info[6]->Uint32Value();
-	double ap = info[7]->NumberValue();
+	assert(info[7]->IsFloat64Array());
+	void *ap_data = info[7].As<v8::Float64Array>()->Buffer()->GetContents().Data();
+	double *ap = reinterpret_cast<double*>(ap_data);
 	cblas_dspr2(101, uplo, n, alpha, x, inc_x, y, inc_y, ap);
 }
 
@@ -28,6 +30,8 @@ NAN_METHOD(sspr2) {
 	void *y_data = info[5].As<v8::Float32Array>()->Buffer()->GetContents().Data();
 	float *y = reinterpret_cast<float*>(y_data);
 	unsigned int inc_y = info[6]->Uint32Value();
-	float ap = info[7]->NumberValue();
+	assert(info[7]->IsFloat32Array());
+	void *ap_data = info[7].As<v8::Float32Array>()->Buffer()->GetContents().Data();
+	float *ap = reinterpret_cast<float*>(ap_data);
 	cblas_sspr2(101, uplo, n, alpha, x, inc_x, y, inc_y, ap);
 }

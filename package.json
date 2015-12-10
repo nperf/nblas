@@ -15,7 +15,10 @@
     "nan": "^2.1.0"
   },
   "devDependencies": {
+    "mathjs": "^2.5.0",
     "mocha": "^2.3.4",
+    "numeric": "^1.2.6",
+    "sylvester": "0.0.21",
     "vectorious": "^3.0.0"
   },
   "author": "Mateo Gianolio",
