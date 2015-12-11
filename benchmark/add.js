@@ -56,7 +56,7 @@
       nblas.daxpy(SIZE, 1.0, f64b, 1, f64c, 1);
     })
     .add('regular for-loop (copy)', () => {
-      var f64c = new Float64Array(f64a);
+      f64c = new Float64Array(f64a);
       for (var i = 0; i < SIZE; i++)
         f64c[i] += f64b[i];
     })
@@ -97,7 +97,7 @@
 
   singlecpy
     .add('nBLAS (copy)', () => {
-      nblas.dcopy(SIZE, f32a, 1, f32c, 1);
+      nblas.scopy(SIZE, f32a, 1, f32c, 1);
       nblas.saxpy(SIZE, 1.0, f32b, 1, f32c, 1);
     })
     .add('regular for-loop (copy)', () => {
