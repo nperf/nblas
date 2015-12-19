@@ -1,6 +1,6 @@
 {
   "name": "nblas",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.",
   "main": "./addon.js",
   "scripts": {

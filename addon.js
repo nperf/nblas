@@ -146,7 +146,7 @@
         addon.ssyr(uplo || 121, x.length, alpha || 1.0, x, 1, a, x.length);
 
   addon.syr2 =
-    (a, x, y, uplo, alpha, beta) =>
+    (a, x, y, uplo, alpha) =>
       a.constructor === Float64Array ?
         addon.dsyr2(uplo || 121, x.length, alpha || 1.0, x, 1, y, 1, a, x.length) :
         addon.ssyr2(uplo || 121, x.length, alpha || 1.0, x, 1, y, 1, a, x.length);
