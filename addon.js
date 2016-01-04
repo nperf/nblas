@@ -94,14 +94,14 @@
   addon.gbmv =
     (a, x, y, kl, ku, alpha, beta, trans) =>
       a.constructor === Float64Array ?
-        addon.dgbmv(trans || 111, x.length, y.length, kl || 0, ku || 0, alpha || 1.0, a, x.length, x, 1, beta || 1.0, y, 1) :
-        addon.sgbmv(trans || 111, x.length, y.length, kl || 0, ku || 0, alpha || 1.0, a, x.length, x, 1, beta || 1.0, y, 1);
+        addon.dgbmv(trans || 111, x.length, y.length, kl || 0, ku || 0, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1) :
+        addon.sgbmv(trans || 111, x.length, y.length, kl || 0, ku || 0, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1);
 
   addon.gemv =
     (a, x, y, alpha, beta, trans) =>
       a.constructor === Float64Array ?
-        addon.dgemv(trans || 111, x.length, y.length, alpha || 1.0, a, x.length, x, 1, beta || 1.0, y, 1) :
-        addon.sgemv(trans || 111, x.length, y.length, alpha || 1.0, a, x.length, x, 1, beta || 1.0, y, 1);
+        addon.dgemv(trans || 111, x.length, y.length, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1) :
+        addon.sgemv(trans || 111, x.length, y.length, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1);
 
   addon.ger =
     (a, x, y, alpha) =>
@@ -112,14 +112,14 @@
   addon.sbmv =
     (a, x, y, k, uplo, alpha, beta) =>
       a.constructor === Float64Array ?
-        addon.dsbmv(uplo || 121, x.length, k || 0, alpha || 1.0, a, x.length, x, 1, beta || 0.0, y, 1) :
-        addon.ssbmv(uplo || 121, x.length, k || 0, alpha || 1.0, a, x.length, x, 1, beta || 0.0, y, 1);
+        addon.dsbmv(uplo || 121, x.length, k || 0, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1) :
+        addon.ssbmv(uplo || 121, x.length, k || 0, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1);
 
   addon.spmv =
     (ap, x, y, uplo, alpha, beta) =>
       ap.constructor === Float64Array ?
-        addon.dspmv(uplo || 121, x.length, alpha || 1.0, ap, x, 1, beta || 0.0, y, 1) :
-        addon.sspmv(uplo || 121, x.length, alpha || 1.0, ap, x, 1, beta || 0.0, y, 1);
+        addon.dspmv(uplo || 121, x.length, alpha || 1.0, ap, x, 1, beta || 0, y, 1) :
+        addon.sspmv(uplo || 121, x.length, alpha || 1.0, ap, x, 1, beta || 0, y, 1);
 
   addon.spr =
     (ap, x, uplo, alpha) =>
@@ -136,8 +136,8 @@
   addon.symv =
     (a, x, y, uplo, alpha, beta) =>
       a.constructor === Float64Array ?
-        addon.dsymv(uplo || 121, x.length, alpha || 1.0, a, x.length, x, 1, beta || 1.0, y, 1) :
-        addon.ssymv(uplo || 121, x.length, alpha || 1.0, a, x.length, x, 1, beta || 1.0, y, 1);
+        addon.dsymv(uplo || 121, x.length, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1) :
+        addon.ssymv(uplo || 121, x.length, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1);
 
   addon.syr =
     (a, x, uplo, alpha) =>
@@ -191,26 +191,26 @@
   addon.gemm =
     (a, b, c, m, n, k, transa, transb, alpha, beta) =>
       a.constructor === Float64Array ?
-        addon.dgemm(transa || 111, transb || 111, m, n, k, alpha || 1.0, a, k, b, n, beta || 0.0, c, m) :
-        addon.sgemm(transa || 111, transb || 111, m, n, k, alpha || 1.0, a, k, b, n, beta || 0.0, c, m);
+        addon.dgemm(transa || 111, transb || 111, m, n, k, alpha || 1.0, a, k, b, n, beta || 0, c, m) :
+        addon.sgemm(transa || 111, transb || 111, m, n, k, alpha || 1.0, a, k, b, n, beta || 0, c, m);
 
   addon.symm =
     (a, b, c, m, n, side, uplo, alpha, beta) =>
       a.constructor === Float64Array ?
-        addon.dsymm(side || 141, uplo || 121, m, n, alpha || 1.0, a, m, b, n, beta || 0.0, c, m) :
-        addon.ssymm(side || 141, uplo || 121, m, n, alpha || 1.0, a, m, b, n, beta || 0.0, c, m);
+        addon.dsymm(side || 141, uplo || 121, m, n, alpha || 1.0, a, m, b, n, beta || 0, c, m) :
+        addon.ssymm(side || 141, uplo || 121, m, n, alpha || 1.0, a, m, b, n, beta || 0, c, m);
 
   addon.syrk =
     (a, c, n, k, uplo, trans, alpha, beta) =>
       a.constructor === Float64Array ?
-        addon.dsyrk(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, beta || 0.0, c, n) :
-        addon.ssyrk(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, beta || 0.0, c, n);
+        addon.dsyrk(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, beta || 0, c, n) :
+        addon.ssyrk(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, beta || 0, c, n);
 
   addon.syr2k =
     (a, b, c, n, k, uplo, trans, alpha, beta) =>
       a.constructor === Float64Array ?
-        addon.dsyr2k(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, b, n, beta || 0.0, c, n) :
-        addon.ssyr2k(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, b, n, beta || 0.0, c, n);
+        addon.dsyr2k(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, b, n, beta || 0, c, n) :
+        addon.ssyr2k(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, b, n, beta || 0, c, n);
 
   addon.trmm =
     (a, b, m, n, side, uplo, transa, diag, alpha) =>

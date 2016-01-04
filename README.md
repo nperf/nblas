@@ -158,19 +158,19 @@ Double precision functions expect `Float64Array` vectors, single precision funct
   ![?trsv](https://github.com/mateogianolio/nblas/blob/master/tex/tbsv.png?raw=true)
 
 **[BLAS Level 3 Routines](https://software.intel.com/en-us/node/468478)**
-- [x] [`?gemm (a, b, c, m, n, k, [transa = 111], [transb = 111], [alpha = 1.0], [beta = 1.0])`](https://software.intel.com/node/90eaa001-d4c8-4211-9ea0-b62f5ade9cf0#90EAA001-D4C8-4211-9EA0-B62F5ADE9CF0)
+- [x] [`?gemm (a, b, c, m, n, k, [transa = 111], [transb = 111], [alpha = 1.0], [beta = 0])`](https://software.intel.com/node/90eaa001-d4c8-4211-9ea0-b62f5ade9cf0#90EAA001-D4C8-4211-9EA0-B62F5ADE9CF0)
 
   ![?gemm](https://github.com/mateogianolio/nblas/blob/master/tex/gemm.png?raw=true)
 
-- [x] [`?symm (a, b, c, m, n, [side = 141], [uplo = 121], [alpha = 1.0], [beta = 1.0])`](https://software.intel.com/node/cae55cbe-8e83-4c7f-9c54-0a8598f8a8ef#CAE55CBE-8E83-4C7F-9C54-0A8598F8A8EF)
+- [x] [`?symm (a, b, c, m, n, [side = 141], [uplo = 121], [alpha = 1.0], [beta = 0])`](https://software.intel.com/node/cae55cbe-8e83-4c7f-9c54-0a8598f8a8ef#CAE55CBE-8E83-4C7F-9C54-0A8598F8A8EF)
 
   ![?symm](https://github.com/mateogianolio/nblas/blob/master/tex/gemm.png?raw=true)
 
-- [x] [`?syrk (a, c, n, k, [uplo = 121], [trans = 111], [alpha = 1.0], [beta = 1.0])`](https://software.intel.com/node/e8986ce9-3048-4295-86ff-c2512669b498#E8986CE9-3048-4295-86FF-C2512669B498)
+- [x] [`?syrk (a, c, n, k, [uplo = 121], [trans = 111], [alpha = 1.0], [beta = 0])`](https://software.intel.com/node/e8986ce9-3048-4295-86ff-c2512669b498#E8986CE9-3048-4295-86FF-C2512669B498)
 
   ![?syrk](https://github.com/mateogianolio/nblas/blob/master/tex/syrk.png?raw=true)
 
-- [x] [`?syr2k (a, b, c, n, k, [uplo = 121], [trans = 111], [alpha = 1.0], [beta = 1.0])`](https://software.intel.com/node/1233ba19-4666-4233-ba59-106b9e644893#1233BA19-4666-4233-BA59-106B9E644893)
+- [x] [`?syr2k (a, b, c, n, k, [uplo = 121], [trans = 111], [alpha = 1.0], [beta = 0])`](https://software.intel.com/node/1233ba19-4666-4233-ba59-106b9e644893#1233BA19-4666-4233-BA59-106B9E644893)
 
   ![?syr2k](https://github.com/mateogianolio/nblas/blob/master/tex/syr2k.png?raw=true)
 
