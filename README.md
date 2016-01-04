@@ -93,11 +93,11 @@ Double precision functions expect `Float64Array` vectors, single precision funct
   - **142** - `CblasRight`.
 
 
-- [x] [`?gbmv (a, x, y, [kl = 0], [ku = 0], [alpha = 1.0], [beta = 1.0], [trans = 111])`](https://software.intel.com/node/bc780af8-f243-4a20-b264-06424a8b5621#BC780AF8-F243-4A20-B264-06424A8B5621)
+- [x] [`?gbmv (a, x, y, [kl = 0], [ku = 0], [alpha = 1.0], [beta = 0], [trans = 111])`](https://software.intel.com/node/bc780af8-f243-4a20-b264-06424a8b5621#BC780AF8-F243-4A20-B264-06424A8B5621)
 
   ![?gbmv](https://github.com/mateogianolio/nblas/blob/master/tex/gbmv.png?raw=true)
 
-- [x] [`?gemv (a, x, y, [alpha = 1.0], [beta = 1.0], [trans = 111])`](https://software.intel.com/node/443228c4-626e-48a7-b230-26fb061eacf2#443228C4-626E-48A7-B230-26FB061EACF2)
+- [x] [`?gemv (a, x, y, [alpha = 1.0], [beta = 0], [trans = 111])`](https://software.intel.com/node/443228c4-626e-48a7-b230-26fb061eacf2#443228C4-626E-48A7-B230-26FB061EACF2)
 
   ![?gemv](https://github.com/mateogianolio/nblas/blob/master/tex/gbmv.png?raw=true)
 
@@ -105,11 +105,11 @@ Double precision functions expect `Float64Array` vectors, single precision funct
 
   ![?ger](https://github.com/mateogianolio/nblas/blob/master/tex/ger.png?raw=true)
 
-- [x] [`?sbmv (a, x, y, [uplo = 121], [alpha = 1.0], [beta = 1.0])`](https://software.intel.com/node/c80f5eb2-d6c3-44e5-b0c8-9813a0c2340a#C80F5EB2-D6C3-44E5-B0C8-9813A0C2340A)
+- [x] [`?sbmv (a, x, y, [uplo = 121], [alpha = 1.0], [beta = 0])`](https://software.intel.com/node/c80f5eb2-d6c3-44e5-b0c8-9813a0c2340a#C80F5EB2-D6C3-44E5-B0C8-9813A0C2340A)
 
   ![?sbmv](https://github.com/mateogianolio/nblas/blob/master/tex/gbmv.png?raw=true)
 
-- [x] [`?spmv (ap, x, y, [uplo = 121], [alpha = 1.0], [beta = 1.0])`](https://software.intel.com/node/16cb58c4-105b-486c-b6aa-42bb0c721a76#16CB58C4-105B-486C-B6AA-42BB0C721A76)
+- [x] [`?spmv (ap, x, y, [uplo = 121], [alpha = 1.0], [beta = 0])`](https://software.intel.com/node/16cb58c4-105b-486c-b6aa-42bb0c721a76#16CB58C4-105B-486C-B6AA-42BB0C721A76)
 
   ![?spmv](https://github.com/mateogianolio/nblas/blob/master/tex/gbmv.png?raw=true)
 
@@ -121,7 +121,7 @@ Double precision functions expect `Float64Array` vectors, single precision funct
 
   ![?spr2](https://github.com/mateogianolio/nblas/blob/master/tex/spr2.png?raw=true)
 
-- [x] [`?symv (a, x, y, [uplo = 121], [alpha = 1.0], [beta = 1.0])`](https://software.intel.com/node/6265ba37-6e58-4c27-8035-92d836f58ec4#6265BA37-6E58-4C27-8035-92D836F58EC4)
+- [x] [`?symv (a, x, y, [uplo = 121], [alpha = 1.0], [beta = 0])`](https://software.intel.com/node/6265ba37-6e58-4c27-8035-92d836f58ec4#6265BA37-6E58-4C27-8035-92D836F58EC4)
 
   ![?symv](https://github.com/mateogianolio/nblas/blob/master/tex/gbmv.png?raw=true)
 
@@ -129,7 +129,7 @@ Double precision functions expect `Float64Array` vectors, single precision funct
 
   ![?syr](https://github.com/mateogianolio/nblas/blob/master/tex/syr.png?raw=true)
 
-- [x] [`?syr2 (a, x, y, [uplo = 121], [alpha = 1.0], [beta = 1.0])`](https://software.intel.com/node/34efa07b-4a2a-42c3-90e2-d27b8a8f744e#34EFA07B-4A2A-42C3-90E2-D27B8A8F744E)
+- [x] [`?syr2 (a, x, y, [uplo = 121], [alpha = 1.0], [beta = 0])`](https://software.intel.com/node/34efa07b-4a2a-42c3-90e2-d27b8a8f744e#34EFA07B-4A2A-42C3-90E2-D27B8A8F744E)
 
   ![?syr2](https://github.com/mateogianolio/nblas/blob/master/tex/spr2.png?raw=true)
 
