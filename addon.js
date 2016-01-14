@@ -28,14 +28,6 @@
         addon.ddot(x.length, x, 1, y, 1) :
         addon.sdot(x.length, x, 1, y, 1);
 
-  /*
-  addon._sdot =
-    (sx, sy, sb) =>
-      x.constructor === Float64Array ?
-        addon.dsdot(x.length, sx, 1, sy, 1) :
-        addon.sdsdot(x.length, sb || 1.0, sx, 1, sy, 1);
-  */
-
   addon.nrm2 =
     (x) =>
       x.constructor === Float64Array ?

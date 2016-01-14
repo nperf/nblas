@@ -1,8 +1,7 @@
 (function () {
   'use strict';
 
-  var assert = require('assert'),
-      util = require('../util');
+  var assert = require('assert');
 
   var numeric = require('numeric'),
       vec = require('vectorious'),
@@ -10,18 +9,12 @@
 
   const SIZE = 64,
         DIM = 8;
-  var f64a = new Float64Array(util.randomArray(SIZE)),
-      f64b = new Float64Array(util.randomArray(SIZE)),
-      f32a = new Float32Array(util.randomArray(SIZE)),
-      f32b = new Float32Array(util.randomArray(SIZE));
 
-  describe('util.randomArray', function () {
-    it('should work', function () {
-      var x = util.randomArray(10, 10);
-      assert.equal(x.length, 10);
-      assert.equal(x[0].length, 10);
-    });
-  });
+  function round(x) { return 10 * Math.round(x); }
+  var f64a = vec.Vector.random(SIZE).map(round).data,
+      f64b = vec.Vector.random(SIZE).map(round).data,
+      f32a = vec.Vector.random(SIZE, Float32Array).map(round).data,
+      f32b = vec.Vector.random(SIZE, Float32Array).map(round).data;
 
   describe('?asum', function () {
     it('should compute the sum of the absolute values of elements in a vector (double-precision)', function () {
@@ -413,8 +406,8 @@
 
   describe('?gemm', function () {
     it('should compute the matrix product of two matrices (double-precision)', function () {
-      var x = new Float64Array(util.randomArray(2)),
-          y = new Float64Array(util.randomArray(2)),
+      var x = new vec.Vector.random(2).map(round).data,
+          y = new vec.Vector.random(2).map(round).data,
           z = new Float64Array(4);
 
       addon.gemm(x, y, z, 2, 2, 1);
@@ -427,8 +420,8 @@
     });
 
     it('should compute the matrix product of two matrices (single-precision)', function () {
-      var x = new Float32Array(util.randomArray(2)),
-          y = new Float32Array(util.randomArray(2)),
+      var x = new vec.Vector.random(2, Float32Array).map(round).data,
+          y = new vec.Vector.random(2, Float32Array).map(round).data,
           z = new Float32Array(4);
 
       addon.gemm(x, y, z, 2, 2, 1);

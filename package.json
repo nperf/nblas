@@ -1,12 +1,11 @@
 {
   "name": "nblas",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.",
   "main": "./addon.js",
   "scripts": {
     "test": "mocha",
-    "install": "node-gyp configure && node-gyp rebuild",
-    "benchmark": "node benchmark/add.js && node benchmark/copy.js && node benchmark/dot.js && node benchmark/sum.js"
+    "install": "node-gyp configure && node-gyp rebuild"
   },
   "repository": {
     "git": "https://github.com/mateogianolio/nblas"
@@ -17,7 +16,7 @@
   "devDependencies": {
     "mocha": "^2.3.4",
     "numeric": "^1.2.6",
-    "vectorious": "^3.0.0"
+    "vectorious": "^4.0.4"
   },
   "author": "Mateo Gianolio",
   "license": "MIT",
