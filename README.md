@@ -7,26 +7,6 @@ $ npm install nblas
 $ npm test
 ```
 
-Works out of the box with OSX since CBLAS is included in the standard Accelerate framework. You might have to download and build [LAPACK](http://www.netlib.org/lapack/#_lapack_version_3_6_0) from source on other operating systems (**LINUX:** `sudo apt-get libblas-dev`).
-
-```javascript
-var nblas = require('nblas');
-
-var f64a = new Float64Array([1, 2, 3]),
-    f64b = new Float64Array([4, 5, 6]);
-
-nblas.dot(f64a, f64b); // or
-nblas.ddot(3, f64a, 1, f64b, 1); // 32
-
-var f32a = new Float32Array([1, 2, 3]),
-    f32b = new Float32Array([4, 5, 6]);
-
-nblas.dot(f32a, f32b); // or
-nblas.sdot(3, f32a, 1, f32b, 1); // 32
-```
-
-Double precision functions expect `Float64Array` vectors, single precision functions expect `Float32Array` vectors.
-
 - **[BLAS Level 1 Routines and Functions](https://software.intel.com/en-us/node/468390)**
   - [x] [`?asum (x)`](https://software.intel.com/node/e49cf403-8071-4252-a85f-28964ac3da9e#E49CF403-8071-4252-A85F-28964AC3DA9E)
   - [x] [`?axpy (x, y, [alpha = 1])`](https://software.intel.com/node/e25d8e10-0440-4827-bc58-bc71128ea6ee#E25D8E10-0440-4827-BC58-BC71128EA6EE)
@@ -88,3 +68,24 @@ Double precision functions expect `Float64Array` vectors, single precision funct
   `[side]`
   - `141 = CblasLeft (default)`
   - `142 = CblasRight`
+
+
+  Works out of the box with OSX since CBLAS is included in the standard Accelerate framework. You might have to download and build [LAPACK](http://www.netlib.org/lapack/#_lapack_version_3_6_0) from source on other operating systems (**LINUX:** `sudo apt-get libblas-dev`).
+
+  ```javascript
+  var nblas = require('nblas');
+
+  var f64a = new Float64Array([1, 2, 3]),
+      f64b = new Float64Array([4, 5, 6]);
+
+  nblas.dot(f64a, f64b); // or
+  nblas.ddot(3, f64a, 1, f64b, 1); // 32
+
+  var f32a = new Float32Array([1, 2, 3]),
+      f32b = new Float32Array([4, 5, 6]);
+
+  nblas.dot(f32a, f32b); // or
+  nblas.sdot(3, f32a, 1, f32b, 1); // 32
+  ```
+
+  Double precision functions expect `Float64Array` vectors, single precision functions expect `Float32Array` vectors.
