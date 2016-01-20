@@ -48,44 +48,43 @@ $ npm test
   - [x] [`?trsm (a, b, m, n, [side = 141], [uplo = 121], [transa = 111], [diag = 131], [alpha = 1.0])`](https://software.intel.com/node/ce40548f-549d-4af8-9668-b63b28c8c63f#CE40548F-549D-4AF8-9668-B63B28C8C63F)
 
 
-  `[trans]`
-  - `111 = CblasNoTrans (default)`
-  - `112 = CblasTrans`
-  - `113 = CblasConjTrans`
-  - `114 = AtlasConj`
+`[trans]`
+- `nblas.NoTrans (default)`
+- `nblas.Trans`
+- `nblas.ConjTrans`
 
 
-  `[uplo]`
-  - `121 = CblasUpper (default)`
-  - `122 = CblasLower`
+`[uplo]`
+- `nblas.Upper (default)`
+- `nblas.Lower`
 
 
-  `[diag]`
-  - `131 = CblasNonUnit (default)`
-  - `132 = CblasUnit`
+`[diag]`
+- `nblas.NonUnit (default)`
+- `nblas.Unit`
 
 
-  `[side]`
-  - `141 = CblasLeft (default)`
-  - `142 = CblasRight`
+`[side]`
+- `nblas.Left (default)`
+- `nblas.Right`
 
 
-  Works out of the box with OSX since CBLAS is included in the standard Accelerate framework. You might have to download and build [LAPACK](http://www.netlib.org/lapack/#_lapack_version_3_6_0) from source on other operating systems (**LINUX:** `sudo apt-get libblas-dev`).
+Works out of the box with OSX since CBLAS is included in the standard Accelerate framework. You might have to download and build [LAPACK](http://www.netlib.org/lapack/#_lapack_version_3_6_0) from source on other operating systems (**LINUX:** `sudo apt-get libblas-dev`).
 
-  ```javascript
-  var nblas = require('nblas');
+```javascript
+var nblas = require('nblas');
 
-  var f64a = new Float64Array([1, 2, 3]),
-      f64b = new Float64Array([4, 5, 6]);
+var f64a = new Float64Array([1, 2, 3]),
+    f64b = new Float64Array([4, 5, 6]);
 
-  nblas.dot(f64a, f64b); // or
-  nblas.ddot(3, f64a, 1, f64b, 1); // 32
+nblas.dot(f64a, f64b); // or
+nblas.ddot(3, f64a, 1, f64b, 1); // 32
 
-  var f32a = new Float32Array([1, 2, 3]),
-      f32b = new Float32Array([4, 5, 6]);
+var f32a = new Float32Array([1, 2, 3]),
+    f32b = new Float32Array([4, 5, 6]);
 
-  nblas.dot(f32a, f32b); // or
-  nblas.sdot(3, f32a, 1, f32b, 1); // 32
-  ```
+nblas.dot(f32a, f32b); // or
+nblas.sdot(3, f32a, 1, f32b, 1); // 32
+```
 
-  Double precision functions expect `Float64Array` vectors, single precision functions expect `Float32Array` vectors.
+Double precision functions expect `Float64Array` vectors, single precision functions expect `Float32Array` vectors.
