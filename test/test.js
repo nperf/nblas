@@ -1,512 +1,280 @@
 (function () {
   'use strict';
 
-  var assert = require('assert');
-
-  var numeric = require('numeric'),
-      vec = require('vectorious'),
-      addon = require('../addon');
-
-  const SIZE = 64,
-        DIM = 8;
-
-  function round(x) { return 10 * Math.round(x); }
-  var f64a = vec.Vector.random(SIZE).map(round).data,
-      f64b = vec.Vector.random(SIZE).map(round).data,
-      f32a = vec.Vector.random(SIZE, Float32Array).map(round).data,
-      f32b = vec.Vector.random(SIZE, Float32Array).map(round).data;
+  var assert = require('assert'),
+      nblas = require('../addon');
 
   describe('?asum', function () {
-    it('should compute the sum of the absolute values of elements in a vector (double-precision)', function () {
-      assert.equal(
-        addon.asum(f64a),
-        numeric.sum(f64a)
-      );
+    it('works for different sizes', function () {
+      assert.equal(6, nblas.asum(new Float64Array([1, 2, 3])));
+      assert.equal(6, nblas.asum(new Float64Array([1, 2, 0, 3])));
     });
 
-    it('should compute the sum of the absolute values of elements in a vector (single-precision)', function () {
-      assert.equal(
-        addon.asum(f32a),
-        numeric.sum(f32a)
-      );
+    it('works for vectors containing negative values', function () {
+      assert.equal(6, nblas.asum(new Float64Array([-1, -2, 1, 2])));
+      assert.equal(13, nblas.asum(new Float64Array([-1, -2, 1, 2, 3, 4])));
     });
   });
 
   describe('?axpy', function () {
-    it('should compute a constant times a vector plus a vector (double precision)', function () {
-      var y = f64b.slice(0);
-      addon.axpy(f64a, y);
-      assert.deepEqual(
-        y,
-        numeric.add(f64a, f64b)
-      );
+    it('works for a + b', function () {
+      var a = new Float64Array([1, 2, 3]),
+          b = new Float64Array([6, 5, 4]),
+          ans = new Float64Array([7, 7, 7]);
+
+      nblas.axpy(a, b);
+      assert.deepEqual(ans, b);
     });
 
-    it('should compute a constant times a vector plus a vector (single precision)', function () {
-      var y = f32b.slice(0);
-      addon.axpy(f32a, y);
-      assert.deepEqual(
-        y,
-        numeric.add(f32a, f32b)
-      );
+    it('works for (-a) + b', function () {
+      var a = new Float64Array([1, 2, 3]),
+          b = new Float64Array([6, 5, 4]),
+          ans = new Float64Array([5, 3, 1]);
+
+      nblas.axpy(a, b, -1);
+      assert.deepEqual(ans, b);
+    });
+
+    it('works for (2a) + b', function () {
+      var a = new Float64Array([-1, 3, 8, 1]),
+          b = new Float64Array([-10, 2, 4, -1]),
+          ans = new Float64Array([-12, 8, 20, 1]);
+
+      nblas.axpy(a, b, 2);
+      assert.deepEqual(ans, b);
     });
   });
 
   describe('?copy', function () {
-    it('should copy a vector to another vector (double precision)', function () {
-      var y = f64b.slice(0);
+    it('works as expected for different sizes', function () {
+      var a = new Float64Array([1, 2, 3]),
+          b = new Float64Array(3);
 
-      addon.copy(f64a, y);
-      assert.deepEqual(f64a, y);
-    });
+      nblas.copy(a, b);
+      assert.deepEqual(a, b);
 
-    it('should copy a vector to another vector (single precision)', function () {
-      var y = f32b.slice(0);
-
-      addon.copy(f32a, y);
-      assert.deepEqual(f32a, y);
+      a = new Float64Array([5, 1, 3, 8]);
+      b = new Float64Array(4);
+      nblas.copy(a, b);
+      assert.deepEqual(a, b);
     });
   });
 
   describe('?dot', function () {
-    it('should perform vector dot product (double precision)', function () {
-      assert.equal(
-        addon.dot(f64a, f64b),
-        numeric.dot(f64a, f64b)
-      );
-    });
+    it('works as expected for different sizes', function () {
+      var a = new Float64Array([1, 2, 3]),
+          b = new Float64Array([4, 5, 6]);
 
-    it('should perform vector dot product (single precision)', function () {
-      assert.equal(
-        addon.dot(f32a, f32b),
-        numeric.dot(f32a, f32b)
-      );
+      assert.equal(32, nblas.dot(a, b));
+
+      a = new Float64Array([-1, 3, 7, 4]);
+      b = new Float64Array([2, 1, 3, 0]);
+
+      assert.equal(22, nblas.dot(a, b));
     });
   });
 
   describe('?nrm2', function () {
-    it('should compute the L2 norm (euclidean length) of a vector (double-precision)', function () {
-      assert.equal(
-        Math.round(addon.nrm2(f64a)),
-        Math.round(numeric.norm2(f64a))
-      );
-    });
+    it('works as expected for different sizes', function () {
+      var a = new Float64Array([1, 2, 3]);
 
-    it('should compute the L2 norm (euclidean length) of a vector (double-precision)', function () {
-      assert.equal(
-        Math.round(addon.nrm2(f32a)),
-        Math.round(numeric.norm2(f32a))
-      );
+      assert.equal(Math.sqrt(14), nblas.nrm2(a));
+
+      a = new Float64Array([3, 7, 1, 0]);
+
+      assert.equal(Math.sqrt(59), nblas.nrm2(a));
     });
   });
 
   describe('?rot', function () {
-    it('should perform plane rotation of points (double precision)', function () {
-
-    });
+    // should perform plane rotation of points
   });
 
   describe('?scal', function () {
-    it('should scale all elements in a vector (double precision)', function () {
-      var x = f64a.slice(0);
-      addon.scal(x, 5);
-      assert.deepEqual(x, numeric.mul(f64a, 5));
+    it('works as expected for different sizes and negative values', function () {
+      var a = new Float64Array([1, 2, 3]),
+          ans = new Float64Array([2, 4, 6]);
 
-      addon.scal(x, 2);
-      assert.deepEqual(x, numeric.mul(f64a, 2 * 5));
-    });
+      nblas.scal(a, 2);
+      assert.deepEqual(ans, a);
 
-    it('should scale all elements in a vector (single precision)', function () {
-      var x = f32a.slice(0);
+      a = new Float64Array([1, -2, 3, 0]);
+      ans = new Float64Array([-2, 4, -6, 0]);
 
-      addon.scal(x, 5);
-      assert.deepEqual(x, numeric.mul(f32a, 5));
-
-      addon.scal(x, 2);
-      assert.deepEqual(x, numeric.mul(f32a, 2 * 5));
+      nblas.scal(a, -2);
+      assert.deepEqual(ans, a);
     });
   });
 
   describe('?swap', function () {
-    it('should swap the elements of a vector with another vector (double precision)', function () {
-      var x = f64a.slice(0),
-          y = f64b.slice(0);
+    it('works as expected for different sizes', function () {
+      var a = new Float64Array([1, 2, 3]),
+          acopy = new Float64Array(a),
+          b = new Float64Array(3),
+          bcopy = new Float64Array(b);
 
-      addon.swap(x, y);
-      assert.deepEqual(y, f64a);
-      assert.deepEqual(x, f64b);
-    });
-    it('should swap the elements of a vector with another vector (single precision)', function () {
-      var x = f32a.slice(0),
-          y = f32b.slice(0);
+      nblas.swap(a, b);
+      assert.deepEqual(bcopy, a);
+      assert.deepEqual(acopy, b);
 
-      addon.swap(x, y);
-      assert.deepEqual(y, f32a);
-      assert.deepEqual(x, f32b);
+      a = new Float64Array([3, 4, 7, -1]);
+      b = new Float64Array([1, 3, -1, 0]);
+      acopy = new Float64Array(a);
+      bcopy = new Float64Array(b);
+
+      nblas.swap(a, b);
+      assert.deepEqual(bcopy, a);
+      assert.deepEqual(acopy, b);
     });
   });
 
   describe('i?amax', function () {
-    it('should return the index of the element with the largest absolute value in a vector (double-precision)', function () {
-      assert.equal(
-        addon.iamax(f64a),
-        f64a.indexOf(Math.max.apply(null, f64a))
-      );
-    });
+    it('works as expected for different values', function () {
+      var a = new Float64Array([1, 2, 3]);
 
-    it('should return the index of the element with the largest absolute value in a vector (single-precision)', function () {
-      assert.equal(
-        addon.iamax(f32a),
-        f32a.indexOf(Math.max.apply(null, f32a))
-      );
+      assert.equal(3, a[nblas.iamax(a)]);
+
+      a = new Float64Array([-1, -2, 0, 7]);
+      assert.equal(7, a[nblas.iamax(a)]);
     });
   });
 
   describe('?gbmv', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM),
-          y = f64b.slice(0, DIM);
-      addon.gbmv(A, x, y);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM),
-          y = f32b.slice(0, DIM);
-      addon.gbmv(A, x, y);
-    });
+    // computes matrix-vector product using a general band matrix
   });
 
   describe('?gemv', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM),
-          y = f64b.slice(0, DIM);
-      addon.gemv(A, x, y);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM),
-          y = f32b.slice(0, DIM);
-      addon.gemv(A, x, y);
-    });
+    // computes a matrix-vector product using a general matrix
   });
 
   describe('?ger', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM),
-          y = f64b.slice(0, DIM);
-      addon.ger(A, x, y);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM),
-          y = f32b.slice(0, DIM);
-      addon.ger(A, x, y);
-    });
+    // performs a rank-1 update of a general matrix
   });
 
   describe('?sbmv', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM),
-          y = f64b.slice(0, DIM);
-      addon.sbmv(A, x, y);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM),
-          y = f32b.slice(0, DIM);
-      addon.sbmv(A, x, y);
-    });
+    // computes a matrix-vector product using a symmetric band matrix
   });
 
   describe('?spmv', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM),
-          y = f64b.slice(0, DIM);
-      addon.spmv(A, x, y);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM),
-          y = f32b.slice(0, DIM);
-      addon.spmv(A, x, y);
-    });
+    // computes a matrix-vector product using a symmetric packed matrix
   });
 
   describe('?spr', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM);
-      addon.spr(A, x);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM);
-      addon.spr(A, x);
-    });
+    // performs a rank-1 update of a symmetric packed matrix
   });
 
   describe('?spr2', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM),
-          y = f64b.slice(0, DIM);
-      addon.spr2(A, x, y);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM),
-          y = f32b.slice(0, DIM);
-      addon.spr2(A, x, y);
-    });
+    // performs a rank-2 update of a symmetric packed matrix
   });
 
   describe('?symv', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM),
-          y = f64b.slice(0, DIM);
-      addon.symv(A, x, y);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM),
-          y = f32b.slice(0, DIM);
-      addon.symv(A, x, y);
-    });
+    // computes a matrix-vector product for a symmetric matrix
   });
 
   describe('?syr', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM);
-      addon.syr(A, x);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM);
-      addon.syr(A, x);
-    });
+    // performs a rank-1 update of a symmetric matrix
   });
 
   describe('?syr2', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM),
-          y = f64b.slice(0, DIM);
-      addon.syr2(A, x, y);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM),
-          y = f32b.slice(0, DIM);
-      addon.syr2(A, x, y);
-    });
+    // performs a rank-2 update of a symmetric matrix
   });
 
   describe('?tbmv', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM),
-          y = f64b.slice(0, DIM);
-      addon.tbmv(A, x, y);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM),
-          y = f32b.slice(0, DIM);
-      addon.tbmv(A, x, y);
-    });
+    // computes a matrix-vector product using a triangular band matrix
   });
 
   describe('?tbsv', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM);
-      addon.tbsv(A, x);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM);
-      addon.tbsv(A, x);
-    });
+    // solves a system of linear equations whose coefficients are in a triangular band matrix
   });
 
   describe('?tpmv', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM);
-      addon.tpmv(A, x);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM);
-      addon.tpmv(A, x);
-    });
+    // computes a matrix-vector product using a triangular band matrix
   });
 
   describe('?tpsv', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM);
-      addon.tpsv(A, x);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM);
-      addon.tpsv(A, x);
-    });
+    // solves a system of linear equations whose coefficients are in a triangular packed matrix
   });
 
   describe('?trmv', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM);
-      addon.trmv(A, x);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM);
-      addon.trmv(A, x);
-    });
+    // computes a matrix-vector product using a triangular matrix
   });
 
   describe('?trsv', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          x = f64a.slice(0, DIM);
-      addon.trsv(A, x);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          x = f32a.slice(0, DIM);
-      addon.trsv(A, x);
-    });
+    // solves a system of linear equations whose coefficients are in a triangular matrix
   });
 
   describe('?gemm', function () {
-    it('should compute the matrix product of two matrices (double-precision)', function () {
-      var x = new vec.Vector.random(2).map(round).data,
-          y = new vec.Vector.random(2).map(round).data,
-          z = new Float64Array(4);
+    it('works for 3x1 * 1x3', function () {
+      // computes a matrix-matrix product
 
-      addon.gemm(x, y, z, 2, 2, 1);
-      assert.deepEqual(
-        z,
-        new vec.Matrix(x, { shape: [2, 1] })
-          .multiply(new vec.Matrix(y, { shape: [1, 2] }))
-          .data
-      );
+      // a is 1x3 matrix
+      var a = new Float64Array([
+        1, 2, 3
+      ]);
+
+      // b is 3x1 matrix
+      var b = new Float64Array([
+        2,
+        3,
+        4
+      ]);
+
+      // c will hold 3x3 matrix
+      var c = new Float64Array(9);
+
+      var ans = new Float64Array([
+        2, 3, 4,
+        4, 6, 8,
+        6, 9, 12
+      ]);
+
+      nblas.gemm(a, b, c, 3, 3, 1);
+      assert.deepEqual(ans, c);
     });
 
-    it('should compute the matrix product of two matrices (single-precision)', function () {
-      var x = new vec.Vector.random(2, Float32Array).map(round).data,
-          y = new vec.Vector.random(2, Float32Array).map(round).data,
-          z = new Float32Array(4);
+    it('works for 2x2 * 2x2', function () {
+      // a is 2x2 matrix
+      var a = new Float64Array([
+        1, 2,
+        3, 4
+      ]);
 
-      addon.gemm(x, y, z, 2, 2, 1);
-      assert.deepEqual(
-        z,
-        new vec.Matrix(x, { shape: [2, 1] })
-          .multiply(new vec.Matrix(y, { shape: [1, 2] }))
-          .data
-      );
+      // b is 2x2 matrix
+      var b = new Float64Array([
+        5, 6,
+        7, 8
+      ]);
+
+      // c will hold 2x2 matrix
+      var c = new Float64Array(4);
+
+      var ans = new Float64Array([
+        19, 22,
+        43, 50
+      ]);
+
+      nblas.gemm(a, b, c, 2, 2, 2);
+      assert.deepEqual(ans, c);
     });
   });
 
   describe('?symm', function () {
-    it('should compute the matrix product of two matrices (double-precision)', function () {
-      var A = f64a.slice(0),
-          B = f64b.slice(0),
-          C = f64b.slice(0);
-
-      addon.symm(A, B, C, DIM, DIM);
-    });
-
-    it('should compute the matrix product of two matrices (single-precision)', function () {
-      var A = f32a.slice(0),
-          B = f32b.slice(0),
-          C = f32b.slice(0);
-
-      addon.symm(A, B, C, DIM, DIM);
-    });
+    // computes a matrix-matrix product where one input matrix is symmetric
   });
 
   describe('?syrk', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          C = f64b.slice(0);
-      addon.syrk(A, C, DIM, DIM);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          C = f32b.slice(0);
-      addon.syrk(A, C, DIM, DIM);
-    });
+    // performs a symmetric rank-k update
   });
 
   describe('?syr2k', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          B = f64b.slice(0),
-          C = f64b.slice(0);
-      addon.syr2k(A, B, C, DIM, DIM);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          B = f32b.slice(0),
-          C = f32b.slice(0);
-      addon.syr2k(A, B, C, DIM, DIM);
-    });
+    // performs a symmetric rank-2k update
   });
 
   describe('?trmm', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          B = f64b.slice(0);
-      addon.trmm(A, B, DIM, DIM);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          B = f32b.slice(0);
-      addon.trmm(A, B, DIM, DIM);
-    });
+    // computes a matrix-matrix product where one input matrix is triangular
   });
 
   describe('?trsm', function () {
-    it('should not generate runtime errors (double-precision)', function () {
-      var A = f64a.slice(0),
-          B = f64b.slice(0);
-      addon.trsm(A, B, DIM, DIM);
-    });
-
-    it('should not generate runtime errors (single-precision)', function () {
-      var A = f32a.slice(0),
-          B = f32b.slice(0);
-      addon.trsm(A, B, DIM, DIM);
-    });
+    // solves a triangular matrix equation
   });
 }());

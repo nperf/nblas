@@ -1,33 +1,34 @@
-#include "trmv.h"
+#include "cblas.h"
+#include "decl.h"
 
 NAN_METHOD(dtrmv) {
-	unsigned int uplo = info[0]->Uint32Value();
-	unsigned int trans = info[1]->Uint32Value();
-	unsigned int diag = info[2]->Uint32Value();
-	unsigned int n = info[3]->Uint32Value();
+	const enum CBLAS_UPLO uplo = static_cast<CBLAS_UPLO>(info[0]->Uint32Value());
+	const enum CBLAS_TRANSPOSE trans = static_cast<CBLAS_TRANSPOSE>(info[1]->Uint32Value());
+	const enum CBLAS_DIAG diag = static_cast<CBLAS_DIAG>(info[2]->Uint32Value());
+	const int n = info[3]->Uint32Value();
 	assert(info[4]->IsFloat64Array());
 	void *a_data = info[4].As<v8::Float64Array>()->Buffer()->GetContents().Data();
-	double *a = reinterpret_cast<double*>(a_data);
-	unsigned int lda = info[5]->Uint32Value();
+	const double *a = reinterpret_cast<double*>(a_data);
+	const int lda = info[5]->Uint32Value();
 	assert(info[6]->IsFloat64Array());
 	void *x_data = info[6].As<v8::Float64Array>()->Buffer()->GetContents().Data();
 	double *x = reinterpret_cast<double*>(x_data);
-	unsigned int inc_x = info[7]->Uint32Value();
-	cblas_dtrmv(101, uplo, trans, diag, n, a, lda, x, inc_x);
+	const int inc_x = info[7]->Uint32Value();
+	cblas_dtrmv(CblasRowMajor, uplo, trans, diag, n, a, lda, x, inc_x);
 }
 
 NAN_METHOD(strmv) {
-	unsigned int uplo = info[0]->Uint32Value();
-	unsigned int trans = info[1]->Uint32Value();
-	unsigned int diag = info[2]->Uint32Value();
-	unsigned int n = info[3]->Uint32Value();
+	const enum CBLAS_UPLO uplo = static_cast<CBLAS_UPLO>(info[0]->Uint32Value());
+	const enum CBLAS_TRANSPOSE trans = static_cast<CBLAS_TRANSPOSE>(info[1]->Uint32Value());
+	const enum CBLAS_DIAG diag = static_cast<CBLAS_DIAG>(info[2]->Uint32Value());
+	const int n = info[3]->Uint32Value();
 	assert(info[4]->IsFloat32Array());
 	void *a_data = info[4].As<v8::Float32Array>()->Buffer()->GetContents().Data();
-	float *a = reinterpret_cast<float*>(a_data);
-	unsigned int lda = info[5]->Uint32Value();
+	const float *a = reinterpret_cast<float*>(a_data);
+	const int lda = info[5]->Uint32Value();
 	assert(info[6]->IsFloat32Array());
 	void *x_data = info[6].As<v8::Float32Array>()->Buffer()->GetContents().Data();
 	float *x = reinterpret_cast<float*>(x_data);
-	unsigned int inc_x = info[7]->Uint32Value();
-	cblas_strmv(101, uplo, trans, diag, n, a, lda, x, inc_x);
+	const int inc_x = info[7]->Uint32Value();
+	cblas_strmv(CblasRowMajor, uplo, trans, diag, n, a, lda, x, inc_x);
 }

@@ -1,4 +1,5 @@
-#include "addon.h"
+#include <nan.h>
+#include "functions/decl.h"
 
 using v8::String;
 using v8::FunctionTemplate;
@@ -8,6 +9,7 @@ using Nan::New;
 using Nan::Set;
 
 NAN_MODULE_INIT(init) {
+  // no way to make this more compact? looks ugly as shit
   Set(target, New<String>("dasum").ToLocalChecked(), GetFunction(New<FunctionTemplate>(dasum)).ToLocalChecked());
   Set(target, New<String>("sasum").ToLocalChecked(), GetFunction(New<FunctionTemplate>(sasum)).ToLocalChecked());
   Set(target, New<String>("daxpy").ToLocalChecked(), GetFunction(New<FunctionTemplate>(daxpy)).ToLocalChecked());

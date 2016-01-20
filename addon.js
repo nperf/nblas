@@ -1,220 +1,362 @@
 (function() {
   'use strict';
 
-  var addon = require('./build/Release/addon');
+  var nblas = require('./build/Release/addon');
+
+  // from enums declared in functions/cblas.h
+  nblas.NoTrans = 111;
+  nblas.Trans = 112;
+  nblas.ConjTrans = 113;
+
+  nblas.Upper = 121;
+  nblas.Lower = 122;
+
+  nblas.NonUnit = 131;
+  nblas.Unit = 132;
+
+  nblas.Left = 141;
+  nblas.Right = 142;
+
+  // enforce strict type checking
+  function typeCheck(array) {
+    if (array.constructor === Float64Array)
+      return true;
+    else if (array.constructor === Float32Array)
+      return false;
+
+    throw new Error('invalid type!');
+  }
 
   // BLAS Level 1 Routines and Functions
-  addon.asum =
+  nblas.asum =
     (x) =>
-      x.constructor === Float64Array ?
-        addon.dasum(x.length, x, 1) :
-        addon.sasum(x.length, x, 1);
+      typeCheck(x) ?
+        nblas.dasum(x.length, x, 1) :
+        nblas.sasum(x.length, x, 1);
 
-  addon.axpy =
-    (x, y, alpha) =>
-      x.constructor === Float64Array ?
-        addon.daxpy(x.length, alpha || 1.0, x, 1, y, 1) :
-        addon.saxpy(x.length, alpha || 1.0, x, 1, y, 1);
+  nblas.axpy =
+    (x, y, alpha) => {
+      alpha = alpha || 1.0;
 
-  addon.copy =
+      return typeCheck(x) ?
+        nblas.daxpy(x.length, alpha, x, 1, y, 1) :
+        nblas.saxpy(x.length, alpha, x, 1, y, 1);
+    };
+
+  nblas.copy =
     (x, y) =>
-      x.constructor === Float64Array ?
-        addon.dcopy(x.length, x, 1, y, 1) :
-        addon.scopy(x.length, x, 1, y, 1);
+      typeCheck(x) ?
+        nblas.dcopy(x.length, x, 1, y, 1) :
+        nblas.scopy(x.length, x, 1, y, 1);
 
-  addon.dot =
+  nblas.dot =
     (x, y) =>
-      x.constructor === Float64Array ?
-        addon.ddot(x.length, x, 1, y, 1) :
-        addon.sdot(x.length, x, 1, y, 1);
+      typeCheck(x) ?
+        nblas.ddot(x.length, x, 1, y, 1) :
+        nblas.sdot(x.length, x, 1, y, 1);
 
-  addon.nrm2 =
+  nblas.nrm2 =
     (x) =>
-      x.constructor === Float64Array ?
-        addon.dnrm2(x.length, x, 1) :
-        addon.snrm2(x.length, x, 1);
+      typeCheck(x) ?
+        nblas.dnrm2(x.length, x, 1) :
+        nblas.snrm2(x.length, x, 1);
 
-  addon.rot =
+  nblas.rot =
     (x, y, c, s) =>
-      x.constructor === Float64Array ?
-        addon.drot(x.length, x, 1, y, 1, c, s) :
-        addon.srot(x.length, x, 1, y, 1, c, s);
+      typeCheck(x) ?
+        nblas.drot(x.length, x, 1, y, 1, c, s) :
+        nblas.srot(x.length, x, 1, y, 1, c, s);
 
-  addon.rotg =
+  nblas.rotg =
     (x, y, c, s) =>
-      x.constructor === Float64Array ?
-        addon.drotg(x, y, c, s) :
-        addon.srotg(x, y, c, s);
+      typeCheck(x) ?
+        nblas.drotg(x, y, c, s) :
+        nblas.srotg(x, y, c, s);
 
-  addon.rotm =
+  nblas.rotm =
     (x, y, param) =>
-      x.constructor === Float64Array ?
-        addon.drotg(x.length, x, 1, y, 1, param) :
-        addon.srotg(x.length, x, 1, y, 1, param);
+      typeCheck(x) ?
+        nblas.drotg(x.length, x, 1, y, 1, param) :
+        nblas.srotg(x.length, x, 1, y, 1, param);
 
-  addon.rotmg =
+  nblas.rotmg =
     (d1, d2, x1, y1, param) =>
-      x.constructor === Float64Array ?
-        addon.drotg(d1, d2, x1, y1, param) :
-        addon.srotg(d1, d2, x1, y1, param);
+      typeCheck(x) ?
+        nblas.drotg(d1, d2, x1, y1, param) :
+        nblas.srotg(d1, d2, x1, y1, param);
 
-  addon.scal =
+  nblas.scal =
     (x, alpha) =>
-      x.constructor === Float64Array ?
-        addon.dscal(x.length, alpha, x, 1) :
-        addon.sscal(x.length, alpha, x, 1);
+      typeCheck(x) ?
+        nblas.dscal(x.length, alpha, x, 1) :
+        nblas.sscal(x.length, alpha, x, 1);
 
-  addon.swap =
+  nblas.swap =
     (x, y) =>
-      x.constructor === Float64Array ?
-        addon.dswap(x.length, x, 1, y, 1) :
-        addon.sswap(x.length, x, 1, y, 1);
+      typeCheck(x) ?
+        nblas.dswap(x.length, x, 1, y, 1) :
+        nblas.sswap(x.length, x, 1, y, 1);
 
-  addon.iamax =
+  nblas.iamax =
     (x) =>
-      x.constructor === Float64Array ?
-        addon.idamax(x.length, x, 1) :
-        addon.isamax(x.length, x, 1);
+      typeCheck(x) ?
+        nblas.idamax(x.length, x, 1) :
+        nblas.isamax(x.length, x, 1);
 
-  addon.iamin =
+  nblas.iamin =
     (x) =>
-      x.constructor === Float64Array ?
-        addon.idamin(x.length, x, 1) :
-        addon.isamin(x.length, x, 1);
+      typeCheck(x) ?
+        nblas.idamin(x.length, x, 1) :
+        nblas.isamin(x.length, x, 1);
 
   // BLAS Level 2 Routines
-  addon.gbmv =
-    (a, x, y, kl, ku, alpha, beta, trans) =>
-      a.constructor === Float64Array ?
-        addon.dgbmv(trans || 111, x.length, y.length, kl || 0, ku || 0, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1) :
-        addon.sgbmv(trans || 111, x.length, y.length, kl || 0, ku || 0, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1);
+  nblas.gbmv =
+    (a, x, y, kl, ku, alpha, beta, trans) => {
+      trans = trans || nblas.NoTrans;
+      kl = kl || 0;
+      ku = ku || 0;
+      alpha = alpha || 1.0;
+      beta = beta || 0.0;
 
-  addon.gemv =
-    (a, x, y, alpha, beta, trans) =>
-      a.constructor === Float64Array ?
-        addon.dgemv(trans || 111, x.length, y.length, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1) :
-        addon.sgemv(trans || 111, x.length, y.length, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1);
+      return typeCheck(a) ?
+        nblas.dgbmv(trans, x.length, y.length, kl, ku, alpha, a, x.length, x, 1, beta, y, 1) :
+        nblas.sgbmv(trans, x.length, y.length, kl, ku, alpha, a, x.length, x, 1, beta, y, 1);
+    };
 
-  addon.ger =
-    (a, x, y, alpha) =>
-      a.constructor === Float64Array ?
-        addon.dger(x.length, y.length, alpha || 1.0, x, 1, y, 1, a, x.length) :
-        addon.sger(x.length, y.length, alpha || 1.0, x, 1, y, 1, a, x.length);
+  nblas.gemv =
+    (a, x, y, alpha, beta, trans) => {
+      trans = trans || nblas.NoTrans;
+      alpha = alpha || 1.0;
+      beta = beta || 0.0;
 
-  addon.sbmv =
-    (a, x, y, k, uplo, alpha, beta) =>
-      a.constructor === Float64Array ?
-        addon.dsbmv(uplo || 121, x.length, k || 0, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1) :
-        addon.ssbmv(uplo || 121, x.length, k || 0, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1);
+      return typeCheck(a) ?
+        nblas.dgemv(trans, x.length, y.length, alpha, a, x.length, x, 1, beta, y, 1) :
+        nblas.sgemv(trans, x.length, y.length, alpha, a, x.length, x, 1, beta, y, 1);
+    };
 
-  addon.spmv =
-    (ap, x, y, uplo, alpha, beta) =>
-      ap.constructor === Float64Array ?
-        addon.dspmv(uplo || 121, x.length, alpha || 1.0, ap, x, 1, beta || 0, y, 1) :
-        addon.sspmv(uplo || 121, x.length, alpha || 1.0, ap, x, 1, beta || 0, y, 1);
+  nblas.ger =
+    (a, x, y, alpha) => {
+      alpha = alpha || 1.0;
 
-  addon.spr =
-    (ap, x, uplo, alpha) =>
-      ap.constructor === Float64Array ?
-        addon.dspr(uplo || 121, x.length, alpha || 1.0, x, 1, ap) :
-        addon.sspr(uplo || 121, x.length, alpha || 1.0, x, 1, ap);
+      return typeCheck(a) ?
+        nblas.dger(x.length, y.length, alpha, x, 1, y, 1, a, x.length) :
+        nblas.sger(x.length, y.length, alpha, x, 1, y, 1, a, x.length);
+    };
 
-  addon.spr2 =
-    (ap, x, y, uplo, alpha) =>
-      ap.constructor === Float64Array ?
-        addon.dspr2(uplo || 121, x.length, alpha || 1.0, x, 1, y, 1, ap) :
-        addon.sspr2(uplo || 121, x.length, alpha || 1.0, x, 1, y, 1, ap);
+  nblas.sbmv =
+    (a, x, y, k, uplo, alpha, beta) => {
+      uplo = uplo || nblas.Upper;
+      k = k || 0;
+      alpha = alpha || 1.0;
+      beta = beta || 0.0;
 
-  addon.symv =
-    (a, x, y, uplo, alpha, beta) =>
-      a.constructor === Float64Array ?
-        addon.dsymv(uplo || 121, x.length, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1) :
-        addon.ssymv(uplo || 121, x.length, alpha || 1.0, a, x.length, x, 1, beta || 0, y, 1);
+      return typeCheck(a) ?
+        nblas.dsbmv(uplo, x.length, k, alpha, a, x.length, x, 1, beta, y, 1) :
+        nblas.ssbmv(uplo, x.length, k, alpha, a, x.length, x, 1, beta, y, 1);
+    };
 
-  addon.syr =
-    (a, x, uplo, alpha) =>
-      a.constructor === Float64Array ?
-        addon.dsyr(uplo || 121, x.length, alpha || 1.0, x, 1, a, x.length) :
-        addon.ssyr(uplo || 121, x.length, alpha || 1.0, x, 1, a, x.length);
+  nblas.spmv =
+    (ap, x, y, uplo, alpha, beta) => {
+      uplo = uplo || nblas.Upper;
+      alpha = alpha || 1.0;
+      beta = beta || 0.0;
 
-  addon.syr2 =
-    (a, x, y, uplo, alpha) =>
-      a.constructor === Float64Array ?
-        addon.dsyr2(uplo || 121, x.length, alpha || 1.0, x, 1, y, 1, a, x.length) :
-        addon.ssyr2(uplo || 121, x.length, alpha || 1.0, x, 1, y, 1, a, x.length);
+      return typeCheck(ap) ?
+        nblas.dspmv(uplo, x.length, alpha, ap, x, 1, beta, y, 1) :
+        nblas.sspmv(uplo, x.length, alpha, ap, x, 1, beta, y, 1);
+    };
 
-  addon.tbmv =
-    (a, x, y, uplo, trans, diag) =>
-      a.constructor === Float64Array ?
-        addon.dtbmv(uplo || 121, trans || 111, diag || 131, x.length, 0, a, x.length, x, 1) :
-        addon.stbmv(uplo || 121, trans || 111, diag || 131, x.length, 0, a, x.length, x, 1);
+  nblas.spr =
+    (ap, x, uplo, alpha) => {
+      uplo = uplo || nblas.Upper;
+      alpha = alpha || 1.0;
 
-  addon.tbsv =
-    (a, x, uplo, trans, diag) =>
-      a.constructor === Float64Array ?
-        addon.dtbsv(uplo || 121, trans || 111, diag || 131, x.length, 0, a, x.length, x, 1) :
-        addon.stbsv(uplo || 121, trans || 111, diag || 131, x.length, 0, a, x.length, x, 1);
+      return typeCheck(ap) ?
+        nblas.dspr(uplo, x.length, alpha, x, 1, ap) :
+        nblas.sspr(uplo, x.length, alpha, x, 1, ap);
+    };
 
-  addon.tpmv =
-    (ap, x, uplo, trans, diag) =>
-      ap.constructor === Float64Array ?
-        addon.dtpmv(uplo || 121, trans || 111, diag || 131, x.length, ap, x, 1) :
-        addon.stpmv(uplo || 121, trans || 111, diag || 131, x.length, ap, x, 1);
+  nblas.spr2 =
+    (ap, x, y, uplo, alpha) => {
+      uplo = uplo || nblas.Upper;
+      alpha = alpha || 1.0;
 
-  addon.tpsv =
-    (ap, x, uplo, trans, diag) =>
-      ap.constructor === Float64Array ?
-        addon.dtpsv(uplo || 121, trans || 111, diag || 131, x.length, ap, x, 1) :
-        addon.stpsv(uplo || 121, trans || 111, diag || 131, x.length, ap, x, 1);
+      return typeCheck(ap) ?
+        nblas.dspr2(uplo, x.length, alpha, x, 1, y, 1, ap) :
+        nblas.sspr2(uplo, x.length, alpha, x, 1, y, 1, ap);
+    };
 
-  addon.trmv =
-    (a, x, uplo, trans, diag) =>
-      a.constructor === Float64Array ?
-        addon.dtrmv(uplo || 121, trans || 111, diag || 131, x.length, a, x.length, x, 1) :
-        addon.strmv(uplo || 121, trans || 111, diag || 131, x.length, a, x.length, x, 1);
+  nblas.symv =
+    (a, x, y, uplo, alpha, beta) => {
+      uplo = uplo || nblas.Upper;
+      alpha = alpha || 1.0;
+      beta = beta || 0.0;
 
-  addon.trsv =
-    (a, x, uplo, trans, diag) =>
-      a.constructor === Float64Array ?
-        addon.dtrsv(uplo || 121, trans || 111, diag || 131, x.length, a, x.length, x, 1) :
-        addon.strsv(uplo || 121, trans || 111, diag || 131, x.length, a, x.length, x, 1);
+      return typeCheck(a) ?
+        nblas.dsymv(uplo, x.length, alpha, a, x.length, x, 1, beta, y, 1) :
+        nblas.ssymv(uplo, x.length, alpha, a, x.length, x, 1, beta, y, 1);
+    };
+
+  nblas.syr =
+    (a, x, uplo, alpha) => {
+      uplo = uplo || nblas.Upper;
+      alpha = alpha || 1.0;
+
+      return typeCheck(a) ?
+        nblas.dsyr(uplo, x.length, alpha, x, 1, a, x.length) :
+        nblas.ssyr(uplo, x.length, alpha, x, 1, a, x.length);
+    };
+
+  nblas.syr2 =
+    (a, x, y, uplo, alpha) => {
+      uplo = uplo || nblas.Upper;
+      alpha = alpha || 1.0;
+
+      return typeCheck(a) ?
+        nblas.dsyr2(uplo, x.length, alpha, x, 1, y, 1, a, x.length) :
+        nblas.ssyr2(uplo, x.length, alpha, x, 1, y, 1, a, x.length);
+    };
+
+  nblas.tbmv =
+    (a, x, y, uplo, trans, diag) => {
+      uplo = uplo || nblas.Upper;
+      trans = trans || nblas.NoTrans;
+      diag = diag || nblas.NonUnit;
+
+      return typeCheck(a) ?
+        nblas.dtbmv(uplo, trans, diag, x.length, 0, a, x.length, x, 1) :
+        nblas.stbmv(uplo, trans, diag, x.length, 0, a, x.length, x, 1);
+    };
+
+  nblas.tbsv =
+    (a, x, uplo, trans, diag) => {
+      uplo = uplo || nblas.Upper;
+      trans = trans || nblas.NoTrans;
+      diag = diag || nblas.NonUnit;
+
+      return typeCheck(a) ?
+        nblas.dtbsv(uplo, trans, diag, x.length, 0, a, x.length, x, 1) :
+        nblas.stbsv(uplo, trans, diag, x.length, 0, a, x.length, x, 1);
+    };
+
+  nblas.tpmv =
+    (ap, x, uplo, trans, diag) => {
+      uplo = uplo || nblas.Upper;
+      trans = trans || nblas.NoTrans;
+      diag = diag || nblas.NonUnit;
+
+      return typeCheck(ap) ?
+        nblas.dtpmv(uplo, trans, diag, x.length, ap, x, 1) :
+        nblas.stpmv(uplo, trans, diag, x.length, ap, x, 1);
+    };
+
+  nblas.tpsv =
+    (ap, x, uplo, trans, diag) => {
+      uplo = uplo || nblas.Upper;
+      trans = trans || nblas.NoTrans;
+      diag = diag || nblas.NonUnit;
+
+      return typeCheck(ap) ?
+        nblas.dtpsv(uplo, trans, diag, x.length, ap, x, 1) :
+        nblas.stpsv(uplo, trans, diag, x.length, ap, x, 1);
+    };
+
+  nblas.trmv =
+    (a, x, uplo, trans, diag) => {
+      uplo = uplo || nblas.Upper;
+      trans = trans || nblas.NoTrans;
+      diag = diag || nblas.NonUnit;
+
+      return typeCheck(a) ?
+        nblas.dtrmv(uplo, trans, diag, x.length, a, x.length, x, 1) :
+        nblas.strmv(uplo, trans, diag, x.length, a, x.length, x, 1);
+    };
+
+  nblas.trsv =
+    (a, x, uplo, trans, diag) => {
+      uplo = uplo || nblas.Upper;
+      trans = trans || nblas.NoTrans;
+      diag = diag || nblas.NonUnit;
+
+      return typeCheck(a) ?
+        nblas.dtrsv(uplo, trans, diag, x.length, a, x.length, x, 1) :
+        nblas.strsv(uplo, trans, diag, x.length, a, x.length, x, 1);
+    };
 
   // BLAS Level 3 Routines
-  addon.gemm =
-    (a, b, c, m, n, k, transa, transb, alpha, beta) =>
-      a.constructor === Float64Array ?
-        addon.dgemm(transa || 111, transb || 111, m, n, k, alpha || 1.0, a, k, b, n, beta || 0, c, m) :
-        addon.sgemm(transa || 111, transb || 111, m, n, k, alpha || 1.0, a, k, b, n, beta || 0, c, m);
+  nblas.gemm =
+    (a, b, c, m, n, k, transa, transb, alpha, beta) => {
+      transa = transa || nblas.NoTrans;
+      transb = transb || nblas.NoTrans;
+      alpha = alpha || 1.0;
+      beta = beta || 0.0;
 
-  addon.symm =
-    (a, b, c, m, n, side, uplo, alpha, beta) =>
-      a.constructor === Float64Array ?
-        addon.dsymm(side || 141, uplo || 121, m, n, alpha || 1.0, a, m, b, n, beta || 0, c, m) :
-        addon.ssymm(side || 141, uplo || 121, m, n, alpha || 1.0, a, m, b, n, beta || 0, c, m);
+      return typeCheck(a) ?
+        nblas.dgemm(transa, transb, m, n, k, alpha, a, k, b, n, beta, c, n) :
+        nblas.sgemm(transa, transb, m, n, k, alpha, a, k, b, n, beta, c, n);
+    };
 
-  addon.syrk =
-    (a, c, n, k, uplo, trans, alpha, beta) =>
-      a.constructor === Float64Array ?
-        addon.dsyrk(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, beta || 0, c, n) :
-        addon.ssyrk(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, beta || 0, c, n);
+  nblas.symm =
+    (a, b, c, m, n, side, uplo, alpha, beta) => {
+      side = side || nblas.Left;
+      uplo = uplo || nblas.Upper;
+      alpha = alpha || 1.0;
+      beta = beta || 0.0;
 
-  addon.syr2k =
-    (a, b, c, n, k, uplo, trans, alpha, beta) =>
-      a.constructor === Float64Array ?
-        addon.dsyr2k(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, b, n, beta || 0, c, n) :
-        addon.ssyr2k(uplo || 121, trans || 111, n, k, alpha || 1.0, a, n, b, n, beta || 0, c, n);
+      return typeCheck(a) ?
+        nblas.dsymm(side, uplo, m, n, alpha, a, m, b, n, beta, c, m) :
+        nblas.ssymm(side, uplo, m, n, alpha, a, m, b, n, beta, c, m);
+    };
 
-  addon.trmm =
-    (a, b, m, n, side, uplo, transa, diag, alpha) =>
-      a.constructor === Float64Array ?
-        addon.dtrmm(side || 141, uplo || 121, transa || 111, diag || 131, m, n, alpha || 1.0, a, m, b, m) :
-        addon.strmm(side || 141, uplo || 121, transa || 111, diag || 131, m, n, alpha || 1.0, a, m, b, m);
+  nblas.syrk =
+    (a, c, n, k, uplo, trans, alpha, beta) => {
+      uplo = uplo || nblas.Upper;
+      trans = trans || nblas.NoTrans;
+      alpha = alpha || 1.0;
+      beta = beta || 0.0;
 
-  addon.trsm =
-    (a, b, m, n, side, uplo, transa, diag, alpha) =>
-      a.constructor === Float64Array ?
-        addon.dtrsm(side || 141, uplo || 121, transa || 111, diag || 131, m, n, alpha || 1.0, a, m, b, m) :
-        addon.strsm(side || 141, uplo || 121, transa || 111, diag || 131, m, n, alpha || 1.0, a, m, b, m);
+      return typeCheck(a) ?
+        nblas.dsyrk(uplo, trans, n, k, alpha, a, n, beta, c, n) :
+        nblas.ssyrk(uplo, trans, n, k, alpha, a, n, beta, c, n);
+    };
 
-  module.exports = addon;
+  nblas.syr2k =
+    (a, b, c, n, k, uplo, trans, alpha, beta) => {
+      uplo = uplo || nblas.Upper;
+      trans = trans || nblas.NoTrans;
+      alpha = alpha || 1.0;
+      beta = beta || 0.0;
+
+      return typeCheck(a) ?
+        nblas.dsyr2k(uplo, trans, n, k, alpha, a, n, b, n, beta, c, n) :
+        nblas.ssyr2k(uplo, trans, n, k, alpha, a, n, b, n, beta, c, n);
+    };
+
+  nblas.trmm =
+    (a, b, m, n, side, uplo, transa, diag, alpha) => {
+      side = side || nblas.Left;
+      uplo = uplo || nblas.Upper;
+      transa = transa || nblas.NoTrans;
+      diag = diag || nblas.NonUnit;
+      alpha = alpha || 1.0;
+
+      return typeCheck(a) ?
+        nblas.dtrmm(side, uplo, transa, diag, m, n, alpha, a, m, b, m) :
+        nblas.strmm(side, uplo, transa, diag, m, n, alpha, a, m, b, m);
+    };
+
+  nblas.trsm =
+    (a, b, m, n, side, uplo, transa, diag, alpha) => {
+      side = side || nblas.Left;
+      uplo = uplo || nblas.Upper;
+      transa = transa || nblas.NoTrans;
+      diag = diag || nblas.NonUnit;
+      alpha = alpha || 1.0;
+
+      return typeCheck(a) ?
+        nblas.dtrsm(side, uplo, transa, diag, m, n, alpha, a, m, b, m) :
+        nblas.strsm(side, uplo, transa, diag, m, n, alpha, a, m, b, m);
+    };
+
+  module.exports = nblas;
 }());
