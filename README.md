@@ -48,25 +48,20 @@ $ npm test
   - [x] [`?trsm (a, b, m, n, [diag = nblas.NonUnit], [uplo = nblas.Upper], [transa = 111], [diag = nblas.NonUnit], [alpha = 1.0])`](https://software.intel.com/node/ce40548f-549d-4af8-9668-b63b28c8c63f#CE40548F-549D-4AF8-9668-B63B28C8C63F)
 
 
-`[trans]`
-- `nblas.NoTrans (default)`
-- `nblas.Trans`
-- `nblas.ConjTrans`
-
-
-`[uplo]`
-- `nblas.Upper (default)`
-- `nblas.Lower`
-
-
-`[diag]`
-- `nblas.NonUnit (default)`
-- `nblas.Unit`
-
-
-`[side]`
-- `nblas.Left (default)`
-- `nblas.Right`
+- **Matrix layout enums**
+  - **Matrix transpose** (`trans`)
+    - `nblas.NoTrans (default)`
+    - `nblas.Trans`
+    - `nblas.ConjTrans`
+  - **Upper/lower matrix** (`uplo`)
+    - `nblas.Upper (default)`
+    - `nblas.Lower`
+  - **Matrix diagonal** (`diag`)
+    - `nblas.NonUnit (default)`
+    - `nblas.Unit`
+  - **Matrix side** (`side`)
+    - `nblas.Left (default)`
+    - `nblas.Right`
 
 
 Works out of the box with OSX since CBLAS is included in the standard Accelerate framework. You might have to download and build [LAPACK](http://www.netlib.org/lapack/#_lapack_version_3_6_0) from source on other operating systems (**LINUX:** `sudo apt-get libblas-dev`).
