@@ -78,11 +78,11 @@
     it('works as expected for different sizes', function () {
       var a = new Float64Array([1, 2, 3]);
 
-      assert.equal(Math.sqrt(14), nblas.nrm2(a));
+      assert.equal(Math.sqrt(14).toPrecision(6), nblas.nrm2(a).toPrecision(6));
 
       a = new Float64Array([3, 7, 1, 0]);
 
-      assert.equal(Math.sqrt(59), nblas.nrm2(a));
+      assert.equal(Math.sqrt(59).toPrecision(6), nblas.nrm2(a).toPrecision(6));
     });
   });
 
