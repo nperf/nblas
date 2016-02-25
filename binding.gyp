@@ -41,7 +41,8 @@
         "functions/trsm.cc"
       ],
       "include_dirs" : [
-        "<!(node -e \"require('nan')\")"
+        "<!(node -e \"require('nan')\")",
+        "lib"
       ],
       "libraries": [
         "-lblas"
