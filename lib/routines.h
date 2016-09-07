@@ -3,6 +3,9 @@
 
 #include <node.h>
 
+#define GET_CONTENTS(view) \
+(static_cast<unsigned char*>(view->Buffer()->GetContents().Data()) + view->ByteOffset())
+
 void dasum(const v8::FunctionCallbackInfo<v8::Value>& info);
 void sasum(const v8::FunctionCallbackInfo<v8::Value>& info);
 void daxpy(const v8::FunctionCallbackInfo<v8::Value>& info);

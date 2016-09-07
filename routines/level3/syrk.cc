@@ -7,10 +7,10 @@ void dsyrk(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	const int n = info[2]->Uint32Value();
 	const int k = info[3]->Uint32Value();
 	const double alpha = info[4]->NumberValue();
-	const double *a = reinterpret_cast<double*>(info[5].As<v8::Float64Array>()->Buffer()->GetContents().Data());
+	const double *a = reinterpret_cast<double*>(GET_CONTENTS(info[5].As<v8::Float64Array>()));
 	const int lda = info[6]->Uint32Value();
 	const double beta = info[7]->NumberValue();
-	double *c = reinterpret_cast<double*>(info[8].As<v8::Float64Array>()->Buffer()->GetContents().Data());
+	double *c = reinterpret_cast<double*>(GET_CONTENTS(info[8].As<v8::Float64Array>()));
 	const int ldc = info[9]->Uint32Value();
 	cblas_dsyrk(CblasRowMajor, uplo, trans, n, k, alpha, a, lda, beta, c, ldc);
 }
@@ -21,10 +21,10 @@ void ssyrk(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	const int n = info[2]->Uint32Value();
 	const int k = info[3]->Uint32Value();
 	const float alpha = info[4]->NumberValue();
-	const float *a = reinterpret_cast<float*>(info[5].As<v8::Float32Array>()->Buffer()->GetContents().Data());
+	const float *a = reinterpret_cast<float*>(GET_CONTENTS(info[5].As<v8::Float32Array>()));
 	const int lda = info[6]->Uint32Value();
 	const float beta = info[7]->NumberValue();
-	float *c = reinterpret_cast<float*>(info[8].As<v8::Float32Array>()->Buffer()->GetContents().Data());
+	float *c = reinterpret_cast<float*>(GET_CONTENTS(info[8].As<v8::Float32Array>()));
 	const int ldc = info[9]->Uint32Value();
 	cblas_ssyrk(CblasRowMajor, uplo, trans, n, k, alpha, a, lda, beta, c, ldc);
 }

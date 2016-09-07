@@ -9,9 +9,9 @@ void dtrmm(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	const int m = info[4]->Uint32Value();
 	const int n = info[5]->Uint32Value();
 	const double alpha = info[6]->NumberValue();
-	const double *a = reinterpret_cast<double*>(info[7].As<v8::Float64Array>()->Buffer()->GetContents().Data());
+	const double *a = reinterpret_cast<double*>(GET_CONTENTS(info[7].As<v8::Float64Array>()));
 	const int lda = info[8]->Uint32Value();
-	double *b = reinterpret_cast<double*>(info[9].As<v8::Float64Array>()->Buffer()->GetContents().Data());
+	double *b = reinterpret_cast<double*>(GET_CONTENTS(info[9].As<v8::Float64Array>()));
 	const int ldb = info[10]->Uint32Value();
 	cblas_dtrmm(CblasRowMajor, side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb);
 }
@@ -24,9 +24,9 @@ void strmm(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	const int m = info[4]->Uint32Value();
 	const int n = info[5]->Uint32Value();
 	const float alpha = info[6]->NumberValue();
-	const float *a = reinterpret_cast<float*>(info[7].As<v8::Float32Array>()->Buffer()->GetContents().Data());
+	const float *a = reinterpret_cast<float*>(GET_CONTENTS(info[7].As<v8::Float32Array>()));
 	const int lda = info[8]->Uint32Value();
-	float *b = reinterpret_cast<float*>(info[9].As<v8::Float32Array>()->Buffer()->GetContents().Data());
+	float *b = reinterpret_cast<float*>(GET_CONTENTS(info[9].As<v8::Float32Array>()));
 	const int ldb = info[10]->Uint32Value();
 	cblas_strmm(CblasRowMajor, side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb);
 }

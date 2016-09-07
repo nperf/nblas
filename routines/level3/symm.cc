@@ -7,9 +7,9 @@ void dsymm(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	const int m = info[2]->Uint32Value();
 	const int n = info[3]->Uint32Value();
 	const double alpha = info[4]->NumberValue();
-	const double *a = reinterpret_cast<double*>(info[5].As<v8::Float64Array>()->Buffer()->GetContents().Data());
+	const double *a = reinterpret_cast<double*>(GET_CONTENTS(info[5].As<v8::Float64Array>()));
 	const int lda = info[6]->Uint32Value();
-	const double *b = reinterpret_cast<double*>(info[7].As<v8::Float64Array>()->Buffer()->GetContents().Data());
+	const double *b = reinterpret_cast<double*>(GET_CONTENTS(info[7].As<v8::Float64Array>()));
 	const int ldb = info[8]->Uint32Value();
 	const double beta = info[9]->NumberValue();
 	double *c = reinterpret_cast<double*>(info[10].As<v8::Float64Array>()->Buffer()->GetContents().Data());
@@ -23,9 +23,9 @@ void ssymm(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	const int m = info[2]->Uint32Value();
 	const int n = info[3]->Uint32Value();
 	const float alpha = info[4]->NumberValue();
-	const float *a = reinterpret_cast<float*>(info[5].As<v8::Float32Array>()->Buffer()->GetContents().Data());
+	const float *a = reinterpret_cast<float*>(GET_CONTENTS(info[5].As<v8::Float32Array>()));
 	const int lda = info[6]->Uint32Value();
-	const float *b = reinterpret_cast<float*>(info[7].As<v8::Float32Array>()->Buffer()->GetContents().Data());
+	const float *b = reinterpret_cast<float*>(GET_CONTENTS(info[7].As<v8::Float32Array>()));
 	const int ldb = info[8]->Uint32Value();
 	const float beta = info[9]->NumberValue();
 	float *c = reinterpret_cast<float*>(info[10].As<v8::Float32Array>()->Buffer()->GetContents().Data());
