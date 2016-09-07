@@ -8,9 +8,9 @@ void dgbmv(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	const int kl = info[3]->Uint32Value();
 	const int ku = info[4]->Uint32Value();
 	const double alpha = info[5]->NumberValue();
-	const double *a = reinterpret_cast<double*>(info[6].As<v8::Float64Array>()->Buffer()->GetContents().Data());
+	const double *a = reinterpret_cast<double*>(GET_CONTENTS(info[6].As<v8::Float64Array>()));
 	const int lda = info[7]->Uint32Value();
-	const double *x = reinterpret_cast<double*>(info[8].As<v8::Float64Array>()->Buffer()->GetContents().Data());
+	const double *x = reinterpret_cast<double*>(GET_CONTENTS(info[8].As<v8::Float64Array>()));
 	const int inc_x = info[9]->Uint32Value();
 	const double beta = info[10]->NumberValue();
 	double *y = reinterpret_cast<double*>(info[11].As<v8::Float64Array>()->Buffer()->GetContents().Data());
@@ -25,9 +25,9 @@ void sgbmv(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	const int kl = info[3]->Uint32Value();
 	const int ku = info[4]->Uint32Value();
 	const float alpha = info[5]->NumberValue();
-	const float *a = reinterpret_cast<float*>(info[6].As<v8::Float32Array>()->Buffer()->GetContents().Data());
+	const float *a = reinterpret_cast<float*>(GET_CONTENTS(info[6].As<v8::Float32Array>()));
 	const int lda = info[7]->Uint32Value();
-	const float *x = reinterpret_cast<float*>(info[8].As<v8::Float32Array>()->Buffer()->GetContents().Data());
+	const float *x = reinterpret_cast<float*>(GET_CONTENTS(info[8].As<v8::Float32Array>()));
 	const int inc_x = info[9]->Uint32Value();
 	const float beta = info[10]->NumberValue();
 	float *y = reinterpret_cast<float*>(info[11].As<v8::Float32Array>()->Buffer()->GetContents().Data());
