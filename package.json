@@ -5,7 +5,7 @@
   "main": "./addon.js",
   "scripts": {
     "test": "mocha",
-    "install": "node-gyp configure && node-gyp rebuild"
+    "install": "node-gyp configure && node-gyp rebuild --silent"
   },
   "repository": {
     "git": "https://github.com/mateogianolio/nblas"
