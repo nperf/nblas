@@ -11,7 +11,7 @@
     "git": "https://github.com/mateogianolio/nblas"
   },
   "devDependencies": {
-    "mocha": "^2.4.5"
+    "mocha": "^5.2.0"
   },
   "author": "Mateo Gianolio",
   "license": "MIT",
