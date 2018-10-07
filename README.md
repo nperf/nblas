@@ -1,5 +1,7 @@
 # nBLAS ![version](https://img.shields.io/npm/v/nblas.svg) ![travis](https://img.shields.io/travis/mateogianolio/nblas.svg)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mateogianolio/nblas.svg)](https://greenkeeper.io/)
+
 Node `>=4.0` C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.
 
 ```bash
