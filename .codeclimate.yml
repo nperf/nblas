@@ -5,6 +5,7 @@ plugins:
     enabled: true
 exclude_patterns:
   - "lib/"
+  - "routines/"
   - "src/*.spec.ts"
   - "dist/"
   - "examples/"
