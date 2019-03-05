@@ -4,6 +4,7 @@ plugins:
     config: tsconfig.json
     enabled: true
 exclude_patterns:
+  - "lib/"
   - "src/*.spec.ts"
   - "dist/"
   - "examples/"
