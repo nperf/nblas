@@ -1,4 +1,6 @@
-build
+.nyc_output
 node_modules
 coverage
-
+.DS_Store
+built
+build

@@ -2,7 +2,7 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/mateogianolio/nblas.svg)](https://greenkeeper.io/)
 
-Node `>=4.0` C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.
+Node `>=6.9` C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.
 
 ```bash
 $ npm install nblas
@@ -69,19 +69,19 @@ $ npm test
 Works out of the box with OSX since CBLAS is included in the standard Accelerate framework. You might have to download and build [LAPACK](http://www.netlib.org/lapack/#_lapack_version_3_6_0) from source on other operating systems (**LINUX:** `sudo apt-get libblas-dev`).
 
 ```javascript
-var nblas = require('nblas');
+import { dot, ddot } from 'nblas';
 
-var f64a = new Float64Array([1, 2, 3]),
-    f64b = new Float64Array([4, 5, 6]);
+const f64a = new Float64Array([1, 2, 3]);
+const f64b = new Float64Array([4, 5, 6]);
 
-nblas.dot(f64a, f64b); // or
-nblas.ddot(3, f64a, 1, f64b, 1); // 32
+dot(f64a, f64b); // => 32
+ddot(3, f64a, 1, f64b, 1); // => 32
 
-var f32a = new Float32Array([1, 2, 3]),
-    f32b = new Float32Array([4, 5, 6]);
+const f32a = new Float32Array([1, 2, 3]);
+const f32b = new Float32Array([4, 5, 6]);
 
-nblas.dot(f32a, f32b); // or
-nblas.sdot(3, f32a, 1, f32b, 1); // 32
+dot(f32a, f32b); // => 32
+sdot(3, f32a, 1, f32b, 1); // => 32
 ```
 
 Double precision functions expect `Float64Array` vectors, single precision functions expect `Float32Array` vectors.
