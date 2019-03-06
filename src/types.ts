@@ -1,4 +1,3 @@
-type FloatArray = Float64Array | Float32Array;
 type MatrixTrans = 111 | 112 | 113;
 type MatrixUpperLower = 121 | 122;
 type MatrixUnit = 131 | 132;
@@ -57,7 +56,7 @@ interface NBlasInterface {
   dger(m: number, n: number, alpha: number, x: Float64Array, incx: number, y: Float64Array, incy: number, a: Float64Array, lda: number): void;
   sger(m: number, n: number, alpha: number, x: Float32Array, incx: number, y: Float32Array, incy: number, a: Float32Array, lda: number): void;
   dsbmv(uplo: MatrixUpperLower, n: number, k: number, alpha: number, a: Float64Array, lda: number, x: Float64Array, incx: number, beta: number, y: Float64Array, incy: number): void;
-  dsbmv(uplo: MatrixUpperLower, n: number, k: number, alpha: number, a: Float32Array, lda: number, x: Float32Array, incx: number, beta: number, y: Float32Array, incy: number): void;
+  ssbmv(uplo: MatrixUpperLower, n: number, k: number, alpha: number, a: Float32Array, lda: number, x: Float32Array, incx: number, beta: number, y: Float32Array, incy: number): void;
   dspmv(uplo: MatrixUpperLower, n: number, alpha: number, ap: Float64Array, x: Float64Array, incx: number, beta: number, y: Float64Array, incy: number): void;
   sspmv(uplo: MatrixUpperLower, n: number, alpha: number, ap: Float32Array, x: Float32Array, incx: number, beta: number, y: Float32Array, incy: number): void;
   dspr(uplo: MatrixUpperLower, n: number, alpha: number, x: Float64Array, incx: number, ap: Float64Array): void;
@@ -109,8 +108,8 @@ interface NBlasInterface {
   csyrk(uplo: MatrixUpperLower, trans: MatrixTrans, n: number, k: number, alpha: Float32Array, a: Float32Array, lda: number, beta: Float32Array, c: Float32Array, ldc: number): void;
   dsyr2k(uplo: MatrixUpperLower, trans: MatrixTrans, n: number, k: number, alpha: number, a: Float64Array, lda: number, b: Float64Array, ldb: number, beta: number, c: Float64Array, ldc: number): void;
   ssyr2k(uplo: MatrixUpperLower, trans: MatrixTrans, n: number, k: number, alpha: number, a: Float32Array, lda: number, b: Float32Array, ldb: number, beta: number, c: Float32Array, ldc: number): void;
-  dsyr2k(uplo: MatrixUpperLower, trans: MatrixTrans, n: number, k: number, alpha: Float64Array, a: Float64Array, lda: number, b: Float64Array, ldb: number, beta: Float64Array, c: Float64Array, ldc: number): void;
-  ssyr2k(uplo: MatrixUpperLower, trans: MatrixTrans, n: number, k: number, alpha: Float32Array, a: Float32Array, lda: number, b: Float32Array, ldb: number, beta: Float32Array, c: Float32Array, ldc: number): void;
+  zsyr2k(uplo: MatrixUpperLower, trans: MatrixTrans, n: number, k: number, alpha: Float64Array, a: Float64Array, lda: number, b: Float64Array, ldb: number, beta: Float64Array, c: Float64Array, ldc: number): void;
+  csyr2k(uplo: MatrixUpperLower, trans: MatrixTrans, n: number, k: number, alpha: Float32Array, a: Float32Array, lda: number, b: Float32Array, ldb: number, beta: Float32Array, c: Float32Array, ldc: number): void;
   dtrmm(side: MatrixLeftRight, uplo: MatrixUpperLower, transa: MatrixTrans, diag: MatrixUnit, m: number, n: number, alpha: number, a: Float64Array, lda: number, b: Float64Array, ldb: number): void;
   strmm(side: MatrixLeftRight, uplo: MatrixUpperLower, transa: MatrixTrans, diag: MatrixUnit, m: number, n: number, alpha: number, a: Float32Array, lda: number, b: Float32Array, ldb: number): void;
   ztrmm(side: MatrixLeftRight, uplo: MatrixUpperLower, transa: MatrixTrans, diag: MatrixUnit, m: number, n: number, alpha: Float64Array, a: Float64Array, lda: number, b: Float64Array, ldb: number): void;

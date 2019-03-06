@@ -16,6 +16,8 @@ export const Unit: MatrixUnit = 132;
 export const Left: MatrixLeftRight = 141;
 export const Right: MatrixLeftRight = 142;
 
+type FloatArray = Float64Array | Float32Array;
+
 const prefix = (x: FloatArray): 'd' | 's' => {
   if (x instanceof Float64Array) {
     return 'd';
