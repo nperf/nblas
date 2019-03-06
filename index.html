@@ -66,7 +66,7 @@
 			<div class="tsd-panel tsd-typography">
 				<h1 id="nblas-version-travis">nBLAS <img src="https://img.shields.io/npm/v/nblas.svg" alt="version"> <img src="https://img.shields.io/travis/mateogianolio/nblas.svg" alt="travis"></h1>
 				<p><a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/mateogianolio/nblas.svg" alt="Greenkeeper badge"></a></p>
-				<p>Node <code>&gt;=4.0</code> C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.</p>
+				<p>Node <code>&gt;=6.9</code> C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.</p>
 				<pre><code class="language-bash">$ npm install nblas
 $ npm <span class="hljs-built_in">test</span></code></pre>
 				<ul>
@@ -144,19 +144,19 @@ $ npm <span class="hljs-built_in">test</span></code></pre>
 					</li>
 				</ul>
 				<p>Works out of the box with OSX since CBLAS is included in the standard Accelerate framework. You might have to download and build <a href="http://www.netlib.org/lapack/#_lapack_version_3_6_0">LAPACK</a> from source on other operating systems (<strong>LINUX:</strong> <code>sudo apt-get libblas-dev</code>).</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">var</span> nblas = <span class="hljs-built_in">require</span>(<span class="hljs-string">'nblas'</span>);
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { dot, ddot } <span class="hljs-keyword">from</span> <span class="hljs-string">'nblas'</span>;
 
-<span class="hljs-keyword">var</span> f64a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float64Array</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]),
-    f64b = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float64Array</span>([<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]);
+<span class="hljs-keyword">const</span> f64a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float64Array</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]);
+<span class="hljs-keyword">const</span> f64b = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float64Array</span>([<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]);
 
-nblas.dot(f64a, f64b); <span class="hljs-comment">// or</span>
-nblas.ddot(<span class="hljs-number">3</span>, f64a, <span class="hljs-number">1</span>, f64b, <span class="hljs-number">1</span>); <span class="hljs-comment">// 32</span>
+dot(f64a, f64b); <span class="hljs-comment">// =&gt; 32</span>
+ddot(<span class="hljs-number">3</span>, f64a, <span class="hljs-number">1</span>, f64b, <span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; 32</span>
 
-<span class="hljs-keyword">var</span> f32a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]),
-    f32b = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>([<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]);
+<span class="hljs-keyword">const</span> f32a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]);
+<span class="hljs-keyword">const</span> f32b = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>([<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]);
 
-nblas.dot(f32a, f32b); <span class="hljs-comment">// or</span>
-nblas.sdot(<span class="hljs-number">3</span>, f32a, <span class="hljs-number">1</span>, f32b, <span class="hljs-number">1</span>); <span class="hljs-comment">// 32</span></code></pre>
+dot(f32a, f32b); <span class="hljs-comment">// =&gt; 32</span>
+sdot(<span class="hljs-number">3</span>, f32a, <span class="hljs-number">1</span>, f32b, <span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; 32</span></code></pre>
 				<p>Double precision functions expect <code>Float64Array</code> vectors, single precision functions expect <code>Float32Array</code> vectors.</p>
 			</div>
 		</div>
