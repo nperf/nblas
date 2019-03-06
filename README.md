@@ -69,19 +69,31 @@ $ npm test
 Works out of the box with OSX since CBLAS is included in the standard Accelerate framework. You might have to download and build [LAPACK](http://www.netlib.org/lapack/#_lapack_version_3_6_0) from source on other operating systems (**LINUX:** `sudo apt-get libblas-dev`).
 
 ```javascript
-import { dot, ddot } from 'nblas';
+import { dot, ddot, sdot, dznrm2 } from './src';
 
 const f64a = new Float64Array([1, 2, 3]);
 const f64b = new Float64Array([4, 5, 6]);
 
-dot(f64a, f64b); // => 32
-ddot(3, f64a, 1, f64b, 1); // => 32
+console.log(dot(f64a, f64b));
+// 32
+console.log(ddot(3, f64a, 1, f64b, 1));
+// 32
 
 const f32a = new Float32Array([1, 2, 3]);
 const f32b = new Float32Array([4, 5, 6]);
 
-dot(f32a, f32b); // => 32
-sdot(3, f32a, 1, f32b, 1); // => 32
+console.log(dot(f32a, f32b));
+// 32
+console.log(sdot(3, f32a, 1, f32b, 1));
+// 32
+
+// complex arrays are packed like this: [Re, Im, Re, Im, ...]
+// this is equivalent to [1 + 2i, 3 + 4i]
+const c16 = new Float64Array([1, 2, 3, 4]);
+
+// complex l2 norm
+console.log(dznrm2(2, c16, 1));
+// sqrt(1^2 + 2^2 + 3^2 + 4^2) ~ 5.477
 ```
 
 Double precision functions expect `Float64Array` vectors, single precision functions expect `Float32Array` vectors.
