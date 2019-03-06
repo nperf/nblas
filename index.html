@@ -144,19 +144,31 @@ $ npm <span class="hljs-built_in">test</span></code></pre>
 					</li>
 				</ul>
 				<p>Works out of the box with OSX since CBLAS is included in the standard Accelerate framework. You might have to download and build <a href="http://www.netlib.org/lapack/#_lapack_version_3_6_0">LAPACK</a> from source on other operating systems (<strong>LINUX:</strong> <code>sudo apt-get libblas-dev</code>).</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { dot, ddot } <span class="hljs-keyword">from</span> <span class="hljs-string">'nblas'</span>;
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { dot, ddot, sdot, dznrm2 } <span class="hljs-keyword">from</span> <span class="hljs-string">'./src'</span>;
 
 <span class="hljs-keyword">const</span> f64a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float64Array</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]);
 <span class="hljs-keyword">const</span> f64b = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float64Array</span>([<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]);
 
-dot(f64a, f64b); <span class="hljs-comment">// =&gt; 32</span>
-ddot(<span class="hljs-number">3</span>, f64a, <span class="hljs-number">1</span>, f64b, <span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; 32</span>
+<span class="hljs-built_in">console</span>.log(dot(f64a, f64b));
+<span class="hljs-comment">// 32</span>
+<span class="hljs-built_in">console</span>.log(ddot(<span class="hljs-number">3</span>, f64a, <span class="hljs-number">1</span>, f64b, <span class="hljs-number">1</span>));
+<span class="hljs-comment">// 32</span>
 
 <span class="hljs-keyword">const</span> f32a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]);
 <span class="hljs-keyword">const</span> f32b = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>([<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]);
 
-dot(f32a, f32b); <span class="hljs-comment">// =&gt; 32</span>
-sdot(<span class="hljs-number">3</span>, f32a, <span class="hljs-number">1</span>, f32b, <span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; 32</span></code></pre>
+<span class="hljs-built_in">console</span>.log(dot(f32a, f32b));
+<span class="hljs-comment">// 32</span>
+<span class="hljs-built_in">console</span>.log(sdot(<span class="hljs-number">3</span>, f32a, <span class="hljs-number">1</span>, f32b, <span class="hljs-number">1</span>));
+<span class="hljs-comment">// 32</span>
+
+<span class="hljs-comment">// complex arrays are packed like this: [Re, Im, Re, Im, ...]</span>
+<span class="hljs-comment">// this is equivalent to [1 + 2i, 3 + 4i]</span>
+<span class="hljs-keyword">const</span> c16 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float64Array</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]);
+
+<span class="hljs-comment">// complex l2 norm</span>
+<span class="hljs-built_in">console</span>.log(dznrm2(<span class="hljs-number">2</span>, c16, <span class="hljs-number">1</span>));
+<span class="hljs-comment">// sqrt(1^2 + 2^2 + 3^2 + 4^2) ~ 5.477</span></code></pre>
 				<p>Double precision functions expect <code>Float64Array</code> vectors, single precision functions expect <code>Float32Array</code> vectors.</p>
 			</div>
 		</div>
