@@ -41,7 +41,7 @@ export const asum = (x: FloatArray): number =>
  * vector-vector operation defined as
  * y := a * x + y
  */
-export const axpy = (x: FloatArray, y: FloatArray, a = 1.0): void =>
+export const axpy = (x: FloatArray, y: FloatArray, a: number = 1.0): void =>
   nblas[`${prefix(x)}axpy`](x.length, a, x, 1, y, 1);
 
 /**
