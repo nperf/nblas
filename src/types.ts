@@ -33,9 +33,9 @@ interface NBlasInterface {
   drotmg(d1: Float64Array, d2: Float64Array, x1: Float64Array, y1: Float64Array, param: Float64Array): void;
   srotmg(d1: Float32Array, d2: Float32Array, x1: Float32Array, y1: Float32Array, param: Float32Array): void;
   dscal(n: number, a: number, x: Float64Array, incx: number): void;
-  sscal(n: number, a: number, x: Float64Array, incx: number): void;
+  sscal(n: number, a: number, x: Float32Array, incx: number): void;
   zscal(n: number, a: Float64Array, x: Float64Array, incx: number): void;
-  cscal(n: number, a: Float32Array, x: Float64Array, incx: number): void;
+  cscal(n: number, a: Float32Array, x: Float32Array, incx: number): void;
   dswap(n: number, x: Float64Array, incx: number, y: Float64Array, incy: number): void;
   sswap(n: number, x: Float32Array, incx: number, y: Float32Array, incy: number): void;
   zswap(n: number, x: Float64Array, incx: number, y: Float64Array, incy: number): void;
