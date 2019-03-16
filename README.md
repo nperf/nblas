@@ -1,4 +1,4 @@
-# nBLAS ![version](https://img.shields.io/npm/v/nblas.svg) ![travis](https://img.shields.io/travis/mateogianolio/nblas.svg) [![maintainability](https://api.codeclimate.com/v1/badges/756aff038b767f2e706e/maintainability)](https://codeclimate.com/github/mateogianolio/nblas/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/756aff038b767f2e706e/test_coverage)](https://codeclimate.com/github/mateogianolio/nblas/test_coverage)
+# nBLAS ![version](https://img.shields.io/npm/v/nblas.svg) ![travis](https://img.shields.io/travis/nperf/nblas.svg) [![maintainability](https://api.codeclimate.com/v1/badges/756aff038b767f2e706e/maintainability)](https://codeclimate.com/github/mateogianolio/nblas/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/756aff038b767f2e706e/test_coverage)](https://codeclimate.com/github/mateogianolio/nblas/test_coverage)
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/nperf/nblas.svg)](https://greenkeeper.io/)
 
