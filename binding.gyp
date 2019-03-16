@@ -1,9 +1,9 @@
 {
   "targets": [
     {
-      "target_name": "addon",
+      "target_name": "nblas",
       "sources": [
-        "addon.cc",
+        "src/index.cc",
         "routines/level1/asum.cc",
         "routines/level1/axpy.cc",
         "routines/level1/copy.cc",

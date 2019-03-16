@@ -10,7 +10,7 @@ import { prefix } from './util';
 
 let nblas: INBlas;
 try {
-  nblas = require('../build/Release/addon');
+  nblas = require('../build/Release/nblas');
 } catch (_) {
   nblas = require('./nblas');
 }
