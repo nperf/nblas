@@ -6,7 +6,7 @@ before_install:
 env:
   global:
     - CXX=g++-4.8
-    - CC_TEST_REPORTER_ID=3723d8c83fad0d62970815c780582596b434c352fc64f6b6b3d72599540fb997
+    - CC_TEST_REPORTER_ID=7fead1a8381deb5adf50d0bd753387a4d970472ce301b6ade44f5f8c43d66988
 before_script:
   - npm install -g nyc
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
