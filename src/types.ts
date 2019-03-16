@@ -1,9 +1,10 @@
-type MatrixTrans = 111 | 112 | 113;
-type MatrixUpperLower = 121 | 122;
-type MatrixUnit = 131 | 132;
-type MatrixLeftRight = 141 | 142;
+export type FloatArray = Float64Array | Float32Array;
+export type MatrixTrans = 111 | 112 | 113;
+export type MatrixUpperLower = 121 | 122;
+export type MatrixUnit = 131 | 132;
+export type MatrixLeftRight = 141 | 142;
 
-interface NBlasInterface {
+export interface INBlas {
   [key: string]: any;
 
   dasum(n: number, x: Float64Array, incx: number): number;
@@ -45,6 +46,7 @@ interface NBlasInterface {
   izamax(n: number, x: Float64Array, incx: number): number;
   icamax(n: number, x: Float32Array, incx: number): number;
 
+  // tslint:disable: max-line-length
   dgbmv(trans: MatrixTrans, m: number, n: number, kl: number, ku: number, alpha: number, a: Float64Array, lda: number, x: Float64Array, incx: number, beta: number, y: Float64Array, incy: number): void;
   sgbmv(trans: MatrixTrans, m: number, n: number, kl: number, ku: number, alpha: number, a: Float32Array, lda: number, x: Float32Array, incx: number, beta: number, y: Float32Array, incy: number): void;
   zgbmv(trans: MatrixTrans, m: number, n: number, kl: number, ku: number, alpha: Float64Array, a: Float64Array, lda: number, x: Float64Array, incx: number, beta: Float64Array, y: Float64Array, incy: number): void;
@@ -118,4 +120,39 @@ interface NBlasInterface {
   strsm(side: MatrixLeftRight, uplo: MatrixUpperLower, transa: MatrixTrans, diag: MatrixUnit, m: number, n: number, alpha: number, a: Float32Array, lda: number, b: Float32Array, ldb: number): void;
   ztrsm(side: MatrixLeftRight, uplo: MatrixUpperLower, transa: MatrixTrans, diag: MatrixUnit, m: number, n: number, alpha: Float64Array, a: Float64Array, lda: number, b: Float64Array, ldb: number): void;
   ctrsm(side: MatrixLeftRight, uplo: MatrixUpperLower, transa: MatrixTrans, diag: MatrixUnit, m: number, n: number, alpha: Float32Array, a: Float32Array, lda: number, b: Float32Array, ldb: number): void;
+
+  asum(x: FloatArray): number;
+  axpy(x: FloatArray, y: FloatArray, a?: number): void;
+  copy(x: FloatArray, y: FloatArray): void;
+  dot(x: FloatArray, y: FloatArray): number;
+  nrm2(x: FloatArray): number;
+  rot(x: FloatArray, y: FloatArray, c: number, s: number): void;
+  rotg(a: FloatArray, b: FloatArray, c: FloatArray, s: FloatArray): void;
+  rotm(x: FloatArray, y: FloatArray, param: FloatArray): void;
+  rotmg(d1: FloatArray, d2: FloatArray, x1: FloatArray, y1: FloatArray, param: FloatArray): void;
+  scal(x: FloatArray, a: number): void;
+  swap(x: FloatArray, y: FloatArray): void;
+  iamax(x: FloatArray): number;
+  gbmv(a: FloatArray, x: FloatArray, y: FloatArray, kl?: number, ku?: number, alpha?: number, beta?: number, trans?: MatrixTrans): void;
+  gemv(a: FloatArray, x: FloatArray, y: FloatArray, alpha?: number, beta?: number, trans?: MatrixTrans): void;
+  ger(a: FloatArray, x: FloatArray, y: FloatArray, alpha?: number): void;
+  sbmv(a: FloatArray, x: FloatArray, y: FloatArray, k?: number, uplo?: MatrixUpperLower, alpha?: number, beta?: number): void;
+  spmv(ap: FloatArray, x: FloatArray, y: FloatArray, uplo?: MatrixUpperLower, alpha?: number, beta?: number): void;
+  spr(ap: FloatArray, x: FloatArray, uplo?: MatrixUpperLower, alpha?: number): void;
+  spr2(ap: FloatArray, x: FloatArray, y: FloatArray, uplo?: MatrixUpperLower, alpha?: number): void;
+  symv(a: FloatArray, x: FloatArray, y: FloatArray, uplo?: MatrixUpperLower, alpha?: number, beta?: number): void;
+  syr(a: FloatArray, x: FloatArray, uplo?: MatrixUpperLower, alpha?: number): void;
+  syr2(a: FloatArray, x: FloatArray, y: FloatArray, uplo?: MatrixUpperLower, alpha?: number): void;
+  tbmv(a: FloatArray, x: FloatArray, uplo?: MatrixUpperLower, trans?: MatrixTrans, diag?: MatrixUnit): void;
+  tbsv(a: FloatArray, x: FloatArray, uplo?: MatrixUpperLower, trans?: MatrixTrans, diag?: MatrixUnit): void;
+  tpmv(ap: FloatArray, x: FloatArray, uplo?: MatrixUpperLower, trans?: MatrixTrans, diag?: MatrixUnit): void;
+  tpsv(ap: FloatArray, x: FloatArray, uplo?: MatrixUpperLower, trans?: MatrixTrans, diag?: MatrixUnit): void;
+  trmv(a: FloatArray, x: FloatArray, uplo?: MatrixUpperLower, trans?: MatrixTrans, diag?: MatrixUnit): void;
+  trsv(a: FloatArray, x: FloatArray, uplo?: MatrixUpperLower, trans?: MatrixTrans, diag?: MatrixUnit): void;
+  gemm(a: FloatArray, b: FloatArray, c: FloatArray, m: number, n: number, k: number, transa?: MatrixTrans, transb?: MatrixTrans, alpha?: number, beta?: number): void;
+  symm(a: FloatArray, b: FloatArray, c: FloatArray, m: number, n: number, side?: MatrixLeftRight, uplo?: MatrixUpperLower, alpha?: number, beta?: number): void;
+  syrk(a: FloatArray, c: FloatArray, n: FloatArray, k: number, uplo?: MatrixUpperLower, trans?: MatrixTrans, alpha?: number, beta?: number): void;
+  syr2k(a: FloatArray, b: FloatArray, c: FloatArray, n: number, k: number, uplo?: MatrixUpperLower, trans?: MatrixTrans, alpha?: number, beta?: number): void;
+  trmm(a: FloatArray, b: FloatArray, m: number, n: number, side?: MatrixLeftRight, uplo?: MatrixUpperLower, transa?: MatrixTrans, diag?: MatrixUnit, alpha?: number): void;
+  trsm(a: FloatArray, b: FloatArray, m: number, n: number, side?: MatrixLeftRight, uplo?: MatrixUpperLower, transa?: MatrixTrans, diag?: MatrixUnit, alpha?: number): void;
 }
