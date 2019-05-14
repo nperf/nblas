@@ -2,6 +2,7 @@
   "compilerOptions": {
     "outDir": "./built",
     "target": "es5",
+    "types" : ["mocha", "node"],
     "strict": true,
     "declaration": true,
     "removeComments": true,
