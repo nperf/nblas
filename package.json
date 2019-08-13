@@ -1,6 +1,6 @@
 {
   "name": "nblas",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.",
   "main": "built/index.js",
   "types": "built/index.d.ts",
@@ -8,8 +8,8 @@
     "test": "nyc mocha -r ts-node/register ./src/*.spec.ts",
     "lint": "tslint -p . -c tslint.json 'src/*.ts'",
     "docs": "typedoc --out docs --exclude \"**/*+(.spec).ts\" --target es6 src && touch docs/.nojekyll",
-    "build": "node-gyp rebuild",
-    "prepublish": "tsc",
+    "build": "node-gyp rebuild -j max",
+    "prepublishOnly": "tsc",
     "install": "npm run build"
   },
   "nyc": {
