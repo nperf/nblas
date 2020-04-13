@@ -1,11 +1,13 @@
 language: node_js
 node_js:
-  - "6.9.0"
+  - "lts/*"
 before_install:
   - sudo apt-get install libblas-dev
+install:
+  - npm install
 env:
   global:
-    - CXX=g++-4.8
+    - CXX=g++-4.9
     - CC_TEST_REPORTER_ID=7fead1a8381deb5adf50d0bd753387a4d970472ce301b6ade44f5f8c43d66988
 before_script:
   - npm install -g nyc
@@ -13,7 +15,6 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
-  - npm run lint
   - npm test
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
@@ -22,6 +23,4 @@ addons:
     sources:
     - ubuntu-toolchain-r-test
     packages:
-    - gcc-4.8
-    - g++-4.8
-    - clang
+    - g++-4.9
