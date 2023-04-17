@@ -3,8 +3,13 @@
 
 #include <node.h>
 
-#define GET_CONTENTS(view) \
-(static_cast<unsigned char*>(view->Buffer()->GetContents().Data()) + view->ByteOffset())
+#if V8_MAJOR_VERSION < 8
+  #define GET_CONTENTS(view) \
+  (static_cast<unsigned char*>(view->Buffer()->GetContents().Data()) + view->ByteOffset())
+#else
+  #define GET_CONTENTS(view) \
+  (static_cast<unsigned char*>(view->Buffer()->GetBackingStore()->Data()) + view->ByteOffset())
+#endif
 
 void dasum(const v8::FunctionCallbackInfo<v8::Value>& info);
 void sasum(const v8::FunctionCallbackInfo<v8::Value>& info);
