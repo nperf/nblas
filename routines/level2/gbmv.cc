@@ -13,7 +13,7 @@ void dgbmv(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	const double *x = reinterpret_cast<double*>(GET_CONTENTS(info[8].As<v8::Float64Array>()));
 	const int inc_x = info[9].As<v8::Integer>()->Value();
 	const double beta = info[10].As<v8::Number>()->Value();
-	double *y = reinterpret_cast<double*>(info[11].As<v8::Float64Array>()->Buffer()->GetContents().Data());
+	double *y = reinterpret_cast<double*>(GET_CONTENTS(info[11].As<v8::Float64Array>()));
 	const int inc_y = info[12].As<v8::Integer>()->Value();
 	cblas_dgbmv(CblasRowMajor, trans, m, n, kl, ku, alpha, a, lda, x, inc_x, beta, y, inc_y);
 }
@@ -30,7 +30,7 @@ void sgbmv(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	const float *x = reinterpret_cast<float*>(GET_CONTENTS(info[8].As<v8::Float32Array>()));
 	const int inc_x = info[9].As<v8::Integer>()->Value();
 	const float beta = info[10].As<v8::Number>()->Value();
-	float *y = reinterpret_cast<float*>(info[11].As<v8::Float32Array>()->Buffer()->GetContents().Data());
+	float *y = reinterpret_cast<float*>(GET_CONTENTS(info[11].As<v8::Float32Array>()));
 	const int inc_y = info[12].As<v8::Integer>()->Value();
 	cblas_sgbmv(CblasRowMajor, trans, m, n, kl, ku, alpha, a, lda, x, inc_x, beta, y, inc_y);
 }
@@ -46,8 +46,8 @@ void zgbmv(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	const int lda = info[7].As<v8::Integer>()->Value();
 	const double *x = reinterpret_cast<double*>(GET_CONTENTS(info[8].As<v8::Float64Array>()));
 	const int inc_x = info[9].As<v8::Integer>()->Value();
-	const double *beta = reinterpret_cast<double*>(info[10].As<v8::Float64Array>()->Buffer()->GetContents().Data());
-	double *y = reinterpret_cast<double*>(info[11].As<v8::Float64Array>()->Buffer()->GetContents().Data());
+	const double *beta = reinterpret_cast<double*>(GET_CONTENTS(info[10].As<v8::Float64Array>()));
+	double *y = reinterpret_cast<double*>(GET_CONTENTS(info[11].As<v8::Float64Array>()));
 	const int inc_y = info[12].As<v8::Integer>()->Value();
 	cblas_zgbmv(CblasRowMajor, trans, m, n, kl, ku, alpha, a, lda, x, inc_x, beta, y, inc_y);
 }
@@ -63,8 +63,8 @@ void cgbmv(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	const int lda = info[7].As<v8::Integer>()->Value();
 	const float *x = reinterpret_cast<float*>(GET_CONTENTS(info[8].As<v8::Float32Array>()));
 	const int inc_x = info[9].As<v8::Integer>()->Value();
-	const float *beta = reinterpret_cast<float*>(info[10].As<v8::Float32Array>()->Buffer()->GetContents().Data());
-	float *y = reinterpret_cast<float*>(info[11].As<v8::Float32Array>()->Buffer()->GetContents().Data());
+	const float *beta = reinterpret_cast<float*>(GET_CONTENTS(info[10].As<v8::Float32Array>()));
+	float *y = reinterpret_cast<float*>(GET_CONTENTS(info[11].As<v8::Float32Array>()));
 	const int inc_y = info[12].As<v8::Integer>()->Value();
 	cblas_cgbmv(CblasRowMajor, trans, m, n, kl, ku, alpha, a, lda, x, inc_x, beta, y, inc_y);
 }
