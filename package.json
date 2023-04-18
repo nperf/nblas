@@ -7,8 +7,7 @@
   "scripts": {
     "test": "jest",
     "docs": "typedoc --out docs --exclude \"**/*+(.spec).ts\" src && touch docs/.nojekyll",
-    "build": "node-gyp rebuild -j max",
-    "prepublishOnly": "tsc",
+    "build": "node-gyp rebuild -j max && rm -rf dist && tsc",
     "install": "npm run build"
   },
   "nyc": {
