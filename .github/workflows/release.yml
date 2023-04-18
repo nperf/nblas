@@ -1,0 +1,66 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: |
+          git config --global user.name 'Mateo Gianolio'
+          git config --global user.email 'mateogianolio@users.noreply.github.com'
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Setup C++ environment on linux
+        uses: kurocha/setup-cpp@v1
+
+      - name: Install dependencies on linux
+        run: sudo apt-get install -yq libblas-dev
+
+      - name: Install package dependencies
+        run: npm ci
+
+      - name: Build dist/
+        run: npm run build
+
+      - name: Generate docs/
+        run: npm run docs
+
+      - name: Test
+        run: npm test
+
+      - name: Publish coverage to CodeClimate
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+        with:
+          coverageLocations: ${{github.workspace}}/coverage/lcov.info:lcov
+
+      - name: Publish dist/ and docs/
+        run: |
+          git add dist docs
+          git commit -m "Publish dist and docs"
+          git push origin master
+
+      - id: publish
+        name: Publish package to npm
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+
+      - if: steps.publish.outputs.type != 'none'
+        run: |
+          git tag ${{ steps.publish.outputs.version }}
+          git push origin ${{ steps.publish.outputs.version }}
