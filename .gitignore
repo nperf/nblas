@@ -2,6 +2,6 @@
 node_modules
 coverage
 .DS_Store
-built
+dist
 build
 .vscode
