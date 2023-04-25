@@ -193,7 +193,6 @@ export const gbmv: typeof nblas.gbmv = (
   beta: number = 0,
   trans: MatrixTrans = NoTrans
 ): void =>
-  // @ts-ignore
   nblas[`${prefix(x)}gbmv`](
     trans,
     x.length,
@@ -201,6 +200,7 @@ export const gbmv: typeof nblas.gbmv = (
     kl,
     ku,
     alpha,
+    // @ts-ignore
     a,
     x.length,
     x,
