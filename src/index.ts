@@ -39,10 +39,9 @@ export const dasum: typeof nblas.dasum = nblas.dasum;
 export const sasum: typeof nblas.sasum = nblas.sasum;
 export const dzasum: typeof nblas.dzasum = nblas.dzasum;
 export const scasum: typeof nblas.scasum = nblas.scasum;
-export const asum: typeof nblas.asum =
-  (x: FloatArray): number =>
-    // @ts-ignore
-    nblas[`${prefix(x)}asum`](x.length, x, 1);
+export const asum: typeof nblas.asum = (x: FloatArray): number =>
+  // @ts-ignore
+  nblas[`${prefix(x)}asum`](x.length, x, 1);
 
 /**
  * vector-vector operation defined as
@@ -52,10 +51,9 @@ export const daxpy: typeof nblas.daxpy = nblas.daxpy;
 export const saxpy: typeof nblas.saxpy = nblas.saxpy;
 export const zaxpy: typeof nblas.zaxpy = nblas.zaxpy;
 export const caxpy: typeof nblas.caxpy = nblas.caxpy;
-export const axpy: typeof nblas.axpy =
-  (x: FloatArray, y: FloatArray, a: number = 1): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}axpy`](x.length, a, x, 1, y, 1);
+export const axpy: typeof nblas.axpy = (x: FloatArray, y: FloatArray, a: number = 1): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}axpy`](x.length, a, x, 1, y, 1);
 
 /**
  * vector-vector operation defined as
@@ -65,10 +63,9 @@ export const dcopy: typeof nblas.dcopy = nblas.dcopy;
 export const scopy: typeof nblas.scopy = nblas.scopy;
 export const zcopy: typeof nblas.zcopy = nblas.zcopy;
 export const ccopy: typeof nblas.ccopy = nblas.ccopy;
-export const copy: typeof nblas.copy =
-  (x: FloatArray, y: FloatArray): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}copy`](x.length, x, 1, y, 1);
+export const copy: typeof nblas.copy = (x: FloatArray, y: FloatArray): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}copy`](x.length, x, 1, y, 1);
 
 /**
  * vector-vector reduction operation defined as
@@ -76,10 +73,9 @@ export const copy: typeof nblas.copy =
  */
 export const ddot: typeof nblas.ddot = nblas.ddot;
 export const sdot: typeof nblas.sdot = nblas.sdot;
-export const dot: typeof nblas.dot =
-  (x: FloatArray, y: FloatArray): number =>
-    // @ts-ignore
-    nblas[`${prefix(x)}dot`](x.length, x, 1, y, 1);
+export const dot: typeof nblas.dot = (x: FloatArray, y: FloatArray): number =>
+  // @ts-ignore
+  nblas[`${prefix(x)}dot`](x.length, x, 1, y, 1);
 
 /**
  * vector reduction operation defined as
@@ -89,50 +85,56 @@ export const dnrm2: typeof nblas.dnrm2 = nblas.dnrm2;
 export const snrm2: typeof nblas.snrm2 = nblas.snrm2;
 export const dznrm2: typeof nblas.dznrm2 = nblas.dznrm2;
 export const scnrm2: typeof nblas.scnrm2 = nblas.scnrm2;
-export const nrm2: typeof nblas.nrm2 =
-  (x: FloatArray): number =>
-    // @ts-ignore
-    nblas[`${prefix(x)}nrm2`](x.length, x, 1);
+export const nrm2: typeof nblas.nrm2 = (x: FloatArray): number =>
+  // @ts-ignore
+  nblas[`${prefix(x)}nrm2`](x.length, x, 1);
 
 /**
  * rotation of points in the plane
  */
 export const drot: typeof nblas.drot = nblas.drot;
 export const srot: typeof nblas.srot = nblas.srot;
-export const rot: typeof nblas.rot =
-  (x: FloatArray, y: FloatArray, c: number, s: number): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}rot`](x.length, x, 1, y, 1, c, s);
+export const rot: typeof nblas.rot = (x: FloatArray, y: FloatArray, c: number, s: number): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}rot`](x.length, x, 1, y, 1, c, s);
 
 /**
  * computes the parameters for a Givens rotation
  */
 export const drotg: typeof nblas.drotg = nblas.drotg;
 export const srotg: typeof nblas.srotg = nblas.srotg;
-export const rotg: typeof nblas.rotg =
-  (a: FloatArray, b: FloatArray, c: FloatArray, s: FloatArray): void =>
-    // @ts-ignore
-    nblas[`${prefix(a)}rotg`](a, b, c, s);
+export const rotg: typeof nblas.rotg = (
+  a: FloatArray,
+  b: FloatArray,
+  c: FloatArray,
+  s: FloatArray
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(a)}rotg`](a, b, c, s);
 
 /**
  * performs modified Givens rotation of points in the plane
  */
 export const drotm: typeof nblas.drotm = nblas.drotm;
 export const srotm: typeof nblas.srotm = nblas.srotm;
-export const rotm: typeof nblas.rotm =
-  (x: FloatArray, y: FloatArray, param: FloatArray): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}rotm`](x.length, x, 1, y, 1, param);
+export const rotm: typeof nblas.rotm = (x: FloatArray, y: FloatArray, param: FloatArray): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}rotm`](x.length, x, 1, y, 1, param);
 
 /**
  * computes the parameters for a modified Givens rotation.
  */
 export const drotmg: typeof nblas.drotmg = nblas.drotmg;
 export const srotmg: typeof nblas.srotmg = nblas.srotmg;
-export const rotmg: typeof nblas.rotmg =
-  (d1: FloatArray, d2: FloatArray, x1: FloatArray, y1: FloatArray, param: FloatArray): void =>
-    // @ts-ignore
-    nblas[`${prefix(d1)}rotmg`](d1, d2, x1, y1, param);
+export const rotmg: typeof nblas.rotmg = (
+  d1: FloatArray,
+  d2: FloatArray,
+  x1: FloatArray,
+  y1: FloatArray,
+  param: FloatArray
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(d1)}rotmg`](d1, d2, x1, y1, param);
 
 /**
  * vector operation defined as
@@ -142,10 +144,9 @@ export const dscal: typeof nblas.dscal = nblas.dscal;
 export const sscal: typeof nblas.sscal = nblas.sscal;
 export const zscal: typeof nblas.zscal = nblas.zscal;
 export const cscal: typeof nblas.cscal = nblas.cscal;
-export const scal: typeof nblas.scal =
-  (x: FloatArray, a: number): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}scal`](x.length, a, x, 1);
+export const scal: typeof nblas.scal = (x: FloatArray, a: number): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}scal`](x.length, a, x, 1);
 
 /**
  * given two vectors x and y, the vectors y and x swapped, each replacing the other.
@@ -154,10 +155,9 @@ export const dswap: typeof nblas.dswap = nblas.dswap;
 export const sswap: typeof nblas.sswap = nblas.sswap;
 export const zswap: typeof nblas.zswap = nblas.zswap;
 export const cswap: typeof nblas.cswap = nblas.cswap;
-export const swap: typeof nblas.swap =
-  (x: FloatArray, y: FloatArray): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}swap`](x.length, x, 1, y, 1);
+export const swap: typeof nblas.swap = (x: FloatArray, y: FloatArray): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}swap`](x.length, x, 1, y, 1);
 
 /**
  * finds the index of the element with maximum absolute value.
@@ -166,10 +166,9 @@ export const idamax: typeof nblas.idamax = nblas.idamax;
 export const isamax: typeof nblas.isamax = nblas.isamax;
 export const izamax: typeof nblas.izamax = nblas.izamax;
 export const icamax: typeof nblas.icamax = nblas.icamax;
-export const iamax: typeof nblas.iamax =
-  (x: FloatArray): number =>
-    // @ts-ignore
-    nblas[`i${prefix(x)}amax`](x.length, x, 1);
+export const iamax: typeof nblas.iamax = (x: FloatArray): number =>
+  // @ts-ignore
+  nblas[`i${prefix(x)}amax`](x.length, x, 1);
 
 // BLAS Level 2 Routines
 
@@ -184,11 +183,32 @@ export const dgbmv: typeof nblas.dgbmv = nblas.dgbmv;
 export const sgbmv: typeof nblas.sgbmv = nblas.sgbmv;
 export const zgbmv: typeof nblas.zgbmv = nblas.zgbmv;
 export const cgbmv: typeof nblas.cgbmv = nblas.cgbmv;
-export const gbmv: typeof nblas.gbmv =
-  (a: FloatArray, x: FloatArray, y: FloatArray,
-   kl: number = 0, ku: number = 0, alpha: number = 1, beta: number = 0, trans: MatrixTrans = NoTrans): void =>
+export const gbmv: typeof nblas.gbmv = (
+  a: FloatArray,
+  x: FloatArray,
+  y: FloatArray,
+  kl: number = 0,
+  ku: number = 0,
+  alpha: number = 1,
+  beta: number = 0,
+  trans: MatrixTrans = NoTrans
+): void =>
+  nblas[`${prefix(x)}gbmv`](
+    trans,
+    x.length,
+    y.length,
+    kl,
+    ku,
+    alpha,
     // @ts-ignore
-    nblas[`${prefix(x)}gbmv`](trans, x.length, y.length, kl, ku, alpha, a, x.length, x, 1, beta, y, 1);
+    a,
+    x.length,
+    x,
+    1,
+    beta,
+    y,
+    1
+  );
 
 /**
  * matrix-vector operation defined as
@@ -201,11 +221,16 @@ export const dgemv: typeof nblas.dgemv = nblas.dgemv;
 export const sgemv: typeof nblas.sgemv = nblas.sgemv;
 export const zgemv: typeof nblas.zgemv = nblas.zgemv;
 export const cgemv: typeof nblas.cgemv = nblas.cgemv;
-export const gemv: typeof nblas.gemv =
-  (a: FloatArray, x: FloatArray, y: FloatArray,
-   alpha: number = 1, beta: number = 0, trans: MatrixTrans = NoTrans): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}gemv`](trans, x.length, y.length, alpha, a, x.length, x, 1, beta, y, 1);
+export const gemv: typeof nblas.gemv = (
+  a: FloatArray,
+  x: FloatArray,
+  y: FloatArray,
+  alpha: number = 1,
+  beta: number = 0,
+  trans: MatrixTrans = NoTrans
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}gemv`](trans, x.length, y.length, alpha, a, x.length, x, 1, beta, y, 1);
 
 /**
  * matrix-vector operation defined as
@@ -214,10 +239,14 @@ export const gemv: typeof nblas.gemv =
  */
 export const dger: typeof nblas.dger = nblas.dger;
 export const sger: typeof nblas.sger = nblas.sger;
-export const ger: typeof nblas.ger =
-  (a: FloatArray, x: FloatArray, y: FloatArray, alpha: number = 1): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}ger`](x.length, y.length, alpha, x, 1, y, 1, a, x.length);
+export const ger: typeof nblas.ger = (
+  a: FloatArray,
+  x: FloatArray,
+  y: FloatArray,
+  alpha: number = 1
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}ger`](x.length, y.length, alpha, x, 1, y, 1, a, x.length);
 
 /**
  * matrix-vector operation defined as
@@ -226,11 +255,17 @@ export const ger: typeof nblas.ger =
  */
 export const dsbmv: typeof nblas.dsbmv = nblas.dsbmv;
 export const ssbmv: typeof nblas.ssbmv = nblas.ssbmv;
-export const sbmv: typeof nblas.sbmv =
-  (a: FloatArray, x: FloatArray, y: FloatArray,
-   k: number = 0, uplo: MatrixUpperLower = Upper, alpha: number = 1, beta: number = 0): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}sbmv`](uplo, x.length, k, alpha, a, x.length, x, 1, beta, y, 1);
+export const sbmv: typeof nblas.sbmv = (
+  a: FloatArray,
+  x: FloatArray,
+  y: FloatArray,
+  k: number = 0,
+  uplo: MatrixUpperLower = Upper,
+  alpha: number = 1,
+  beta: number = 0
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}sbmv`](uplo, x.length, k, alpha, a, x.length, x, 1, beta, y, 1);
 
 /**
  * matrix-vector operation defined as
@@ -241,11 +276,16 @@ export const sbmv: typeof nblas.sbmv =
  */
 export const dspmv: typeof nblas.dspmv = nblas.dspmv;
 export const sspmv: typeof nblas.sspmv = nblas.sspmv;
-export const spmv: typeof nblas.spmv =
-  (ap: FloatArray, x: FloatArray, y: FloatArray,
-   uplo: MatrixUpperLower = Upper, alpha: number = 1, beta: number = 0): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}spmv`](uplo, x.length, alpha, ap, x, 1, beta, y, 1);
+export const spmv: typeof nblas.spmv = (
+  ap: FloatArray,
+  x: FloatArray,
+  y: FloatArray,
+  uplo: MatrixUpperLower = Upper,
+  alpha: number = 1,
+  beta: number = 0
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}spmv`](uplo, x.length, alpha, ap, x, 1, beta, y, 1);
 
 /**
  * matrix-vector operation defined as
@@ -254,11 +294,14 @@ export const spmv: typeof nblas.spmv =
  */
 export const dspr: typeof nblas.dspr = nblas.dspr;
 export const sspr: typeof nblas.sspr = nblas.sspr;
-export const spr: typeof nblas.spr =
-  (ap: FloatArray, x: FloatArray,
-   uplo: MatrixUpperLower = Upper, alpha: number = 1): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}spr`](uplo, x.length, alpha, x, 1, ap);
+export const spr: typeof nblas.spr = (
+  ap: FloatArray,
+  x: FloatArray,
+  uplo: MatrixUpperLower = Upper,
+  alpha: number = 1
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}spr`](uplo, x.length, alpha, x, 1, ap);
 
 /**
  * matrix-vector operation defined as
@@ -267,11 +310,15 @@ export const spr: typeof nblas.spr =
  */
 export const dspr2: typeof nblas.dspr2 = nblas.dspr2;
 export const sspr2: typeof nblas.sspr2 = nblas.sspr2;
-export const spr2: typeof nblas.spr2 =
-  (ap: FloatArray, x: FloatArray, y: FloatArray,
-   uplo: MatrixUpperLower = Upper, alpha: number = 1): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}spr2`](uplo, x.length, alpha, x, 1, y, 1, ap);
+export const spr2: typeof nblas.spr2 = (
+  ap: FloatArray,
+  x: FloatArray,
+  y: FloatArray,
+  uplo: MatrixUpperLower = Upper,
+  alpha: number = 1
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}spr2`](uplo, x.length, alpha, x, 1, y, 1, ap);
 
 /**
  * matrix-vector operation defined as
@@ -280,11 +327,16 @@ export const spr2: typeof nblas.spr2 =
  */
 export const dsymv: typeof nblas.dsymv = nblas.dsymv;
 export const ssymv: typeof nblas.ssymv = nblas.ssymv;
-export const symv: typeof nblas.symv =
-  (a: FloatArray, x: FloatArray, y: FloatArray,
-   uplo: MatrixUpperLower = Upper, alpha: number = 1, beta: number = 0): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}symv`](uplo, x.length, alpha, a, x.length, x, 1, beta, y, 1);
+export const symv: typeof nblas.symv = (
+  a: FloatArray,
+  x: FloatArray,
+  y: FloatArray,
+  uplo: MatrixUpperLower = Upper,
+  alpha: number = 1,
+  beta: number = 0
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}symv`](uplo, x.length, alpha, a, x.length, x, 1, beta, y, 1);
 
 /**
  * matrix-vector operation defined as
@@ -293,11 +345,14 @@ export const symv: typeof nblas.symv =
  */
 export const dsyr: typeof nblas.dsyr = nblas.dsyr;
 export const ssyr: typeof nblas.ssyr = nblas.ssyr;
-export const syr: typeof nblas.syr =
-  (a: FloatArray, x: FloatArray,
-   uplo: MatrixUpperLower = Upper, alpha: number = 1): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}syr`](uplo, x.length, alpha, x, 1, a, x.length);
+export const syr: typeof nblas.syr = (
+  a: FloatArray,
+  x: FloatArray,
+  uplo: MatrixUpperLower = Upper,
+  alpha: number = 1
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}syr`](uplo, x.length, alpha, x, 1, a, x.length);
 
 /**
  * matrix-vector operation defined as
@@ -306,11 +361,15 @@ export const syr: typeof nblas.syr =
  */
 export const dsyr2: typeof nblas.dsyr2 = nblas.dsyr2;
 export const ssyr2: typeof nblas.ssyr2 = nblas.ssyr2;
-export const syr2: typeof nblas.syr2 =
-  (a: FloatArray, x: FloatArray, y: FloatArray,
-   uplo: MatrixUpperLower = Upper, alpha: number = 1): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}syr2`](uplo, x.length, alpha, x, 1, y, 1, a, x.length);
+export const syr2: typeof nblas.syr2 = (
+  a: FloatArray,
+  x: FloatArray,
+  y: FloatArray,
+  uplo: MatrixUpperLower = Upper,
+  alpha: number = 1
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}syr2`](uplo, x.length, alpha, x, 1, y, 1, a, x.length);
 
 /**
  * matrix-vector operation defined as
@@ -323,11 +382,15 @@ export const dtbmv: typeof nblas.dtbmv = nblas.dtbmv;
 export const stbmv: typeof nblas.stbmv = nblas.stbmv;
 export const ztbmv: typeof nblas.ztbmv = nblas.ztbmv;
 export const ctbmv: typeof nblas.ctbmv = nblas.ctbmv;
-export const tbmv: typeof nblas.tbmv =
-  (a: FloatArray, x: FloatArray,
-   uplo: MatrixUpperLower = Upper, trans: MatrixTrans = NoTrans, diag: MatrixUnit = NonUnit): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}tbmv`](uplo, trans, diag, x.length, 0, a, x.length, x, 1);
+export const tbmv: typeof nblas.tbmv = (
+  a: FloatArray,
+  x: FloatArray,
+  uplo: MatrixUpperLower = Upper,
+  trans: MatrixTrans = NoTrans,
+  diag: MatrixUnit = NonUnit
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}tbmv`](uplo, trans, diag, x.length, 0, a, x.length, x, 1);
 
 /**
  * solves one of the following systems of equations
@@ -340,11 +403,15 @@ export const dtbsv: typeof nblas.dtbsv = nblas.dtbsv;
 export const stbsv: typeof nblas.stbsv = nblas.stbsv;
 export const ztbsv: typeof nblas.ztbsv = nblas.ztbsv;
 export const ctbsv: typeof nblas.ctbsv = nblas.ctbsv;
-export const tbsv: typeof nblas.tbsv =
-  (a: FloatArray, x: FloatArray,
-   uplo: MatrixUpperLower = Upper, trans: MatrixTrans = NoTrans, diag: MatrixUnit = NonUnit): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}tbsv`](uplo, trans, diag, x.length, 0, a, x.length, x, 1);
+export const tbsv: typeof nblas.tbsv = (
+  a: FloatArray,
+  x: FloatArray,
+  uplo: MatrixUpperLower = Upper,
+  trans: MatrixTrans = NoTrans,
+  diag: MatrixUnit = NonUnit
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}tbsv`](uplo, trans, diag, x.length, 0, a, x.length, x, 1);
 
 /**
  * matrix-vector operation defined as
@@ -357,11 +424,15 @@ export const dtpmv: typeof nblas.dtpmv = nblas.dtpmv;
 export const stpmv: typeof nblas.stpmv = nblas.stpmv;
 export const ztpmv: typeof nblas.ztpmv = nblas.ztpmv;
 export const ctpmv: typeof nblas.ctpmv = nblas.ctpmv;
-export const tpmv: typeof nblas.tpmv =
-  (ap: FloatArray, x: FloatArray,
-   uplo: MatrixUpperLower = Upper, trans: MatrixTrans = NoTrans, diag: MatrixUnit = NonUnit): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}tpmv`](uplo, trans, diag, x.length, ap, x, 1);
+export const tpmv: typeof nblas.tpmv = (
+  ap: FloatArray,
+  x: FloatArray,
+  uplo: MatrixUpperLower = Upper,
+  trans: MatrixTrans = NoTrans,
+  diag: MatrixUnit = NonUnit
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}tpmv`](uplo, trans, diag, x.length, ap, x, 1);
 
 /**
  * solves one of the following systems of equations
@@ -374,11 +445,15 @@ export const dtpsv: typeof nblas.dtpsv = nblas.dtpsv;
 export const stpsv: typeof nblas.stpsv = nblas.stpsv;
 export const ztpsv: typeof nblas.ztpsv = nblas.ztpsv;
 export const ctpsv: typeof nblas.ctpsv = nblas.ctpsv;
-export const tpsv: typeof nblas.tpsv =
-  (ap: FloatArray, x: FloatArray,
-   uplo: MatrixUpperLower = Upper, trans: MatrixTrans = NoTrans, diag: MatrixUnit = NonUnit): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}tpsv`](uplo, trans, diag, x.length, ap, x, 1);
+export const tpsv: typeof nblas.tpsv = (
+  ap: FloatArray,
+  x: FloatArray,
+  uplo: MatrixUpperLower = Upper,
+  trans: MatrixTrans = NoTrans,
+  diag: MatrixUnit = NonUnit
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}tpsv`](uplo, trans, diag, x.length, ap, x, 1);
 
 /**
  * matrix-vector operation defined as
@@ -391,11 +466,15 @@ export const dtrmv: typeof nblas.dtrmv = nblas.dtrmv;
 export const strmv: typeof nblas.strmv = nblas.strmv;
 export const ztrmv: typeof nblas.ztrmv = nblas.ztrmv;
 export const ctrmv: typeof nblas.ctrmv = nblas.ctrmv;
-export const trmv: typeof nblas.trmv =
-  (a: FloatArray, x: FloatArray,
-   uplo: MatrixUpperLower = Upper, trans: MatrixTrans = NoTrans, diag: MatrixUnit = NonUnit): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}trmv`](uplo, trans, diag, x.length, a, x.length, x, 1);
+export const trmv: typeof nblas.trmv = (
+  a: FloatArray,
+  x: FloatArray,
+  uplo: MatrixUpperLower = Upper,
+  trans: MatrixTrans = NoTrans,
+  diag: MatrixUnit = NonUnit
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}trmv`](uplo, trans, diag, x.length, a, x.length, x, 1);
 
 /**
  * solves one of the following systems of equations
@@ -408,11 +487,15 @@ export const dtrsv: typeof nblas.dtrsv = nblas.dtrsv;
 export const strsv: typeof nblas.strsv = nblas.strsv;
 export const ztrsv: typeof nblas.ztrsv = nblas.ztrsv;
 export const ctrsv: typeof nblas.ctrsv = nblas.ctrsv;
-export const trsv: typeof nblas.trsv =
-  (a: FloatArray, x: FloatArray,
-   uplo: MatrixUpperLower = Upper, trans: MatrixTrans = NoTrans, diag: MatrixUnit = NonUnit): void =>
-    // @ts-ignore
-    nblas[`${prefix(x)}trsv`](uplo, trans, diag, x.length, a, x.length, x, 1);
+export const trsv: typeof nblas.trsv = (
+  a: FloatArray,
+  x: FloatArray,
+  uplo: MatrixUpperLower = Upper,
+  trans: MatrixTrans = NoTrans,
+  diag: MatrixUnit = NonUnit
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(x)}trsv`](uplo, trans, diag, x.length, a, x.length, x, 1);
 
 // BLAS Level 3 Routines
 
@@ -424,11 +507,20 @@ export const dgemm: typeof nblas.dgemm = nblas.dgemm;
 export const sgemm: typeof nblas.sgemm = nblas.sgemm;
 export const zgemm: typeof nblas.zgemm = nblas.zgemm;
 export const cgemm: typeof nblas.cgemm = nblas.cgemm;
-export const gemm: typeof nblas.gemm =
-  (a: FloatArray, b: FloatArray, c: FloatArray, m: number, n: number, k: number,
-   transa: MatrixTrans = NoTrans, transb: MatrixTrans = NoTrans, alpha: number = 1, beta: number = 0): void =>
-    // @ts-ignore
-    nblas[`${prefix(a)}gemm`](transa, transb, m, n, k, alpha, a, k, b, n, beta, c, n);
+export const gemm: typeof nblas.gemm = (
+  a: FloatArray,
+  b: FloatArray,
+  c: FloatArray,
+  m: number,
+  n: number,
+  k: number,
+  transa: MatrixTrans = NoTrans,
+  transb: MatrixTrans = NoTrans,
+  alpha: number = 1,
+  beta: number = 0
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(a)}gemm`](transa, transb, m, n, k, alpha, a, k, b, n, beta, c, n);
 
 /**
  * computes a scalar-matrix-matrix product with one symmetric matrix and
@@ -442,11 +534,19 @@ export const dsymm: typeof nblas.dsymm = nblas.dsymm;
 export const ssymm: typeof nblas.ssymm = nblas.ssymm;
 export const zsymm: typeof nblas.zsymm = nblas.zsymm;
 export const csymm: typeof nblas.csymm = nblas.csymm;
-export const symm: typeof nblas.symm =
-  (a: FloatArray, b: FloatArray, c: FloatArray, m: number, n: number,
-   side: MatrixLeftRight = Left, uplo: MatrixUpperLower = Upper, alpha: number = 1, beta: number = 0): void =>
-    // @ts-ignore
-    nblas[`${prefix(a)}symm`](side, uplo, m, n, alpha, a, m, b, n, beta, c, m);
+export const symm: typeof nblas.symm = (
+  a: FloatArray,
+  b: FloatArray,
+  c: FloatArray,
+  m: number,
+  n: number,
+  side: MatrixLeftRight = Left,
+  uplo: MatrixUpperLower = Upper,
+  alpha: number = 1,
+  beta: number = 0
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(a)}symm`](side, uplo, m, n, alpha, a, m, b, n, beta, c, m);
 
 /**
  * performs a rank-k matrix-matrix operation for a symmetric matrix C using a general matrix A defined as
@@ -459,11 +559,18 @@ export const dsyrk: typeof nblas.dsyrk = nblas.dsyrk;
 export const ssyrk: typeof nblas.ssyrk = nblas.ssyrk;
 export const zsyrk: typeof nblas.zsyrk = nblas.zsyrk;
 export const csyrk: typeof nblas.csyrk = nblas.csyrk;
-export const syrk: typeof nblas.syrk =
-  (a: FloatArray, c: FloatArray, n: FloatArray, k: number,
-   uplo: MatrixUpperLower = Upper, trans: MatrixTrans = NoTrans, alpha: number = 1, beta: number = 0): void =>
-    // @ts-ignore
-    nblas[`${prefix(a)}syrk`](uplo, trans, n, k, alpha, a, n, beta, c, n);
+export const syrk: typeof nblas.syrk = (
+  a: FloatArray,
+  c: FloatArray,
+  n: FloatArray,
+  k: number,
+  uplo: MatrixUpperLower = Upper,
+  trans: MatrixTrans = NoTrans,
+  alpha: number = 1,
+  beta: number = 0
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(a)}syrk`](uplo, trans, n, k, alpha, a, n, beta, c, n);
 
 /**
  * perform a rank-2k matrix-matrix operation for a symmetric matrix C using general matrices A and B defined as
@@ -476,11 +583,19 @@ export const dsyr2k: typeof nblas.dsyr2k = nblas.dsyr2k;
 export const ssyr2k: typeof nblas.ssyr2k = nblas.ssyr2k;
 export const zsyr2k: typeof nblas.zsyr2k = nblas.zsyr2k;
 export const csyr2k: typeof nblas.csyr2k = nblas.csyr2k;
-export const syr2k: typeof nblas.syr2k =
-  (a: FloatArray, b: FloatArray, c: FloatArray, n: number, k: number,
-   uplo: MatrixUpperLower = Upper, trans: MatrixTrans = NoTrans, alpha: number = 1, beta: number = 0): void =>
-    // @ts-ignore
-    nblas[`${prefix(a)}syr2k`](uplo, trans, n, k, alpha, a, n, b, n, beta, c, n);
+export const syr2k: typeof nblas.syr2k = (
+  a: FloatArray,
+  b: FloatArray,
+  c: FloatArray,
+  n: number,
+  k: number,
+  uplo: MatrixUpperLower = Upper,
+  trans: MatrixTrans = NoTrans,
+  alpha: number = 1,
+  beta: number = 0
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(a)}syr2k`](uplo, trans, n, k, alpha, a, n, b, n, beta, c, n);
 
 /**
  * computes a scalar-matrix-matrix product with one triangular matrix defined as
@@ -493,12 +608,19 @@ export const dtrmm: typeof nblas.dtrmm = nblas.dtrmm;
 export const strmm: typeof nblas.strmm = nblas.strmm;
 export const ztrmm: typeof nblas.ztrmm = nblas.ztrmm;
 export const ctrmm: typeof nblas.ctrmm = nblas.ctrmm;
-export const trmm: typeof nblas.trmm =
-  (a: FloatArray, b: FloatArray, m: number, n: number,
-   side: MatrixLeftRight = Left, uplo: MatrixUpperLower = Upper,
-   transa: MatrixTrans = NoTrans, diag: MatrixUnit = NonUnit, alpha: number = 1): void =>
-    // @ts-ignore
-    nblas[`${prefix(a)}trmm`](side, uplo, transa, diag, m, n, alpha, a, m, b, m);
+export const trmm: typeof nblas.trmm = (
+  a: FloatArray,
+  b: FloatArray,
+  m: number,
+  n: number,
+  side: MatrixLeftRight = Left,
+  uplo: MatrixUpperLower = Upper,
+  transa: MatrixTrans = NoTrans,
+  diag: MatrixUnit = NonUnit,
+  alpha: number = 1
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(a)}trmm`](side, uplo, transa, diag, m, n, alpha, a, m, b, m);
 
 /**
  * solves one of the following matrix equations
@@ -511,9 +633,16 @@ export const dtrsm: typeof nblas.dtrsm = nblas.dtrsm;
 export const strsm: typeof nblas.strsm = nblas.strsm;
 export const ztrsm: typeof nblas.ztrsm = nblas.ztrsm;
 export const ctrsm: typeof nblas.ctrsm = nblas.ctrsm;
-export const trsm: typeof nblas.trsm =
-  (a: FloatArray, b: FloatArray, m: number, n: number,
-   side: MatrixLeftRight = Left, uplo: MatrixUpperLower = Upper,
-   transa: MatrixTrans = NoTrans, diag: MatrixUnit = NonUnit, alpha: number = 1): void =>
-    // @ts-ignore
-    nblas[`${prefix(a)}trsm`](side, uplo, transa, diag, m, n, alpha, a, m, b, m);
+export const trsm: typeof nblas.trsm = (
+  a: FloatArray,
+  b: FloatArray,
+  m: number,
+  n: number,
+  side: MatrixLeftRight = Left,
+  uplo: MatrixUpperLower = Upper,
+  transa: MatrixTrans = NoTrans,
+  diag: MatrixUnit = NonUnit,
+  alpha: number = 1
+): void =>
+  // @ts-ignore
+  nblas[`${prefix(a)}trsm`](side, uplo, transa, diag, m, n, alpha, a, m, b, m);

@@ -1,19 +1,6 @@
-import {
-  deepStrictEqual,
-  strictEqual,
-} from 'assert';
+import { deepStrictEqual, strictEqual } from 'assert';
 
-import {
-  asum,
-  axpy,
-  copy,
-  dot,
-  gemm,
-  iamax,
-  nrm2,
-  scal,
-  swap,
-} from './';
+import { asum, axpy, copy, dot, gemm, iamax, nrm2, scal, swap } from './';
 
 describe('?asum', () => {
   it('works for different sizes', () => {

@@ -3,7 +3,7 @@
     "outDir": "./dist",
     "target": "esnext",
     "module": "commonjs",
-    "types" : ["jest", "node"],
+    "types": ["jest", "node"],
     "strict": true,
     "declaration": true,
     "removeComments": true,
@@ -12,15 +12,8 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "lib": [
-      "es2015",
-      "dom"
-    ]
+    "lib": ["es2015", "dom"]
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "src/**/*.spec.ts"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*.spec.ts"]
 }

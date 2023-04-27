@@ -1,7 +1,4 @@
-import {
-  strictEqual,
-  throws,
-} from 'assert';
+import { strictEqual, throws } from 'assert';
 
 import { FloatArray } from './types';
 import { prefix } from './util';

@@ -10,6 +10,7 @@ $ npm test
 ```
 
 - **[BLAS Level 1 Routines and Functions](https://software.intel.com/en-us/node/468390)**
+
   - [x] [`?asum (x)`](https://software.intel.com/node/e49cf403-8071-4252-a85f-28964ac3da9e#E49CF403-8071-4252-A85F-28964AC3DA9E)
   - [x] [`?axpy (x, y, [alpha = 1.0])`](https://software.intel.com/node/e25d8e10-0440-4827-bc58-bc71128ea6ee#E25D8E10-0440-4827-BC58-BC71128EA6EE)
   - [x] [`?copy (x, y)`](https://software.intel.com/node/20a9ac46-ce44-4a6a-8ce4-6a53d802a0b5#20A9AC46-CE44-4A6A-8CE4-6A53D802A0B5)
@@ -24,6 +25,7 @@ $ npm test
   - [x] [`i?amax (x)`](https://software.intel.com/node/c43c2490-109a-4a3b-8c5c-e8b67224bc03#C43C2490-109A-4A3B-8C5C-E8B67224BC03)
 
 - **[BLAS Level 2 Routines](https://software.intel.com/en-us/node/468426)**
+
   - [x] [`?gbmv (a, x, y, [kl = 0], [ku = 0], [alpha = 1.0], [beta = 0], [trans = nblas.NoTrans])`](https://software.intel.com/node/bc780af8-f243-4a20-b264-06424a8b5621#BC780AF8-F243-4A20-B264-06424A8B5621)
   - [x] [`?gemv (a, x, y, [alpha = 1.0], [beta = 0], [trans = nblas.NoTrans])`](https://software.intel.com/node/443228c4-626e-48a7-b230-26fb061eacf2#443228C4-626E-48A7-B230-26FB061EACF2)
   - [x] [`?ger (a, x, y, [alpha = 1.0])`](https://software.intel.com/node/26a7befc-1a1d-4c19-b482-5e72e6b02417#26A7BEFC-1A1D-4C19-B482-5E72E6B02417)
@@ -42,13 +44,13 @@ $ npm test
   - [x] [`?trsv (a, x, [uplo = nblas.Upper], [trans = nblas.NoTrans], [diag = nblas.NonUnit])`](https://software.intel.com/node/d8733073-f041-4aa1-b82c-123dfa993ad7#D8733073-F041-4AA1-B82C-123DFA993AD7)
 
 - **[BLAS Level 3 Routines](https://software.intel.com/en-us/node/468478)**
+
   - [x] [`?gemm (a, b, c, m, n, k, [transa = 111], [transb = 111], [alpha = 1.0], [beta = 0])`](https://software.intel.com/node/90eaa001-d4c8-4211-9ea0-b62f5ade9cf0#90EAA001-D4C8-4211-9EA0-B62F5ADE9CF0)
   - [x] [`?symm (a, b, c, m, n, [side = nblas.Left], [uplo = nblas.Upper], [alpha = 1.0], [beta = 0])`](https://software.intel.com/node/cae55cbe-8e83-4c7f-9c54-0a8598f8a8ef#CAE55CBE-8E83-4C7F-9C54-0A8598F8A8EF)
   - [x] [`?syrk (a, c, n, k, [uplo = nblas.Upper], [trans = nblas.NoTrans], [alpha = 1.0], [beta = 0])`](https://software.intel.com/node/e8986ce9-3048-4295-86ff-c2512669b498#E8986CE9-3048-4295-86FF-C2512669B498)
   - [x] [`?syr2k (a, b, c, n, k, [uplo = nblas.Upper], [trans = nblas.NoTrans], [alpha = 1.0], [beta = 0])`](https://software.intel.com/node/1233ba19-4666-4233-ba59-106b9e644893#1233BA19-4666-4233-BA59-106B9E644893)
   - [x] [`?trmm (a, b, m, n, [side = nblas.Left], [uplo = nblas.Upper], [transa = 111], [diag = nblas.NonUnit], [alpha = 1.0])`](https://software.intel.com/node/fe86b64a-4620-4e8f-8263-8442ace782df#FE86B64A-4620-4E8F-8263-8442ACE782DF)
   - [x] [`?trsm (a, b, m, n, [diag = nblas.NonUnit], [uplo = nblas.Upper], [transa = 111], [diag = nblas.NonUnit], [alpha = 1.0])`](https://software.intel.com/node/ce40548f-549d-4af8-9668-b63b28c8c63f#CE40548F-549D-4AF8-9668-B63B28C8C63F)
-
 
 - **Matrix layout enums**
   - **Matrix transpose** (`trans`)
@@ -64,7 +66,6 @@ $ npm test
   - **Matrix side** (`side`)
     - `nblas.Left (default)`
     - `nblas.Right`
-
 
 Works out of the box with OSX since CBLAS is included in the standard Accelerate framework. You might have to download and build [LAPACK](http://www.netlib.org/lapack/#_lapack_version_3_6_0) from source on other operating systems (**LINUX:** `sudo apt-get libblas-dev`).
 

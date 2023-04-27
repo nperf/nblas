@@ -6,11 +6,11 @@ plugins:
     config: tsconfig.json
     enabled: true
 exclude_patterns:
-  - "lib/"
-  - "routines/"
-  - "src/*.spec.ts"
-  - "src/index.cc"
-  - "dist/"
-  - "examples/"
-  - "benchmarks/"
-  - "docs/"
+  - 'lib/'
+  - 'routines/'
+  - 'src/*.spec.ts'
+  - 'src/index.cc'
+  - 'dist/'
+  - 'examples/'
+  - 'benchmarks/'
+  - 'docs/'
