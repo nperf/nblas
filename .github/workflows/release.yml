@@ -48,17 +48,17 @@ jobs:
         with:
           coverageLocations: ${{github.workspace}}/coverage/lcov.info:lcov
 
-      - name: Publish dist/ and docs/
-        run: |
-          git add dist docs
-          git commit -m "Publish dist and docs"
-          git push origin master
-
       - id: publish
         name: Publish package to npm
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish dist/ and docs/
+        run: |
+          git add dist docs
+          git commit -m "Publish dist and docs"
+          git push origin master
 
       - if: steps.publish.outputs.type != 'none'
         run: |
