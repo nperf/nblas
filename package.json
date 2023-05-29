@@ -1,15 +1,23 @@
 {
   "name": "nblas",
-  "version": "2.1.12",
+  "version": "2.1.13",
   "description": "C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
     "docs": "typedoc --out docs --exclude \"**/*+(.spec).ts\" src && touch docs/.nojekyll",
-    "build": "node-gyp rebuild -j max && rm -rf dist && tsc",
+    "build": "node-gyp rebuild -j max",
+    "prepublishOnly": "rm -rf dist && tsc",
     "install": "npm run build"
   },
+  "files": [
+    "dist",
+    "src/index.cc",
+    "routines",
+    "lib",
+    "binding.gyp"
+  ],
   "nyc": {
     "extension": [
       ".ts",
