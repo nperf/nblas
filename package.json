@@ -37,10 +37,7 @@
     "all": true
   },
   "homepage": "https://github.com/nperf/nblas#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nperf/nblas.git"
-  },
+  "repository": "github:nperf/nblas",
   "devDependencies": {
     "@types/jest": "^29.5.0",
     "@types/node": "^18.15.11",
