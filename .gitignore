@@ -4,3 +4,7 @@ coverage
 .DS_Store
 build
 .vscode
+dist
+routines
+lib/routines.h
+src/generated*
