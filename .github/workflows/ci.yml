@@ -11,12 +11,26 @@ on:
 
 jobs:
   test:
-    name: Test on node 24 and ${{ matrix.os }}
+    name: Test node 24 on ${{ matrix.os }} with ${{ matrix.backend }}
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-latest]
+        include:
+          - os: ubuntu-latest
+            backend: mkl
+          - os: ubuntu-latest
+            backend: blas
+          - os: ubuntu-latest
+            backend: openblas
+          - os: ubuntu-latest
+            backend: blis
+          - os: macOS-latest
+            backend: accelerate
+          - os: macOS-latest
+            backend: openblas
+          - os: macOS-latest
+            backend: blis
 
     steps:
       - uses: actions/checkout@v4
@@ -31,15 +45,52 @@ jobs:
         uses: kurocha/setup-cpp@v1
         if: runner.os == 'Linux'
 
-      - name: Install dependencies on linux
-        run: sudo apt-get install -yq libblas-dev
+      - name: Install BLAS dependencies on linux
         if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          case "${{ matrix.backend }}" in
+            mkl)
+              wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
+                | gpg --dearmor \
+                | sudo tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null
+              echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" \
+                | sudo tee /etc/apt/sources.list.d/oneAPI.list
+              sudo apt-get update
+              sudo apt-get install -yq pkg-config intel-oneapi-mkl-devel
+              echo "PKG_CONFIG_PATH=/opt/intel/oneapi/mkl/latest/lib/pkgconfig:${PKG_CONFIG_PATH}" >> "$GITHUB_ENV"
+              ;;
+            blas)
+              sudo apt-get install -yq pkg-config libblas-dev
+              ;;
+            openblas)
+              sudo apt-get install -yq pkg-config libopenblas-dev
+              ;;
+            blis)
+              sudo apt-get install -yq pkg-config libblis-dev
+              ;;
+            *)
+              echo "Unsupported Linux backend: ${{ matrix.backend }}"
+              exit 1
+              ;;
+          esac
+
+      - name: Install BLAS dependencies on macOS
+        if: runner.os == 'macOS' && matrix.backend != 'accelerate'
+        run: |
+          brew install pkg-config ${{ matrix.backend }}
 
       - name: Install package dependencies
         run: npm ci
+        env:
+          NBLAS_BACKEND: ${{ matrix.backend }}
 
       - name: Build
         run: npm run build
+        env:
+          NBLAS_BACKEND: ${{ matrix.backend }}
 
       - name: Test
         run: npm test
+        env:
+          NBLAS_BACKEND: ${{ matrix.backend }}

@@ -7,6 +7,22 @@ $ npm install nblas
 $ npm test
 ```
 
+`npm install` now selects a BLAS backend at build time. The default search order is:
+
+- macOS: `Accelerate`, then `openblas`, `blis`, `blas`
+- Linux: `mkl`, `openblas`, `blis`, `blas`
+
+You can override detection when building from source:
+
+```bash
+NBLAS_BACKEND=openblas npm install
+NBLAS_BLAS_ORDER=openblas,blas npm install
+```
+
+Backends other than `Accelerate` are detected via `pkg-config`, so the selected library needs to expose a matching `.pc` file.
+
+`cblas.h` is discovered automatically from the selected backend. If your installation lives in a non-standard location, set `NBLAS_CBLAS_HEADER=/path/to/cblas.h` or pass `--header`.
+
 - **[BLAS Level 1 Routines and Functions](https://software.intel.com/en-us/node/468390)**
 
   - [x] [`?asum (x)`](https://software.intel.com/node/e49cf403-8071-4252-a85f-28964ac3da9e#E49CF403-8071-4252-A85F-28964AC3DA9E)

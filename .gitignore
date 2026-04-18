@@ -8,3 +8,6 @@ dist
 routines
 lib/routines.h
 src/generated*
+binding.gyp
+__pycache__
+*.pyc
