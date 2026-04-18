@@ -138,7 +138,15 @@ def normalize_header_source(source: str) -> str:
         if re.match(r"^API_[A-Z_]+\(", stripped):
             normalized_lines.append(";")
             continue
-        normalized_lines.append(raw_line)
+
+        line = raw_line
+        # Vendor BLAS headers sometimes prefix declarations with export macros
+        # (for example BLIS_EXPORT_BLAS). Strip those so the parser sees the
+        # underlying C type instead of a storage/export annotation.
+        line = re.sub(r"\b[A-Z][A-Z0-9_]*EXPORT[A-Z0-9_]*\b", "", line)
+        line = re.sub(r"\bBLIS_EXPORT_BLAS\b", "", line)
+        line = re.sub(r"\s{2,}", " ", line)
+        normalized_lines.append(line)
     return "\n".join(normalized_lines)
 
 
