@@ -1,6 +1,38 @@
 import { deepStrictEqual, strictEqual } from 'assert';
 
-import { asum, axpy, copy, dot, gemm, iamax, nrm2, scal, swap } from './';
+import {
+  asum,
+  axpy,
+  copy,
+  dot,
+  gbmv,
+  gemm,
+  gemv,
+  ger,
+  iamax,
+  nrm2,
+  rot,
+  sbmv,
+  scal,
+  spmv,
+  spr,
+  spr2,
+  swap,
+  symm,
+  symv,
+  syr,
+  syr2,
+  syr2k,
+  syrk,
+  tbmv,
+  tbsv,
+  tpmv,
+  tpsv,
+  trmm,
+  trmv,
+  trsm,
+  trsv,
+} from './';
 
 describe('?asum', () => {
   it('works for different sizes', () => {
@@ -89,7 +121,14 @@ describe('?nrm2', () => {
 });
 
 describe('?rot', () => {
-  // Should perform plane rotation of points
+  it('rotates two vectors in the plane', () => {
+    const x = new Float64Array([1, 2]);
+    const y = new Float64Array([3, 4]);
+
+    rot(x, y, 0, 1);
+    deepStrictEqual(x, new Float64Array([3, 4]));
+    deepStrictEqual(y, new Float64Array([-1, -2]));
+  });
 });
 
 describe('?scal', () => {
@@ -143,67 +182,171 @@ describe('i?amax', () => {
 });
 
 describe('?gbmv', () => {
-  // Computes matrix-vector product using a general band matrix
+  it('works for a 1 x 1 diagonal band matrix', () => {
+    const a = new Float64Array([2]);
+    const x = new Float64Array([3]);
+    const y = new Float64Array([0]);
+
+    gbmv(a, x, y, 0, 0);
+    deepStrictEqual(y, new Float64Array([6]));
+  });
 });
 
 describe('?gemv', () => {
-  // Computes a matrix-vector product using a general matrix
+  it('computes a dense matrix-vector product', () => {
+    const a = new Float64Array([2, 0, 0, 3]);
+    const x = new Float64Array([1, 2]);
+    const y = new Float64Array([0, 0]);
+
+    gemv(a, x, y);
+    deepStrictEqual(y, new Float64Array([2, 6]));
+  });
 });
 
 describe('?ger', () => {
-  // Performs a rank-1 update of a general matrix
+  it('performs a rank-1 update', () => {
+    const a = new Float64Array(4);
+    const x = new Float64Array([1, 2]);
+    const y = new Float64Array([3, 4]);
+
+    ger(a, x, y);
+    deepStrictEqual(a, new Float64Array([3, 4, 6, 8]));
+  });
 });
 
 describe('?sbmv', () => {
-  // Computes a matrix-vector product using a symmetric band matrix
+  it('computes a symmetric band matrix-vector product', () => {
+    const a = new Float64Array([2, 1, 3, 0]);
+    const x = new Float64Array([1, 2]);
+    const y = new Float64Array([0, 0]);
+
+    sbmv(a, x, y, 1);
+    deepStrictEqual(y, new Float64Array([4, 7]));
+  });
 });
 
 describe('?spmv', () => {
-  // Computes a matrix-vector product using a symmetric packed matrix
+  it('computes a symmetric packed matrix-vector product', () => {
+    const ap = new Float64Array([2, 1, 3]);
+    const x = new Float64Array([1, 2]);
+    const y = new Float64Array([0, 0]);
+
+    spmv(ap, x, y);
+    deepStrictEqual(y, new Float64Array([4, 7]));
+  });
 });
 
 describe('?spr', () => {
-  // Performs a rank-1 update of a symmetric packed matrix
+  it('performs a rank-1 update on a symmetric packed matrix', () => {
+    const ap = new Float64Array([2, 1, 3]);
+    const x = new Float64Array([1, 2]);
+
+    spr(ap, x);
+    deepStrictEqual(ap, new Float64Array([3, 3, 7]));
+  });
 });
 
 describe('?spr2', () => {
-  // Performs a rank-2 update of a symmetric packed matrix
+  it('performs a rank-2 update on a symmetric packed matrix', () => {
+    const ap = new Float64Array([2, 1, 3]);
+    const x = new Float64Array([1, 2]);
+    const y = new Float64Array([3, 4]);
+
+    spr2(ap, x, y);
+    deepStrictEqual(ap, new Float64Array([8, 11, 19]));
+  });
 });
 
 describe('?symv', () => {
-  // Computes a matrix-vector product for a symmetric matrix
+  it('computes a symmetric matrix-vector product', () => {
+    const a = new Float64Array([2, 1, 1, 3]);
+    const x = new Float64Array([1, 2]);
+    const y = new Float64Array([0, 0]);
+
+    symv(a, x, y);
+    deepStrictEqual(y, new Float64Array([4, 7]));
+  });
 });
 
 describe('?syr', () => {
-  // Performs a rank-1 update of a symmetric matrix
+  it('performs a rank-1 update on a symmetric matrix', () => {
+    const a = new Float64Array([2, 1, 1, 3]);
+    const x = new Float64Array([1, 2]);
+
+    syr(a, x);
+    deepStrictEqual(a, new Float64Array([3, 3, 1, 7]));
+  });
 });
 
 describe('?syr2', () => {
-  // Performs a rank-2 update of a symmetric matrix
+  it('performs a rank-2 update on a symmetric matrix', () => {
+    const a = new Float64Array([2, 1, 1, 3]);
+    const x = new Float64Array([1, 2]);
+    const y = new Float64Array([3, 4]);
+
+    syr2(a, x, y);
+    deepStrictEqual(a, new Float64Array([8, 11, 1, 19]));
+  });
 });
 
 describe('?tbmv', () => {
-  // Computes a matrix-vector product using a triangular band matrix
+  it('computes a triangular band matrix-vector product', () => {
+    const a = new Float64Array([2, 1, 3, 0]);
+    const x = new Float64Array([1, 2]);
+
+    tbmv(a, x);
+    deepStrictEqual(x, new Float64Array([2, 6]));
+  });
 });
 
 describe('?tbsv', () => {
-  // Solves a system of linear equations whose coefficients are in a triangular band matrix
+  it('solves a triangular band system', () => {
+    const a = new Float64Array([2, 1, 3, 0]);
+    const x = new Float64Array([4, 6]);
+
+    tbsv(a, x);
+    deepStrictEqual(x, new Float64Array([2, 2]));
+  });
 });
 
 describe('?tpmv', () => {
-  // Computes a matrix-vector product using a triangular band matrix
+  it('computes a triangular packed matrix-vector product', () => {
+    const ap = new Float64Array([2, 1, 3]);
+    const x = new Float64Array([1, 2]);
+
+    tpmv(ap, x);
+    deepStrictEqual(x, new Float64Array([4, 6]));
+  });
 });
 
 describe('?tpsv', () => {
-  // Solves a system of linear equations whose coefficients are in a triangular packed matrix
+  it('solves a triangular packed system', () => {
+    const ap = new Float64Array([2, 1, 3]);
+    const x = new Float64Array([4, 6]);
+
+    tpsv(ap, x);
+    deepStrictEqual(x, new Float64Array([1, 2]));
+  });
 });
 
 describe('?trmv', () => {
-  // Computes a matrix-vector product using a triangular matrix
+  it('computes a triangular matrix-vector product', () => {
+    const a = new Float64Array([2, 1, 0, 3]);
+    const x = new Float64Array([1, 2]);
+
+    trmv(a, x);
+    deepStrictEqual(x, new Float64Array([4, 6]));
+  });
 });
 
 describe('?trsv', () => {
-  // Solves a system of linear equations whose coefficients are in a triangular matrix
+  it('solves a triangular matrix system', () => {
+    const a = new Float64Array([2, 1, 0, 3]);
+    const x = new Float64Array([4, 6]);
+
+    trsv(a, x);
+    deepStrictEqual(x, new Float64Array([1, 2]));
+  });
 });
 
 describe('?gemm', () => {
@@ -237,21 +380,53 @@ describe('?gemm', () => {
 });
 
 describe('?symm', () => {
-  // Computes a matrix-matrix product where one input matrix is symmetric
+  it('computes a matrix-matrix product with a symmetric matrix', () => {
+    const a = new Float64Array([2, 1, 1, 3]);
+    const b = new Float64Array([1, 2, 3, 4]);
+    const c = new Float64Array(4);
+
+    symm(a, b, c, 2, 2);
+    deepStrictEqual(c, new Float64Array([5, 8, 10, 14]));
+  });
 });
 
 describe('?syrk', () => {
-  // Performs a symmetric rank-k update
+  it('performs a symmetric rank-k update', () => {
+    const a = new Float64Array([1, 2, 3, 4]);
+    const c = new Float64Array(4);
+
+    syrk(a, c, 2, 2);
+    deepStrictEqual(c, new Float64Array([5, 11, 0, 25]));
+  });
 });
 
 describe('?syr2k', () => {
-  // Performs a symmetric rank-2k update
+  it('performs a symmetric rank-2k update', () => {
+    const a = new Float64Array([1, 2, 3, 4]);
+    const b = new Float64Array([5, 6, 7, 8]);
+    const c = new Float64Array(4);
+
+    syr2k(a, b, c, 2, 2);
+    deepStrictEqual(c, new Float64Array([34, 62, 0, 106]));
+  });
 });
 
 describe('?trmm', () => {
-  // Computes a matrix-matrix product where one input matrix is triangular
+  it('computes a matrix-matrix product with a triangular matrix', () => {
+    const a = new Float64Array([2, 1, 0, 3]);
+    const b = new Float64Array([1, 2, 3, 4]);
+
+    trmm(a, b, 2, 2);
+    deepStrictEqual(b, new Float64Array([5, 8, 9, 12]));
+  });
 });
 
 describe('?trsm', () => {
-  // Solves a triangular matrix equation
+  it('solves a triangular matrix equation', () => {
+    const a = new Float64Array([2, 1, 0, 3]);
+    const b = new Float64Array([5, 8, 9, 12]);
+
+    trsm(a, b, 2, 2);
+    deepStrictEqual(b, new Float64Array([1, 2, 3, 4]));
+  });
 });

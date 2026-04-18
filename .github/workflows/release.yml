@@ -11,16 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - run: |
           git config --global user.name 'Mateo Gianolio'
           git config --global user.email 'mateogianolio@users.noreply.github.com'
 
-      - name: Use Node.js 16
-        uses: actions/setup-node@v3
+      - name: Use Node.js 24
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 24
           cache: 'npm'
 
       - name: Setup C++ environment on linux
@@ -40,13 +40,6 @@ jobs:
 
       - name: Test
         run: npm test
-
-      - name: Publish coverage to CodeClimate
-        uses: paambaati/codeclimate-action@v3.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-        with:
-          coverageLocations: ${{github.workspace}}/coverage/lcov.info:lcov
 
       - id: publish
         name: Publish package to npm

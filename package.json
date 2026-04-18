@@ -1,22 +1,23 @@
 {
   "name": "nblas",
-  "version": "2.1.13",
+  "version": "3.0.0",
   "description": "C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
+    "codegen": "python3 scripts/codegen.py",
     "docs": "typedoc --out docs --exclude \"**/*+(.spec).ts\" src && touch docs/.nojekyll",
-    "build": "node-gyp rebuild -j max",
-    "prepublishOnly": "rm -rf dist && tsc",
+    "build": "npm run codegen && node-gyp rebuild -j max",
+    "prepublishOnly": "npm run codegen && rm -rf dist && tsc",
     "install": "npm run build"
   },
   "files": [
     "dist",
+    "scripts/codegen.py",
     "src/index.cc",
     "routines",
-    "lib",
-    "binding.gyp"
+    "lib"
   ],
   "nyc": {
     "extension": [
@@ -38,15 +39,22 @@
   },
   "homepage": "https://github.com/nperf/nblas#readme",
   "repository": "github:nperf/nblas",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "node-addon-api": "^8.3.1",
+    "node-gyp": "^11.2.0"
+  },
   "devDependencies": {
     "@types/jest": "^29.5.0",
-    "@types/node": "^18.15.11",
+    "@types/node": "^24.0.0",
     "jest": "^29.5.0",
     "prettier": "^2.8.7",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
-    "typedoc": "^0.24.4",
-    "typescript": "^5.0.4"
+    "typedoc": "^0.28.18",
+    "typescript": "^5.6.3"
   },
   "author": "Mateo Gianolio",
   "license": "MIT",

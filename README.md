@@ -1,13 +1,27 @@
-# nBLAS ![version](https://img.shields.io/npm/v/nblas.svg) ![travis](https://img.shields.io/travis/nperf/nblas.svg) [![maintainability](https://api.codeclimate.com/v1/badges/756aff038b767f2e706e/maintainability)](https://codeclimate.com/github/mateogianolio/nblas/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/756aff038b767f2e706e/test_coverage)](https://codeclimate.com/github/mateogianolio/nblas/test_coverage)
+# nBLAS ![version](https://img.shields.io/npm/v/nblas.svg)
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/nperf/nblas.svg)](https://greenkeeper.io/)
-
-Node `>=6.9` C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.
+Node `>=20` C++ bindings for all single- and double-precision CBLAS (Basic Linear Algebra Subprograms) routines.
 
 ```bash
 $ npm install nblas
 $ npm test
 ```
+
+`npm install` now selects a BLAS backend at build time. The default search order is:
+
+- macOS: `Accelerate`, then `openblas`, `blis`, `blas`
+- Linux: `mkl`, `openblas`, `blis`, `blas`
+
+You can override detection when building from source:
+
+```bash
+NBLAS_BACKEND=openblas npm install
+NBLAS_BLAS_ORDER=openblas,blas npm install
+```
+
+Backends other than `Accelerate` are detected via `pkg-config`, so the selected library needs to expose a matching `.pc` file.
+
+`cblas.h` is discovered automatically from the selected backend. If your installation lives in a non-standard location, set `NBLAS_CBLAS_HEADER=/path/to/cblas.h` or pass `--header`.
 
 - **[BLAS Level 1 Routines and Functions](https://software.intel.com/en-us/node/468390)**
 
