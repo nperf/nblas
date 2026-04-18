@@ -78,6 +78,7 @@ jobs:
         if: runner.os == 'macOS' && matrix.backend != 'accelerate'
         run: |
           brew install pkg-config ${{ matrix.backend }}
+          echo "PKG_CONFIG_PATH=$(brew --prefix ${{ matrix.backend }})/lib/pkgconfig:${PKG_CONFIG_PATH}" >> "$GITHUB_ENV"
 
       - name: Install package dependencies
         run: npm ci
