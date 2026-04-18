@@ -121,14 +121,35 @@ def parse_prototype(statement: str, config: ParseConfig, level: str) -> Prototyp
         if (parsed := parse_parameter(raw_param)) is not None
     ]
     native_name = match.group(2)
+    return_type = normalize_whitespace(match.group(1))
+
+    if should_skip_prototype(native_name, return_type):
+        return None
 
     return Prototype(
         level=level,
-        return_type=normalize_whitespace(match.group(1)),
+        return_type=return_type,
         native_name=native_name,
         wrapper_name=native_name[len(config.symbol_prefix) :],
         params=params,
     )
+
+
+def should_skip_prototype(native_name: str, return_type: str) -> bool:
+    # Some OpenBLAS headers expose non-portable direct-return complex dot
+    # variants (for example cblas_cdotu returning openblas_complex_float)
+    # alongside the portable *_sub routines. Skip those and keep generating
+    # against the portable CBLAS surface.
+    if native_name in {"cblas_cdotu", "cblas_cdotc", "cblas_zdotu", "cblas_zdotc"}:
+        return True
+
+    if return_type in {
+        "openblas_complex_float",
+        "openblas_complex_double",
+    }:
+        return True
+
+    return False
 
 
 def normalize_header_source(source: str) -> str:
